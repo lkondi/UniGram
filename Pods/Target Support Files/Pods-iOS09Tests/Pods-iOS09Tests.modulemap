@@ -1,0 +1,6 @@
+framework module Pods_iOS09Tests {
+  umbrella header "Pods-iOS09Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
