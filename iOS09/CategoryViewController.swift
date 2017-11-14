@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: ViewController {
     
     @IBOutlet weak var tableView: UITableView?
     
