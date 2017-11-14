@@ -22,6 +22,13 @@
 		84F726A01FB737B3000AFAC8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F7269F1FB737B3000AFAC8 /* SignUpViewController.swift */; };
 		84F726A21FB73C7A000AFAC8 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F726A11FB73C7A000AFAC8 /* ForgotPasswordViewController.swift */; };
 		C4070CE8DE6DE4F01E7B3649 /* Pods_iOS09.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05593BAC22174F145CEFCB84 /* Pods_iOS09.framework */; };
+		E4AF4B201FBB240C000D39DA /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF4B1B1FBB240B000D39DA /* CategoryItem.swift */; };
+		E4AF4B211FBB240C000D39DA /* CategoryItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4AF4B1C1FBB240B000D39DA /* CategoryItems.plist */; };
+		E4AF4B221FBB240C000D39DA /* CategoryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF4B1D1FBB240B000D39DA /* CategoryItemTableViewCell.swift */; };
+		E4AF4B241FBB240C000D39DA /* CategoryItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF4B1F1FBB240C000D39DA /* CategoryItemsManager.swift */; };
+		E4AF4B261FBB2493000D39DA /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF4B251FBB2493000D39DA /* CategoryViewController.swift */; };
+		E4AF4B2A1FBB25D9000D39DA /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4AF4B291FBB25D9000D39DA /* fontawesome-webfont.ttf */; };
+		E4AF4B2C1FBB2659000D39DA /* 1604368_10150354952869964_85380832_n.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4AF4B2B1FBB2659000D39DA /* 1604368_10150354952869964_85380832_n.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +75,13 @@
 		B74F2AA970AA748395BF8FC3 /* Pods-iOS09.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09/Pods-iOS09.debug.xcconfig"; sourceTree = "<group>"; };
 		BE9315F41E135C8D77836912 /* Pods-iOS09Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09Tests/Pods-iOS09Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7C67D865633146C153C9539 /* Pods_iOS09UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS09UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4AF4B1B1FBB240B000D39DA /* CategoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryItem.swift; path = ../../workspace/UniGram/UniGram/CategoryItem.swift; sourceTree = "<group>"; };
+		E4AF4B1C1FBB240B000D39DA /* CategoryItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = CategoryItems.plist; path = ../../workspace/UniGram/UniGram/CategoryItems.plist; sourceTree = "<group>"; };
+		E4AF4B1D1FBB240B000D39DA /* CategoryItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryItemTableViewCell.swift; path = ../../workspace/UniGram/UniGram/CategoryItemTableViewCell.swift; sourceTree = "<group>"; };
+		E4AF4B1F1FBB240C000D39DA /* CategoryItemsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryItemsManager.swift; path = ../../workspace/UniGram/UniGram/CategoryItemsManager.swift; sourceTree = "<group>"; };
+		E4AF4B251FBB2493000D39DA /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryViewController.swift; path = /Users/lkondylidou/Desktop/UniGram/iOS09/CategoryViewController.swift; sourceTree = "<absolute>"; };
+		E4AF4B291FBB25D9000D39DA /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../Downloads/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		E4AF4B2B1FBB2659000D39DA /* 1604368_10150354952869964_85380832_n.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1604368_10150354952869964_85380832_n.jpg; path = ../../photos/1604368_10150354952869964_85380832_n.jpg; sourceTree = "<group>"; };
 		F22B80ED99896CE50689FBBB /* Pods-iOS09UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09UITests/Pods-iOS09UITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +129,7 @@
 		848F1A931FB51DB9001D524A = {
 			isa = PBXGroup;
 			children = (
+				E4AF4B291FBB25D9000D39DA /* fontawesome-webfont.ttf */,
 				848F1A9E1FB51DB9001D524A /* iOS09 */,
 				848F1AB61FB51DB9001D524A /* iOS09Tests */,
 				848F1AC11FB51DB9001D524A /* iOS09UITests */,
@@ -137,6 +152,12 @@
 		848F1A9E1FB51DB9001D524A /* iOS09 */ = {
 			isa = PBXGroup;
 			children = (
+				E4AF4B1B1FBB240B000D39DA /* CategoryItem.swift */,
+				E4AF4B2B1FBB2659000D39DA /* 1604368_10150354952869964_85380832_n.jpg */,
+				E4AF4B251FBB2493000D39DA /* CategoryViewController.swift */,
+				E4AF4B1C1FBB240B000D39DA /* CategoryItems.plist */,
+				E4AF4B1F1FBB240C000D39DA /* CategoryItemsManager.swift */,
+				E4AF4B1D1FBB240B000D39DA /* CategoryItemTableViewCell.swift */,
 				848F1A9F1FB51DB9001D524A /* AppDelegate.swift */,
 				848F1AA11FB51DB9001D524A /* ViewController.swift */,
 				848F1AA31FB51DB9001D524A /* Main.storyboard */,
@@ -299,7 +320,10 @@
 				848F1AAD1FB51DB9001D524A /* LaunchScreen.storyboard in Resources */,
 				84F319211FB71C7A00E6A193 /* GoogleService-Info.plist in Resources */,
 				848F1AAA1FB51DB9001D524A /* Assets.xcassets in Resources */,
+				E4AF4B2C1FBB2659000D39DA /* 1604368_10150354952869964_85380832_n.jpg in Resources */,
+				E4AF4B2A1FBB25D9000D39DA /* fontawesome-webfont.ttf in Resources */,
 				848F1AA51FB51DB9001D524A /* Main.storyboard in Resources */,
+				E4AF4B211FBB240C000D39DA /* CategoryItems.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,9 +502,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4AF4B261FBB2493000D39DA /* CategoryViewController.swift in Sources */,
 				84F3191D1FB7163500E6A193 /* LoginViewController.swift in Sources */,
 				848F1AA21FB51DB9001D524A /* ViewController.swift in Sources */,
+				E4AF4B221FBB240C000D39DA /* CategoryItemTableViewCell.swift in Sources */,
 				84F726A21FB73C7A000AFAC8 /* ForgotPasswordViewController.swift in Sources */,
+				E4AF4B201FBB240C000D39DA /* CategoryItem.swift in Sources */,
+				E4AF4B241FBB240C000D39DA /* CategoryItemsManager.swift in Sources */,
 				848F1AA01FB51DB9001D524A /* AppDelegate.swift in Sources */,
 				848F1AA81FB51DB9001D524A /* iOS09.xcdatamodeld in Sources */,
 				84F726A01FB737B3000AFAC8 /* SignUpViewController.swift in Sources */,
