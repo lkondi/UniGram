@@ -28,7 +28,12 @@
 		E4AF4B241FBB240C000D39DA /* CategoryItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF4B1F1FBB240C000D39DA /* CategoryItemsManager.swift */; };
 		E4AF4B261FBB2493000D39DA /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF4B251FBB2493000D39DA /* CategoryViewController.swift */; };
 		E4AF4B2A1FBB25D9000D39DA /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4AF4B291FBB25D9000D39DA /* fontawesome-webfont.ttf */; };
-		E4AF4B2C1FBB2659000D39DA /* 1604368_10150354952869964_85380832_n.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4AF4B2B1FBB2659000D39DA /* 1604368_10150354952869964_85380832_n.jpg */; };
+		E4C9018A1FBDC03A00591FA5 /* dating.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C901861FBDC03800591FA5 /* dating.jpg */; };
+		E4C9018B1FBDC03A00591FA5 /* dance.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C901871FBDC03900591FA5 /* dance.jpg */; };
+		E4C9018D1FBDC03A00591FA5 /* erstis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C901891FBDC03A00591FA5 /* erstis.jpg */; };
+		E4C901901FBDC04A00591FA5 /* sport.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C9018E1FBDC04A00591FA5 /* sport.jpg */; };
+		E4C901911FBDC04A00591FA5 /* study.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C9018F1FBDC04A00591FA5 /* study.jpg */; };
+		E4C901931FBDC08600591FA5 /* hobbies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C901921FBDC08600591FA5 /* hobbies.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +86,12 @@
 		E4AF4B1F1FBB240C000D39DA /* CategoryItemsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryItemsManager.swift; path = ../../workspace/UniGram/UniGram/CategoryItemsManager.swift; sourceTree = "<group>"; };
 		E4AF4B251FBB2493000D39DA /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryViewController.swift; path = /Users/lkondylidou/Desktop/UniGram/iOS09/CategoryViewController.swift; sourceTree = "<absolute>"; };
 		E4AF4B291FBB25D9000D39DA /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../Downloads/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
-		E4AF4B2B1FBB2659000D39DA /* 1604368_10150354952869964_85380832_n.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1604368_10150354952869964_85380832_n.jpg; path = ../../photos/1604368_10150354952869964_85380832_n.jpg; sourceTree = "<group>"; };
+		E4C901861FBDC03800591FA5 /* dating.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dating.jpg; sourceTree = "<group>"; };
+		E4C901871FBDC03900591FA5 /* dance.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dance.jpg; sourceTree = "<group>"; };
+		E4C901891FBDC03A00591FA5 /* erstis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = erstis.jpg; sourceTree = "<group>"; };
+		E4C9018E1FBDC04A00591FA5 /* sport.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sport.jpg; sourceTree = "<group>"; };
+		E4C9018F1FBDC04A00591FA5 /* study.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = study.jpg; sourceTree = "<group>"; };
+		E4C901921FBDC08600591FA5 /* hobbies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hobbies.jpg; sourceTree = "<group>"; };
 		F22B80ED99896CE50689FBBB /* Pods-iOS09UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09UITests/Pods-iOS09UITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,8 +162,8 @@
 		848F1A9E1FB51DB9001D524A /* iOS09 */ = {
 			isa = PBXGroup;
 			children = (
+				E4C901841FBDBD1100591FA5 /* Resources */,
 				E4AF4B1B1FBB240B000D39DA /* CategoryItem.swift */,
-				E4AF4B2B1FBB2659000D39DA /* 1604368_10150354952869964_85380832_n.jpg */,
 				E4AF4B251FBB2493000D39DA /* CategoryViewController.swift */,
 				E4AF4B1C1FBB240B000D39DA /* CategoryItems.plist */,
 				E4AF4B1F1FBB240C000D39DA /* CategoryItemsManager.swift */,
@@ -199,6 +209,27 @@
 				C7C67D865633146C153C9539 /* Pods_iOS09UITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4C901841FBDBD1100591FA5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E4C901851FBDBD1900591FA5 /* images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E4C901851FBDBD1900591FA5 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				E4C9018E1FBDC04A00591FA5 /* sport.jpg */,
+				E4C9018F1FBDC04A00591FA5 /* study.jpg */,
+				E4C901921FBDC08600591FA5 /* hobbies.jpg */,
+				E4C901871FBDC03900591FA5 /* dance.jpg */,
+				E4C901861FBDC03800591FA5 /* dating.jpg */,
+				E4C901891FBDC03A00591FA5 /* erstis.jpg */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,12 +349,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				848F1AAD1FB51DB9001D524A /* LaunchScreen.storyboard in Resources */,
+				E4C901911FBDC04A00591FA5 /* study.jpg in Resources */,
+				E4C9018A1FBDC03A00591FA5 /* dating.jpg in Resources */,
 				84F319211FB71C7A00E6A193 /* GoogleService-Info.plist in Resources */,
+				E4C9018B1FBDC03A00591FA5 /* dance.jpg in Resources */,
 				848F1AAA1FB51DB9001D524A /* Assets.xcassets in Resources */,
-				E4AF4B2C1FBB2659000D39DA /* 1604368_10150354952869964_85380832_n.jpg in Resources */,
 				E4AF4B2A1FBB25D9000D39DA /* fontawesome-webfont.ttf in Resources */,
+				E4C901901FBDC04A00591FA5 /* sport.jpg in Resources */,
 				848F1AA51FB51DB9001D524A /* Main.storyboard in Resources */,
 				E4AF4B211FBB240C000D39DA /* CategoryItems.plist in Resources */,
+				E4C901931FBDC08600591FA5 /* hobbies.jpg in Resources */,
+				E4C9018D1FBDC03A00591FA5 /* erstis.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

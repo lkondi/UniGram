@@ -32,7 +32,7 @@ extension CategoryViewController: UITableViewDataSource {
         let item = categoryItems[indexPath.row]
         
         //display data from MenuItems.plist
-        cell.categoryItemLabelName?.text = item.name
+        cell.categoryItemNameLabel?.text = item.name
         cell.categoryItemImageView?.image = UIImage(named: item.image)
         
         cell.backgroundColor = UIColor.clear
@@ -44,4 +44,17 @@ extension CategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryItems.count
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let segueIdentifier: String
+        switch indexPath.row {
+        case 0: //For "one"
+            segueIdentifier = "sportSegue"
+        default: //For "three"
+            segueIdentifier = "danceSegue"
+        }
+        self.performSegue(withIdentifier: segueIdentifier, sender: self)
+    }
+
+    
 }
