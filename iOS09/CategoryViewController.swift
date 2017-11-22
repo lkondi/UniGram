@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CategoryViewController: ViewController, UIGestureRecognizerDelegate{
+class CategoryViewController: UIViewController, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     //@IBOutlet weak var tableView: UITableView!
