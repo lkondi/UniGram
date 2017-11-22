@@ -225,6 +225,21 @@
             </objects>
             <point key="canvasLocation" x="980" y="608.54572713643188"/>
         </scene>
+        <!--ChatViewController-->
+        <scene sceneID="AR7-xG-dc9">
+            <objects>
+                <viewController storyboardIdentifier="ChatView" title="ChatViewController" id="yfP-TQ-p59" customClass="ChatViewController" customModule="iOS09" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QNG-0g-eke">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="2yu-cf-XOA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5SY-eA-dTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3313" y="663"/>
+        </scene>
         <!--Profile View Controller-->
         <scene sceneID="Eqq-zG-XDR">
             <objects>
@@ -364,12 +379,12 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3132" y="116"/>
+            <point key="canvasLocation" x="3314" y="-191"/>
         </scene>
-        <!--SportViewController-->
+        <!--CategoryViewController-->
         <scene sceneID="DBf-Cf-wZA">
             <objects>
-                <viewController storyboardIdentifier="HomeScreen" title="SportViewController" id="PNJ-GH-sx0" customClass="CategoryViewController" customModule="iOS09" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeScreen" title="CategoryViewController" id="PNJ-GH-sx0" customClass="CategoryViewController" customModule="iOS09" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yD5-Eu-zVu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -494,7 +509,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2E2-eg-KKD" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2060" y="116"/>
+            <point key="canvasLocation" x="2396" y="18"/>
         </scene>
     </scenes>
     <resources>
@@ -505,7 +520,7 @@
         <image name="key" width="224" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zE3-Il-xD9"/>
+        <segue reference="Z8a-If-NLA"/>
         <segue reference="bxM-HZ-AO2"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -28,6 +28,14 @@
 		84F7F5491FB7DA4600178737 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F7F5481FB7DA4600178737 /* ForgotPasswordViewController.swift */; };
 		84F7F54B1FB7DA5A00178737 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F7F54A1FB7DA5A00178737 /* LoginViewController.swift */; };
 		84F7F54F1FB7DD1F00178737 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F7F54E1FB7DD1F00178737 /* ProfileViewController.swift */; };
+		E47387A31FC6020A006C744E /* study.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E473879D1FC60208006C744E /* study.jpg */; };
+		E47387A41FC6020A006C744E /* dating.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E473879E1FC60209006C744E /* dating.jpg */; };
+		E47387A51FC6020A006C744E /* dance.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E473879F1FC60209006C744E /* dance.jpg */; };
+		E47387A61FC6020A006C744E /* hobbies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E47387A01FC60209006C744E /* hobbies.jpg */; };
+		E47387A71FC6020A006C744E /* sport.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E47387A11FC60209006C744E /* sport.jpg */; };
+		E47387A81FC6020A006C744E /* erstis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E47387A21FC6020A006C744E /* erstis.jpg */; };
+		E47387AC1FC61ECC006C744E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47387AB1FC61ECC006C744E /* ChatViewController.swift */; };
+		E47387B01FC62355006C744E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47387AF1FC62355006C744E /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +87,15 @@
 		84F7F54E1FB7DD1F00178737 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A0840E1E8E30B9680F976F4B /* Pods-iOS09Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09Tests/Pods-iOS09Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D0E114A47D12043624DE1900 /* Pods-iOS09.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09/Pods-iOS09.release.xcconfig"; sourceTree = "<group>"; };
+		E473879D1FC60208006C744E /* study.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = study.jpg; sourceTree = "<group>"; };
+		E473879E1FC60209006C744E /* dating.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dating.jpg; sourceTree = "<group>"; };
+		E473879F1FC60209006C744E /* dance.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dance.jpg; sourceTree = "<group>"; };
+		E47387A01FC60209006C744E /* hobbies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hobbies.jpg; sourceTree = "<group>"; };
+		E47387A11FC60209006C744E /* sport.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sport.jpg; sourceTree = "<group>"; };
+		E47387A21FC6020A006C744E /* erstis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = erstis.jpg; sourceTree = "<group>"; };
+		E47387AB1FC61ECC006C744E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		E47387AF1FC62355006C744E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E47387B21FC62B7F006C744E /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		EE11292289FF5ACB13C8CE4C /* Pods_iOS09Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS09Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA43ABBC854BDF2A8887E17 /* Pods-iOS09UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09UITests/Pods-iOS09UITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +131,7 @@
 		84F7F5091FB7D7E000178737 = {
 			isa = PBXGroup;
 			children = (
+				E47387B21FC62B7F006C744E /* Bridging-Header.h */,
 				84F7F5141FB7D7E000178737 /* iOS09 */,
 				84F7F52C1FB7D7E000178737 /* iOS09Tests */,
 				84F7F5371FB7D7E000178737 /* iOS09UITests */,
@@ -136,9 +154,17 @@
 		84F7F5141FB7D7E000178737 /* iOS09 */ = {
 			isa = PBXGroup;
 			children = (
+				E473879F1FC60209006C744E /* dance.jpg */,
+				E473879E1FC60209006C744E /* dating.jpg */,
+				E47387A21FC6020A006C744E /* erstis.jpg */,
+				E47387A01FC60209006C744E /* hobbies.jpg */,
+				E47387A11FC60209006C744E /* sport.jpg */,
+				E473879D1FC60208006C744E /* study.jpg */,
 				84A62CC51FBB2B9800784C2F /* GoogleService-Info.plist */,
 				84F7F5151FB7D7E000178737 /* AppDelegate.swift */,
+				E47387AF1FC62355006C744E /* Constants.swift */,
 				84F7F5191FB7D7E000178737 /* Main.storyboard */,
+				E47387AB1FC61ECC006C744E /* ChatViewController.swift */,
 				84F7F54E1FB7DD1F00178737 /* ProfileViewController.swift */,
 				84D12FB91FC5E29900FE3887 /* CategoryItem.swift */,
 				84D12FBB1FC5E2B300FE3887 /* CategoryItemsManager.swift */,
@@ -315,9 +341,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F7F5231FB7D7E000178737 /* LaunchScreen.storyboard in Resources */,
+				E47387A81FC6020A006C744E /* erstis.jpg in Resources */,
+				E47387A41FC6020A006C744E /* dating.jpg in Resources */,
+				E47387A71FC6020A006C744E /* sport.jpg in Resources */,
+				E47387A31FC6020A006C744E /* study.jpg in Resources */,
+				E47387A51FC6020A006C744E /* dance.jpg in Resources */,
 				84A62CC61FBB2B9800784C2F /* GoogleService-Info.plist in Resources */,
 				84F7F5201FB7D7E000178737 /* Assets.xcassets in Resources */,
 				84F7F51B1FB7D7E000178737 /* Main.storyboard in Resources */,
+				E47387A61FC6020A006C744E /* hobbies.jpg in Resources */,
 				84D12FC21FC5E3C300FE3887 /* CategoryItems.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +413,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-iOS09/Pods-iOS09-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -388,6 +422,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -506,9 +542,11 @@
 				84D12FC01FC5E31000FE3887 /* CategoryViewController.swift in Sources */,
 				84D12FBA1FC5E29900FE3887 /* CategoryItem.swift in Sources */,
 				84F7F54F1FB7DD1F00178737 /* ProfileViewController.swift in Sources */,
+				E47387B01FC62355006C744E /* Constants.swift in Sources */,
 				84D12FBC1FC5E2B300FE3887 /* CategoryItemsManager.swift in Sources */,
 				84F7F5471FB7DA2400178737 /* SignUpViewController.swift in Sources */,
 				84D12FBE1FC5E2F000FE3887 /* CategoryItemTableViewCell.swift in Sources */,
+				E47387AC1FC61ECC006C744E /* ChatViewController.swift in Sources */,
 				84F7F51E1FB7D7E000178737 /* iOS09.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,6 +655,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -666,6 +705,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};

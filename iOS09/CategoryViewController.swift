@@ -11,7 +11,6 @@ import UIKit
 class CategoryViewController: UIViewController, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
-    //@IBOutlet weak var tableView: UITableView!
     
     var categoryItems: [CategoryItem] = []
     
@@ -37,11 +36,11 @@ class CategoryViewController: UIViewController, UIGestureRecognizerDelegate{
                 if (self.tableView?.cellForRow(at: tapIndexPath) as? CategoryItemTableViewCell) != nil {
                     //
                     switch tapIndexPath.row {
-                    case 0: //For "one"
+                    case 0:
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
                         self.present(vc!, animated: true, completion: nil)
-                    default: //For "three"
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
+                    default: 
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatView")
                         self.present(vc!, animated: true, completion: nil)
                     }
                     
@@ -58,7 +57,7 @@ extension CategoryViewController: UITableViewDataSource {
         let cell: CategoryItemTableViewCell = tableView.dequeueReusableCell(withIdentifier: "categoryItemCell") as! CategoryItemTableViewCell
         let item = categoryItems[indexPath.row]
         
-        //display data from MenuItems.plist
+        //display data from CategoryItems.plist
         cell.categoryItemNameLabel?.text = item.name
         cell.categoryItemImageView?.image = UIImage(named: item.image)
         
