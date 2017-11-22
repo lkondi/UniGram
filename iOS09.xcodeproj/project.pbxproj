@@ -22,11 +22,10 @@
 		84F726A01FB737B3000AFAC8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F7269F1FB737B3000AFAC8 /* SignUpViewController.swift */; };
 		84F726A21FB73C7A000AFAC8 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F726A11FB73C7A000AFAC8 /* ForgotPasswordViewController.swift */; };
 		C4070CE8DE6DE4F01E7B3649 /* Pods_iOS09.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05593BAC22174F145CEFCB84 /* Pods_iOS09.framework */; };
-		E4AF4B201FBB240C000D39DA /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF4B1B1FBB240B000D39DA /* CategoryItem.swift */; };
-		E4AF4B211FBB240C000D39DA /* CategoryItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4AF4B1C1FBB240B000D39DA /* CategoryItems.plist */; };
-		E4AF4B221FBB240C000D39DA /* CategoryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF4B1D1FBB240B000D39DA /* CategoryItemTableViewCell.swift */; };
-		E4AF4B241FBB240C000D39DA /* CategoryItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF4B1F1FBB240C000D39DA /* CategoryItemsManager.swift */; };
-		E4AF4B261FBB2493000D39DA /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF4B251FBB2493000D39DA /* CategoryViewController.swift */; };
+		E46979241FC5BBB700125840 /* CategoryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46979201FC5BBB700125840 /* CategoryItemTableViewCell.swift */; };
+		E46979251FC5BBB700125840 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46979211FC5BBB700125840 /* CategoryItem.swift */; };
+		E46979261FC5BBB700125840 /* CategoryItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46979221FC5BBB700125840 /* CategoryItemsManager.swift */; };
+		E46979271FC5BBB700125840 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46979231FC5BBB700125840 /* CategoryViewController.swift */; };
 		E4AF4B2A1FBB25D9000D39DA /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4AF4B291FBB25D9000D39DA /* fontawesome-webfont.ttf */; };
 		E4C9018A1FBDC03A00591FA5 /* dating.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C901861FBDC03800591FA5 /* dating.jpg */; };
 		E4C9018B1FBDC03A00591FA5 /* dance.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4C901871FBDC03900591FA5 /* dance.jpg */; };
@@ -80,11 +79,11 @@
 		B74F2AA970AA748395BF8FC3 /* Pods-iOS09.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09/Pods-iOS09.debug.xcconfig"; sourceTree = "<group>"; };
 		BE9315F41E135C8D77836912 /* Pods-iOS09Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09Tests/Pods-iOS09Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7C67D865633146C153C9539 /* Pods_iOS09UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS09UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E4AF4B1B1FBB240B000D39DA /* CategoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
-		E4AF4B1C1FBB240B000D39DA /* CategoryItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CategoryItems.plist; sourceTree = "<group>"; };
-		E4AF4B1D1FBB240B000D39DA /* CategoryItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItemTableViewCell.swift; sourceTree = "<group>"; };
-		E4AF4B1F1FBB240C000D39DA /* CategoryItemsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItemsManager.swift; sourceTree = "<group>"; };
-		E4AF4B251FBB2493000D39DA /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		E469791F1FC5BBB700125840 /* CategoryItems.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CategoryItems.plist; sourceTree = "<group>"; };
+		E46979201FC5BBB700125840 /* CategoryItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemTableViewCell.swift; sourceTree = "<group>"; };
+		E46979211FC5BBB700125840 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
+		E46979221FC5BBB700125840 /* CategoryItemsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemsManager.swift; sourceTree = "<group>"; };
+		E46979231FC5BBB700125840 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		E4AF4B291FBB25D9000D39DA /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../Downloads/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		E4C901861FBDC03800591FA5 /* dating.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dating.jpg; sourceTree = "<group>"; };
 		E4C901871FBDC03900591FA5 /* dance.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dance.jpg; sourceTree = "<group>"; };
@@ -163,12 +162,12 @@
 			isa = PBXGroup;
 			children = (
 				E4C901841FBDBD1100591FA5 /* Resources */,
-				E4AF4B1B1FBB240B000D39DA /* CategoryItem.swift */,
-				E4AF4B251FBB2493000D39DA /* CategoryViewController.swift */,
-				E4AF4B1C1FBB240B000D39DA /* CategoryItems.plist */,
-				E4AF4B1F1FBB240C000D39DA /* CategoryItemsManager.swift */,
-				E4AF4B1D1FBB240B000D39DA /* CategoryItemTableViewCell.swift */,
 				848F1A9F1FB51DB9001D524A /* AppDelegate.swift */,
+				E46979211FC5BBB700125840 /* CategoryItem.swift */,
+				E469791F1FC5BBB700125840 /* CategoryItems.plist */,
+				E46979221FC5BBB700125840 /* CategoryItemsManager.swift */,
+				E46979201FC5BBB700125840 /* CategoryItemTableViewCell.swift */,
+				E46979231FC5BBB700125840 /* CategoryViewController.swift */,
 				848F1AA11FB51DB9001D524A /* ViewController.swift */,
 				848F1AA31FB51DB9001D524A /* Main.storyboard */,
 				84F7269F1FB737B3000AFAC8 /* SignUpViewController.swift */,
@@ -357,7 +356,6 @@
 				E4AF4B2A1FBB25D9000D39DA /* fontawesome-webfont.ttf in Resources */,
 				E4C901901FBDC04A00591FA5 /* sport.jpg in Resources */,
 				848F1AA51FB51DB9001D524A /* Main.storyboard in Resources */,
-				E4AF4B211FBB240C000D39DA /* CategoryItems.plist in Resources */,
 				E4C901931FBDC08600591FA5 /* hobbies.jpg in Resources */,
 				E4C9018D1FBDC03A00591FA5 /* erstis.jpg in Resources */,
 			);
@@ -538,13 +536,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4AF4B261FBB2493000D39DA /* CategoryViewController.swift in Sources */,
+				E46979271FC5BBB700125840 /* CategoryViewController.swift in Sources */,
+				E46979261FC5BBB700125840 /* CategoryItemsManager.swift in Sources */,
 				84F3191D1FB7163500E6A193 /* LoginViewController.swift in Sources */,
 				848F1AA21FB51DB9001D524A /* ViewController.swift in Sources */,
-				E4AF4B221FBB240C000D39DA /* CategoryItemTableViewCell.swift in Sources */,
+				E46979251FC5BBB700125840 /* CategoryItem.swift in Sources */,
+				E46979241FC5BBB700125840 /* CategoryItemTableViewCell.swift in Sources */,
 				84F726A21FB73C7A000AFAC8 /* ForgotPasswordViewController.swift in Sources */,
-				E4AF4B201FBB240C000D39DA /* CategoryItem.swift in Sources */,
-				E4AF4B241FBB240C000D39DA /* CategoryItemsManager.swift in Sources */,
 				848F1AA01FB51DB9001D524A /* AppDelegate.swift in Sources */,
 				848F1AA81FB51DB9001D524A /* iOS09.xcdatamodeld in Sources */,
 				84F726A01FB737B3000AFAC8 /* SignUpViewController.swift in Sources */,

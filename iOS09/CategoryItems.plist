@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>SPORT CLUBS</string>
+		<key>image</key>
+		<string>sport.jpg</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>DANCE CLUBS</string>
+		<key>image</key>
+		<string>dance.jpg</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>ERSTIS</string>
+		<key>image</key>
+		<string>erstis.jpg</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>STUDY GROUPS</string>
+		<key>image</key>
+		<string>study.jpg</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>DATING</string>
+		<key>image</key>
+		<string>dating.jpg</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>HOBBIES</string>
+		<key>image</key>
+		<string>hobbies.jpg</string>
+	</dict>
+</array>
+</plist>
