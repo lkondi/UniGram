@@ -1,9 +1,9 @@
 //
 //  CategoryItemTableViewCell.swift
-//  UniGram
+//  iOS09
 //
-//  Created by Lydia Kondylidou on 10.11.17.
-//  Copyright © 2017 Lydia Kondylidou. All rights reserved.
+//  Created by admin on 22.11.17.
+//  Copyright © 2017 admin. All rights reserved.
 //
 
 import Foundation
@@ -23,3 +23,4 @@ class CategoryItemTableViewCell: UITableViewCell {
     }
     
 }
+

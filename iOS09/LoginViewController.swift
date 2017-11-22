@@ -2,27 +2,26 @@
 //  LoginViewController.swift
 //  iOS09
 //
-//  Created by admin on 11.11.17.
+//  Created by admin on 12.11.17.
 //  Copyright © 2017 admin. All rights reserved.
 //
+
 
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
     
-    
     //Outlets
     @IBOutlet weak var emailTextField: UITextField!
-    //@IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    //@IBOutlet weak var passwordTextField: UITextField!
     
     
     //Login Action
     //@IBAction func loginAction(_ sender: AnyObject) {
-        @IBAction func loginAction(_ sender: Any) {
+    @IBAction func loginAction(_ sender: Any) {
         
         
         if self.emailTextField.text == "" || self.passwordTextField.text == "" {
@@ -63,4 +62,5 @@ class LoginViewController: UIViewController {
         }
     }
 }
+
 

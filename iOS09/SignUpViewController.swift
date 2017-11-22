@@ -2,7 +2,7 @@
 //  SignUpViewController.swift
 //  iOS09
 //
-//  Created by admin on 11.11.17.
+//  Created by admin on 12.11.17.
 //  Copyright © 2017 admin. All rights reserved.
 //
 
@@ -10,8 +10,12 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
+    
+    //var ref: DatabaseReference!
+    let ref = Database.database().reference(fromURL: "https://ios09-2d460.firebaseio.com/")
     
     //Outlets
     @IBOutlet weak var userName: UITextField!
@@ -44,8 +48,13 @@ class SignUpViewController: UIViewController {
                 
                 if error == nil {
                     print("You have successfully signed up")
-                    //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
                     
+                    let uid = user?.uid
+                    let userReference = self.ref.child("users").child(uid!)
+                    let values = ["username": self.userName.text, "email": self.emailTextField.text, "password": self.passwordTextField.text]
+                    userReference.updateChildValues(values)
+        
+                   //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeScreen")
                     self.present(vc!, animated: true, completion: nil)
                     
@@ -63,4 +72,5 @@ class SignUpViewController: UIViewController {
     
     
 }
+
 

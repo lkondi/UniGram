@@ -1,16 +1,17 @@
 //
 //  CategoryViewController.swift
-//  
+//  iOS09
 //
-//  Created by Lydia Kondylidou on 14.11.17.
+//  Created by admin on 22.11.17.
+//  Copyright © 2017 admin. All rights reserved.
 //
-
 import Foundation
 import UIKit
 
 class CategoryViewController: ViewController, UIGestureRecognizerDelegate{
     
-    @IBOutlet weak var tableView: UITableView?
+    @IBOutlet weak var tableView: UITableView!
+    //@IBOutlet weak var tableView: UITableView!
     
     var categoryItems: [CategoryItem] = []
     
@@ -70,6 +71,7 @@ extension CategoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryItems.count
     }
-
+    
     
 }
+

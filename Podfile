@@ -4,9 +4,6 @@
 target 'iOS09' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  
-pod 'Firebase'
-pod 'Firebase/Auth'
 
   # Pods for iOS09
 
@@ -19,5 +16,10 @@ pod 'Firebase/Auth'
     inherit! :search_paths
     # Pods for testing
   end
+
+pod 'Firebase/Core'
+pod 'Firebase/Auth'
+pod 'Firebase/Database'
+pod 'Firebase/Storage'
 
 end
