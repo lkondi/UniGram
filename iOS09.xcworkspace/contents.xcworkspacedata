@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/admin/Documents/GitHub/UniGram/iOS09/CategoryItems.plist">
+   </FileRef>
+   <FileRef
+      location = "group:GoogleService-Info.plist">
+   </FileRef>
+   <FileRef
       location = "group:iOS09.xcodeproj">
    </FileRef>
    <FileRef
