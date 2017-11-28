@@ -18,6 +18,16 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>JSQMessagesViewController.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>JSQSystemSoundPlayer.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>Pods-iOS09.xcscheme</key>
 		<dict>
 			<key>isShown</key>

@@ -345,6 +345,14 @@
                                     <segue destination="PNJ-GH-sx0" kind="presentation" id="Z8a-If-NLA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xp3-sF-kFC">
+                                <rect key="frame" x="255" y="617" width="104" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save Changes"/>
+                                <connections>
+                                    <action selector="saveChanges:" destination="lAY-Sw-cOM" eventType="touchUpInside" id="iPy-4R-jLE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="1Bh-Zn-bLx"/>
@@ -379,7 +387,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3314" y="-191"/>
+            <point key="canvasLocation" x="3312.8000000000002" y="-191.1544227886057"/>
         </scene>
         <!--CategoryViewController-->
         <scene sceneID="DBf-Cf-wZA">

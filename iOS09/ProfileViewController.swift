@@ -29,24 +29,34 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         let uid = Auth.auth().currentUser?.uid
         database.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get Username
-            let value_username = snapshot.value as? NSDictionary
-            let username = value_username?["username"] as? String ?? ""
+            let value = snapshot.value as? NSDictionary
+            let username = value?["username"] as? String ?? ""
             self.profileName.text = username
             
             //Get Email
-            let value_email = snapshot.value as? NSDictionary
-            let email = value_email?["email"] as? String ?? ""
+            let email = value?["email"] as? String ?? ""
             self.emailAddress.text = email
             
             //Get Subject
-            let value_subject = snapshot.value as? NSDictionary
-            let subject = value_subject?["subject"] as? String ?? ""
+            let subject = value?["subject"] as? String ?? ""
             self.subjectName.text = subject
             
             //Get Subject
-            let value_phone = snapshot.value as? NSDictionary
-            let phone = value_phone?["phone"] as? String ?? ""
+            let phone = value?["phone"] as? String ?? ""
             self.phoneNumber.text = phone
+            
+            //Get picture
+            let value_picture = value?["picture"] as? String ?? ""
+            let url = URL(string: value_picture)
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print (error!)
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.photoImageView.image = UIImage(data: data!)
+                }
+            }).resume()
             
         }) { (error) in
             print(error.localizedDescription)
@@ -84,6 +94,35 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
+    
+    //Save Profile Picture Change
+    @IBAction func saveChanges(_ sender: Any) {
+        
+        let uid = Auth.auth().currentUser?.uid
+        
+        let imageName = NSUUID().uuidString
+        let storedImage = self.storage.child("picture").child(imageName)
+        
+        if let uploadData = UIImagePNGRepresentation(self.photoImageView.image!) {
+            storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                storedImage.downloadURL(completion: {(url, error) in
+                    if error != nil {
+                        print(error!)
+                        return
+                    }
+                    if let urlText = url?.absoluteString {
+                        self.database.child("users").child(uid!).child("picture").setValue(urlText)
+                    }
+                })
+            })
+        }
+        
+    }
+    
     
     //Change Profile Name
     @IBAction func changeProfile(_ sender: UITapGestureRecognizer) {
@@ -158,7 +197,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     //Change Password
     @IBAction func changePassword(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Change Phone Number", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Change Password", message: "", preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
             guard let textField = alert.textFields?.first,
