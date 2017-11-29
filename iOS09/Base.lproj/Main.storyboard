@@ -225,19 +225,36 @@
         <!--Events-->
         <scene sceneID="I8S-iO-4la">
             <objects>
-                <tableViewController id="COy-ta-7HX" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Npy-a4-Tbu">
+                <tableViewController id="COy-ta-7HX" customClass="EventTableViewController" customModule="iOS09" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Npy-a4-Tbu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fwt-Ht-WGi">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventTableViewCell" rowHeight="90" id="fwt-Ht-WGi" userLabel="EventTableViewCell" customClass="EventTableViewCell" customModule="iOS09" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fwt-Ht-WGi" id="kny-FM-gEE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LogoFoto" translatesAutoresizingMaskIntoConstraints="NO" id="DjA-LI-Roj">
+                                            <rect key="frame" x="0.0" y="0.0" width="105" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eI7-iB-GYc">
+                                            <rect key="frame" x="128" y="28" width="209" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="eventImage" destination="DjA-LI-Roj" id="Udh-Dq-r24"/>
+                                    <outlet property="eventName" destination="eI7-iB-GYc" id="eRG-G1-OQH"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -248,12 +265,12 @@
                     <navigationItem key="navigationItem" title="Events" id="awB-8R-9et">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="0Gj-Ix-epo">
                             <connections>
-                                <segue destination="leh-ey-EWz" kind="presentation" id="Gqw-nn-l7p"/>
+                                <segue destination="leh-ey-EWz" kind="presentation" identifier="BackToHomeScreen" id="Gqw-nn-l7p"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gDe-cu-9yT">
                             <connections>
-                                <segue destination="K74-j0-3AQ" kind="show" id="963-6e-YbV"/>
+                                <segue destination="fSX-g7-WXE" kind="presentation" identifier="AddItem" id="963-6e-YbV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -262,7 +279,7 @@
             </objects>
             <point key="canvasLocation" x="1676" y="1540.4797601199402"/>
         </scene>
-        <!--Create Event View Controller-->
+        <!--Event-->
         <scene sceneID="KeM-ot-9Qm">
             <objects>
                 <viewController id="K74-j0-3AQ" customClass="CreateEventViewController" customModule="iOS09" customModuleProvider="target" sceneMemberID="viewController">
@@ -276,6 +293,7 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveEvent:" destination="K74-j0-3AQ" eventType="touchUpInside" id="tDC-T2-Qh7"/>
+                                    <segue destination="kGh-Yk-Wxy" kind="unwind" unwindAction="unwindToEventListWithSender:" id="Ojv-90-dPd"/>
                                 </connections>
                             </button>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LogoFoto" translatesAutoresizingMaskIntoConstraints="NO" id="tkx-P3-JsT">
@@ -325,6 +343,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fWM-he-2c3"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Event" id="9mh-UP-zLW">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="On1-0e-fT1">
+                            <connections>
+                                <action selector="cancelCreateEvent:" destination="K74-j0-3AQ" id="TEt-0Q-zvt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="additionalInfo" destination="ZZ7-io-Fwq" id="LZ1-mj-nGP"/>
                         <outlet property="eventDate" destination="bkK-Ym-1hU" id="iMU-WU-Ghy"/>
@@ -332,16 +357,18 @@
                         <outlet property="eventLocation" destination="aCz-ag-vhJ" id="PkX-Nq-YvD"/>
                         <outlet property="eventName" destination="Dko-js-1Pr" id="rWw-TK-MtN"/>
                         <outlet property="numberPeople" destination="boJ-nB-v6t" id="dWp-4a-3gc"/>
+                        <outlet property="saveButton" destination="eG1-np-wPV" id="I1b-Am-Ys4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUR-SQ-Lgw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kGh-Yk-Wxy" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="EXR-Or-mvk" userLabel="chooseImage">
                     <connections>
                         <action selector="chooseImage:" destination="K74-j0-3AQ" id="qPt-X7-Zz6"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3116" y="1546.776611694153"/>
+            <point key="canvasLocation" x="3455.1999999999998" y="1546.776611694153"/>
         </scene>
         <!--ChatViewController-->
         <scene sceneID="AR7-xG-dc9">
@@ -757,6 +784,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PBs-DP-QS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="841" y="1547"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NRu-dE-2gS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fSX-g7-WXE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gJU-WF-0j6">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="K74-j0-3AQ" kind="relationship" relationship="rootViewController" id="gzs-44-1fT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SWu-bX-FzM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2527" y="2058"/>
         </scene>
     </scenes>
     <resources>
