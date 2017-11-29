@@ -37,7 +37,7 @@ class CategoryViewController: UIViewController, UIGestureRecognizerDelegate{
                     //
                     switch tapIndexPath.row {
                     case 0:
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventScreen")
                         self.present(vc!, animated: true, completion: nil)
                     default: 
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatView")

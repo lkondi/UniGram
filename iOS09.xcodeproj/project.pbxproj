@@ -11,6 +11,7 @@
 		407823CA19981B0D768247C9 /* Pods_iOS09Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE11292289FF5ACB13C8CE4C /* Pods_iOS09Tests.framework */; };
 		64134D3135DC7BC9D49116A3 /* Pods_iOS09UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB8EC723E8504DDA43D0E7D /* Pods_iOS09UITests.framework */; };
 		847F2CC41FCE3B08001FD92D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F2CC31FCE3B08001FD92D /* ProfileViewController.swift */; };
+		847F2CC61FCE4A38001FD92D /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F2CC51FCE4A38001FD92D /* CreateEventViewController.swift */; };
 		84A62CC61FBB2B9800784C2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84A62CC51FBB2B9800784C2F /* GoogleService-Info.plist */; };
 		84A62D0D1FBCB46200784C2F /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A62D0C1FBCB46200784C2F /* Users.swift */; };
 		84D12FBA1FC5E29900FE3887 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D12FB91FC5E29900FE3887 /* CategoryItem.swift */; };
@@ -63,6 +64,7 @@
 		7EB8EC723E8504DDA43D0E7D /* Pods_iOS09UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS09UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83B2EE46A5FE5AC6F68EED12 /* Pods_iOS09.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS09.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		847F2CC31FCE3B08001FD92D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		847F2CC51FCE4A38001FD92D /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		84A62CC51FBB2B9800784C2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		84A62D0C1FBCB46200784C2F /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		84D12FB91FC5E29900FE3887 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				847F2CC31FCE3B08001FD92D /* ProfileViewController.swift */,
 				E47387AB1FC61ECC006C744E /* ChatViewController.swift */,
 				84F7F54E1FB7DD1F00178737 /* ChangeProfileViewController.swift */,
+				847F2CC51FCE4A38001FD92D /* CreateEventViewController.swift */,
 				84D12FB91FC5E29900FE3887 /* CategoryItem.swift */,
 				84D12FBB1FC5E2B300FE3887 /* CategoryItemsManager.swift */,
 				84D12FBD1FC5E2F000FE3887 /* CategoryItemTableViewCell.swift */,
@@ -540,6 +543,7 @@
 			files = (
 				84A62D0D1FBCB46200784C2F /* Users.swift in Sources */,
 				84F7F54B1FB7DA5A00178737 /* LoginViewController.swift in Sources */,
+				847F2CC61FCE4A38001FD92D /* CreateEventViewController.swift in Sources */,
 				84F7F5491FB7DA4600178737 /* ForgotPasswordViewController.swift in Sources */,
 				84F7F5161FB7D7E000178737 /* AppDelegate.swift in Sources */,
 				847F2CC41FCE3B08001FD92D /* ProfileViewController.swift in Sources */,
