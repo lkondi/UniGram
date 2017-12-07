@@ -706,6 +706,7 @@
                                         <connections>
                                             <outlet property="categoryItemImageView" destination="nxy-Go-ezG" id="6gN-IH-AW9"/>
                                             <outlet property="categoryItemNameLabel" destination="ZZZ-ti-YVR" id="Sct-Z2-J7L"/>
+                                            <segue destination="COy-ta-7HX" kind="show" identifier="EventList" id="VGP-cs-GPD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -751,7 +752,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="uiq-Tj-xlt" kind="presentation" id="7Lc-vR-w6D"/>
+                                    <segue destination="uiq-Tj-xlt" kind="presentation" identifier="ProfileView" id="7Lc-vR-w6D"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -761,7 +762,7 @@
                     <navigationItem key="navigationItem" title="UniGram" id="XnB-w8-jya"/>
                     <connections>
                         <outlet property="tableView" destination="uo0-R6-dET" id="i5N-8T-S1n"/>
-                        <segue destination="yfP-TQ-p59" kind="show" id="dlB-1h-epQ"/>
+                        <segue destination="yfP-TQ-p59" kind="show" identifier="ChatView" id="dlB-1h-epQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2E2-eg-KKD" sceneMemberID="firstResponder"/>
@@ -864,9 +865,9 @@
         <image name="key" width="224" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dR9-NH-a0u"/>
-        <segue reference="Gqw-nn-l7p"/>
+        <segue reference="25B-XM-N0F"/>
         <segue reference="USl-0U-VJj"/>
+        <segue reference="VGP-cs-GPD"/>
         <segue reference="uae-N2-Wdt"/>
     </inferredMetricsTieBreakers>
 </document>

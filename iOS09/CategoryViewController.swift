@@ -7,12 +7,14 @@
 //
 import Foundation
 import UIKit
+import os.log
 
 class CategoryViewController: UIViewController, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     
     var categoryItems: [CategoryItem] = []
+    var category: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +38,11 @@ class CategoryViewController: UIViewController, UIGestureRecognizerDelegate{
                 if (self.tableView?.cellForRow(at: tapIndexPath) as? CategoryItemTableViewCell) != nil {
                     //
                     switch tapIndexPath.row {
-                    case 0:
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventScreen")
+                    case 4:
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatView")
                         self.present(vc!, animated: true, completion: nil)
                     default: 
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatView")
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventScreen")
                         self.present(vc!, animated: true, completion: nil)
                     }
                     
