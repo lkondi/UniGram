@@ -271,7 +271,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gDe-cu-9yT">
                             <connections>
-                                <segue destination="fSX-g7-WXE" kind="presentation" identifier="AddItem" id="963-6e-YbV"/>
+                                <segue destination="K74-j0-3AQ" kind="show" identifier="AddItem" id="ief-S4-rMF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -383,7 +383,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="On1-0e-fT1">
                             <connections>
                                 <action selector="cancelCreateEvent:" destination="K74-j0-3AQ" id="TEt-0Q-zvt"/>
-                                <segue destination="iea-OF-Nvm" kind="presentation" identifier="BackToEventScreen" id="dR9-NH-a0u"/>
+                                <segue destination="COy-ta-7HX" kind="show" identifier="BackToEventList" id="p79-f3-9d6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -541,7 +541,7 @@
         <!--My Profile-->
         <scene sceneID="FDl-j7-a4q">
             <objects>
-                <viewController storyboardIdentifier="ProfileScreen" id="iLa-ib-0gN" customClass="ProfileViewController" customModule="iOS09" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iLa-ib-0gN" customClass="ProfileViewController" customModule="iOS09" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Fk-GC-kNB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -772,7 +772,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dCm-4g-82m">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uiq-Tj-xlt" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ProfileScreen" automaticallyAdjustsScrollViewInsets="NO" id="uiq-Tj-xlt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rPN-Uf-fdl">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -823,39 +823,6 @@
             </objects>
             <point key="canvasLocation" x="841" y="1547"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="NRu-dE-2gS">
-            <objects>
-                <navigationController storyboardIdentifier="CreateEvent" automaticallyAdjustsScrollViewInsets="NO" id="fSX-g7-WXE" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gJU-WF-0j6">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="K74-j0-3AQ" kind="relationship" relationship="rootViewController" id="gzs-44-1fT"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SWu-bX-FzM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2527" y="2058"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="k1f-QU-5NY">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aT7-Na-hAF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y8W-GC-c4Y">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jpy-RP-5IV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3670" y="2293"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Email" width="256" height="256"/>
@@ -866,8 +833,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="25B-XM-N0F"/>
-        <segue reference="USl-0U-VJj"/>
-        <segue reference="VGP-cs-GPD"/>
+        <segue reference="ief-S4-rMF"/>
+        <segue reference="p79-f3-9d6"/>
         <segue reference="uae-N2-Wdt"/>
     </inferredMetricsTieBreakers>
 </document>

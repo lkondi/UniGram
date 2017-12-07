@@ -22,7 +22,7 @@ class CategoryViewController: UIViewController, UIGestureRecognizerDelegate{
         categoryItems = CategoryItemsManager.sharedManager.loadData()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapEdit(recognizer:)))
-        tableView?.addGestureRecognizer(tap)
+        //tableView?.addGestureRecognizer(tap)
         tap.delegate = self
         
     }
@@ -73,6 +73,37 @@ extension CategoryViewController: UITableViewDataSource {
         return categoryItems.count
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "ProfileView":
+            os_log("Adding a new event.", log: OSLog.default, type: .debug)
+            
+        case "ChatView":
+            os_log("Back.", log: OSLog.default, type: .debug)
+            
+        case "EventList":
+            guard let eventDetailViewController = segue.destination as? EventTableViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedEventCell = sender as? CategoryItemTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedEventCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedEvent = categoryItems[indexPath.row].name
+            eventDetailViewController.category = selectedEvent
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+        }
+    }
 }
 
