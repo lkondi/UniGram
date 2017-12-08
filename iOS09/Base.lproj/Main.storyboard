@@ -410,17 +410,24 @@
         <!--ChatViewController-->
         <scene sceneID="AR7-xG-dc9">
             <objects>
-                <viewController storyboardIdentifier="ChatView" title="ChatViewController" id="yfP-TQ-p59" customClass="ChatViewController" customModule="iOS09" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ChatViewController" id="yfP-TQ-p59" customClass="ChatViewController" customModule="iOS09" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QNG-0g-eke">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="2yu-cf-XOA"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Chat" id="2No-J2-wAl">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="CAr-aa-nRF">
+                            <connections>
+                                <segue destination="PNJ-GH-sx0" kind="presentation" id="hQU-ok-6Wi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5SY-eA-dTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4068" y="17.541229385307346"/>
+            <point key="canvasLocation" x="4748" y="18"/>
         </scene>
         <!--Change Profile View Controller-->
         <scene sceneID="Eqq-zG-XDR">
@@ -762,7 +769,6 @@
                     <navigationItem key="navigationItem" title="UniGram" id="XnB-w8-jya"/>
                     <connections>
                         <outlet property="tableView" destination="uo0-R6-dET" id="i5N-8T-S1n"/>
-                        <segue destination="yfP-TQ-p59" kind="show" identifier="ChatView" id="dlB-1h-epQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2E2-eg-KKD" sceneMemberID="firstResponder"/>
@@ -823,6 +829,24 @@
             </objects>
             <point key="canvasLocation" x="841" y="1547"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yAM-M1-kuJ">
+            <objects>
+                <navigationController storyboardIdentifier="ChatView" automaticallyAdjustsScrollViewInsets="NO" id="t3R-VE-cbd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IJh-q0-vTz">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yfP-TQ-p59" kind="relationship" relationship="rootViewController" id="UO0-7H-aGG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gP6-lJ-8i4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4067.1999999999998" y="17.091454272863569"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Email" width="256" height="256"/>
@@ -833,6 +857,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="25B-XM-N0F"/>
+        <segue reference="hQU-ok-6Wi"/>
         <segue reference="ief-S4-rMF"/>
         <segue reference="p79-f3-9d6"/>
         <segue reference="uae-N2-Wdt"/>

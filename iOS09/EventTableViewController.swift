@@ -190,7 +190,7 @@ class EventTableViewController: UITableViewController {
                         return
                     }
                     DispatchQueue.main.async {
-                        self.image = UIImage(data: data!)!
+                        self.image = UIImage(named: "LogoFoto")
                     }
                 }).resume()}
                 let uff = Event(eventName: self.name, eventImage: self.image, eventKey: child.key)
