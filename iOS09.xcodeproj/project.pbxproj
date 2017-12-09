@@ -33,6 +33,7 @@
 		84F7F5491FB7DA4600178737 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F7F5481FB7DA4600178737 /* ForgotPasswordViewController.swift */; };
 		84F7F54B1FB7DA5A00178737 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F7F54A1FB7DA5A00178737 /* LoginViewController.swift */; };
 		84F7F54F1FB7DD1F00178737 /* ChangeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F7F54E1FB7DD1F00178737 /* ChangeProfileViewController.swift */; };
+		E40A18601FDC153000438C39 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40A185F1FDC153000438C39 /* ScheduleViewController.swift */; };
 		E47387A31FC6020A006C744E /* study.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E473879D1FC60208006C744E /* study.jpg */; };
 		E47387A41FC6020A006C744E /* dating.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E473879E1FC60209006C744E /* dating.jpg */; };
 		E47387A51FC6020A006C744E /* dance.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E473879F1FC60209006C744E /* dance.jpg */; };
@@ -97,6 +98,7 @@
 		84F7F54E1FB7DD1F00178737 /* ChangeProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeProfileViewController.swift; sourceTree = "<group>"; };
 		A0840E1E8E30B9680F976F4B /* Pods-iOS09Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09Tests/Pods-iOS09Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D0E114A47D12043624DE1900 /* Pods-iOS09.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09/Pods-iOS09.release.xcconfig"; sourceTree = "<group>"; };
+		E40A185F1FDC153000438C39 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		E473879D1FC60208006C744E /* study.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = study.jpg; sourceTree = "<group>"; };
 		E473879E1FC60209006C744E /* dating.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dating.jpg; sourceTree = "<group>"; };
 		E473879F1FC60209006C744E /* dance.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dance.jpg; sourceTree = "<group>"; };
@@ -175,12 +177,13 @@
 				E47387AF1FC62355006C744E /* Constants.swift */,
 				845A0ED61FCE6DDF0049288B /* EventTableViewCell.swift */,
 				84F7F5191FB7D7E000178737 /* Main.storyboard */,
+				E40A185F1FDC153000438C39 /* ScheduleViewController.swift */,
 				845A0ED21FCE667D0049288B /* Event.swift */,
-				847F2CC31FCE3B08001FD92D /* ProfileViewController.swift */,
-				E47387AB1FC61ECC006C744E /* ChatViewController.swift */,
 				845A0ED41FCE682D0049288B /* EventTableViewController.swift */,
-				84F7F54E1FB7DD1F00178737 /* ChangeProfileViewController.swift */,
 				847F2CC51FCE4A38001FD92D /* CreateEventViewController.swift */,
+				847F2CC31FCE3B08001FD92D /* ProfileViewController.swift */,
+				84F7F54E1FB7DD1F00178737 /* ChangeProfileViewController.swift */,
+				E47387AB1FC61ECC006C744E /* ChatViewController.swift */,
 				84D12FB91FC5E29900FE3887 /* CategoryItem.swift */,
 				84D12FBB1FC5E2B300FE3887 /* CategoryItemsManager.swift */,
 				84D12FBD1FC5E2F000FE3887 /* CategoryItemTableViewCell.swift */,
@@ -561,6 +564,7 @@
 				84D12FBA1FC5E29900FE3887 /* CategoryItem.swift in Sources */,
 				845A0ED31FCE667D0049288B /* Event.swift in Sources */,
 				845A0ED51FCE682D0049288B /* EventTableViewController.swift in Sources */,
+				E40A18601FDC153000438C39 /* ScheduleViewController.swift in Sources */,
 				84F7F54F1FB7DD1F00178737 /* ChangeProfileViewController.swift in Sources */,
 				E47387B01FC62355006C744E /* Constants.swift in Sources */,
 				84D12FBC1FC5E2B300FE3887 /* CategoryItemsManager.swift in Sources */,
