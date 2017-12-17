@@ -82,6 +82,9 @@ extension CategoryViewController: UITableViewDataSource {
         case "ProfileView":
             os_log("Adding a new event.", log: OSLog.default, type: .debug)
             
+        case "ScheduleView":
+            os_log("Adding a new event.", log: OSLog.default, type: .debug)
+            
         case "EventList":
             
             guard let selectedEventCell = sender as? CategoryItemTableViewCell else {

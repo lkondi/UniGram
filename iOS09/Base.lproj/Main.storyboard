@@ -735,6 +735,9 @@
                                 <state key="normal" title="Meine Termine">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="pUv-kW-wHA" kind="presentation" identifier="ScheduleView" id="r7e-ob-K2H"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsH-XB-8YQ">
                                 <rect key="frame" x="306" y="67" width="41" height="41"/>
@@ -761,7 +764,6 @@
                     <navigationItem key="navigationItem" title="UniGram" id="XnB-w8-jya"/>
                     <connections>
                         <outlet property="tableView" destination="uo0-R6-dET" id="i5N-8T-S1n"/>
-                        <segue destination="pUv-kW-wHA" kind="presentation" id="f5L-UW-Ixq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2E2-eg-KKD" sceneMemberID="firstResponder"/>
@@ -897,12 +899,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Schedule" id="u5r-Qd-beo" userLabel="schedule">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="eCm-Ls-WJC"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="eCm-Ls-WJC">
+                            <connections>
+                                <segue destination="leh-ey-EWz" kind="presentation" id="gWW-vY-YQG"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="d7K-It-4nt"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="leh-ey-EWz" kind="presentation" id="zg8-Ly-75e"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVv-Kj-lp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -953,8 +956,7 @@
         <image name="key" width="224" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="f5L-UW-Ixq"/>
-        <segue reference="zg8-Ly-75e"/>
+        <segue reference="gWW-vY-YQG"/>
         <segue reference="gOF-Df-KMS"/>
         <segue reference="ief-S4-rMF"/>
         <segue reference="VGP-cs-GPD"/>
