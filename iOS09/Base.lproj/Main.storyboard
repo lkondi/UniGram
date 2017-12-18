@@ -739,16 +739,6 @@
                                     <segue destination="pUv-kW-wHA" kind="presentation" identifier="ScheduleView" id="r7e-ob-K2H"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsH-XB-8YQ">
-                                <rect key="frame" x="306" y="67" width="41" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="" image="Profile">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="uiq-Tj-xlt" kind="presentation" identifier="ProfileView" id="7Lc-vR-w6D"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Heart" translatesAutoresizingMaskIntoConstraints="NO" id="QeM-9x-ku3">
                                 <rect key="frame" x="16" y="87" width="22" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -757,6 +747,16 @@
                                 <rect key="frame" x="16" y="118" width="22" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsH-XB-8YQ">
+                                <rect key="frame" x="318" y="77" width="41" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="" image="Profile">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="uiq-Tj-xlt" kind="presentation" identifier="ProfileView" id="7Lc-vR-w6D"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="nbg-jz-5Ja"/>
@@ -956,6 +956,7 @@
         <image name="key" width="224" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="r7e-ob-K2H"/>
         <segue reference="gWW-vY-YQG"/>
         <segue reference="gOF-Df-KMS"/>
         <segue reference="ief-S4-rMF"/>
