@@ -25,8 +25,10 @@ class ScheduleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         print("im right here")
-        loadEvents(){ signedEvents in
+        
+        
+   
+    loadEvents(){ signedEvents in
             if let savedEvents = signedEvents {
                 self.events = savedEvents
             }
@@ -76,8 +78,10 @@ class ScheduleTableViewController: UITableViewController {
         return true
     }
     
+
+    
+  
     private func loadEvents(completion: @escaping([Event]?) -> Void)  {
-        print("im here")
         
        /* database.child(uid!).observeSingleEvent ( of: .value, with: { snapshot in
             let value = snapshot.value as? NSDictionary

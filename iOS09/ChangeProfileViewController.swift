@@ -25,6 +25,8 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     
+    var myImage: UIImage?
+    
     
     func appearance() {
         
@@ -52,11 +54,13 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
                         print (error!)
                         return
                     }
+                    self.myImage = UIImage(data: data!)
                     DispatchQueue.main.async {
-                        self.photoImageView.image = UIImage(data: data!)
+                        self.photoImageView.image = self.myImage
                     }
                 }).resume()
             } else {
+                print("error change profile")
                 self.photoImageView.image = UIImage(named: "Profile")
             }
         }) { (error) in
@@ -79,6 +83,11 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
         appearance()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //appearance()
+    }
+    
     //TextFields Actions
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -95,6 +104,7 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
             
         }
+        myImage = selectedImage
         photoImageView.image = selectedImage
         dismiss(animated: true, completion: nil)
     }
@@ -117,7 +127,7 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
         let imageName = NSUUID().uuidString
         let storedImage = self.storage.child("picture").child(imageName)
         
-        if let uploadData = UIImagePNGRepresentation(self.photoImageView.image!) {
+        if let uploadData = UIImagePNGRepresentation(myImage!) {
             storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
                 if error != nil {
                     print(error!)

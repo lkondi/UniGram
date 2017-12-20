@@ -61,6 +61,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 }
             }).resume()
             } else {
+                print("error profile")
                 self.imageView.image = UIImage(named: "Profile")
             }
             }) { (error) in

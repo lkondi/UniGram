@@ -4,13 +4,13 @@
 <array>
 	<dict>
 		<key>name</key>
-		<string>SPORT CLUBS</string>
+		<string>SPORT CLUB</string>
 		<key>image</key>
 		<string>sport.jpg</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>DANCE CLUBS</string>
+		<string>ARTS CLUB</string>
 		<key>image</key>
 		<string>dance.jpg</string>
 	</dict>
@@ -28,15 +28,21 @@
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>CHAT</string>
+		<string>MEDIA CLUB</string>
 		<key>image</key>
-		<string>dating.jpg</string>
+		<string>hobbies.jpg</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>HOBBIES</string>
+		<string>POLITICAL CLUB</string>
 		<key>image</key>
-		<string>hobbies.jpg</string>
+		<string>politics.jpg</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>CHAT</string>
+		<key>image</key>
+		<string>dating.jpg</string>
 	</dict>
 </array>
 </plist>
