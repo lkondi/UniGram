@@ -90,43 +90,35 @@ class ScheduleTableViewController: UITableViewController {
             print(array)
         })*/
         
-        
+        //So bekommst du die Info über die Events für die man sich angemeldet hat
         var signedEvents = [Event]()
+        var event = [Events]()
         
-        let allEvents = database.child(uid!).child("signUpEvents")
-         
-         allEvents.observeSingleEvent(of: .value, with: { snapshot in
-         for child in snapshot.children {
-         let snap = child as! DataSnapshot
-         let eventDict = snap.value as! [String: Any]
-         let eventName = eventDict["eventName"] as! String
-         self.name = eventName
-         let eventImage = eventDict["eventImage"] as! String
-            if (eventImage == "") {
-                self.image = UIImage(named: "LogoFoto")
-            } else {
-                let url = URL(string: eventImage)
-                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                    if error != nil {
-                        print (error!)
-                        return
+        database.child(uid!).observingSingleEvent(of: .value, with: { snapshot in
+            let signedUp = value?["signUpEvents"] as? NSArray ?? []
+            events = signedUp
+        })
+        
+        databse.child("events").observingSingleEvent(of: .value, with: { snapshot in
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+                // Get eventKey
+                for i in 0..<event.count {
+                    if event[i] == child.value {
+                        let value = child.value as? NSDictionary
+                        let eventName = value?["eventName"] as? String ?? ""
+                        self.name = eventName
+                        print(eventName)
+                        //Get picture
+                        //jetzt wird andere Mehode benutzt weil man die Fotos lokal speichert
+                        
+                        
+                        let uff = Event(eventName: self.name, eventImage: self.image, eventKey: child.value)
+                        signedEvents.append(uff)
+                        completion(signedEvents)
+                        self.tableView.reloadData()
                     }
-                    DispatchQueue.main.async {
-                        self.image = UIImage(named: "LogoFoto")
-                    }
-                }).resume()}
-            
-            let uff = Event(eventName: self.name, eventImage: self.image, eventKey: "key")
-            signedEvents.append(uff)
-            completion(signedEvents)
-            self.tableView.reloadData()
-       
-         }
-         })
-         { (error) in
-            print(error.localizedDescription)
-            
-        }
+                }
+            }
+        })
     }
-        
 }

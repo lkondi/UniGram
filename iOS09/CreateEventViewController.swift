@@ -60,7 +60,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             eventImage.image = event.eventImage
             
             eventKey = event.eventKey
-            database.child("events").child(category!).child(eventKey).observeSingleEvent(of: .value, with: { (snapshot) in
+            database.child("events").child(eventKey).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get Events Info
                 let value = snapshot.value as? NSDictionary
                 let date = value?["eventDate"] as? String ?? ""
@@ -107,7 +107,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         if (eventKey != "") {
-            database.child("events").child(category!).observeSingleEvent(of: .value, with: { (snapshot) in
+            database.child("events").observeSingleEvent(of: .value, with: { (snapshot) in
                 for child in snapshot.children.allObjects as! [DataSnapshot] {
                     let value = child.key
                     if (value == self.eventKey) {
@@ -125,7 +125,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 }
             })
             
-            database.child("events").child(category!).child(eventKey).observeSingleEvent(of: .value, with: { (snapshot) in
+            database.child("events").child(eventKey).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get Events Array
                 let value = snapshot.value as? NSDictionary
                 let array1 = value?["signedUpUsers"] as? NSArray ?? []
@@ -183,7 +183,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 let name = eventName.text ?? ""
                 let photo = eventImage.image
                 if (eventKey == "") {
-                    eventUid = self.database.child("events").child(category!).childByAutoId()
+                    eventUid = self.database.child("events").childByAutoId()
                     eventKey = (eventUid?.key)!
                     print(eventKey)
                 }
@@ -216,7 +216,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         print("is creator is in saveevent :")
         print(isCreator)
         if isCreator == true {
-            self.database.child("events").child(category!).child(eventKey).updateChildValues(["eventName": self.eventName.text ?? "", "eventDate": self.eventDate.text ?? "", "eventLocation": self.eventLocation.text ?? "", "numberOfPeople": self.numberPeople.text ?? "", "additionalInfo": self.additionalInfo.text ?? ""])
+            self.database.child("events").child(eventKey).updateChildValues(["eventName": self.eventName.text ?? "", "category": category!, "eventDate": self.eventDate.text ?? "", "eventLocation": self.eventLocation.text ?? "", "numberOfPeople": self.numberPeople.text ?? "", "additionalInfo": self.additionalInfo.text ?? ""])
             }
         else if exist && !isCreator {
             for i in 0 ..< signedUpUsersID.count {
@@ -239,7 +239,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 signUpEventsID.append(eventKey)
                 signedUpUsersID.append(uid!)
                 self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
-                self.database.child("events").child(category!).child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
+                self.database.child("events").child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
                 }
             } else {
             let imageName = NSUUID().uuidString
@@ -272,7 +272,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.present(alertController, animated: true, completion: nil)
             }
             else {
-                eventUid?.setValue(["eventName": self.eventName.text, "eventDate": self.eventDate.text, "eventLocation": self.eventLocation.text, "numberOfPeople": self.numberPeople.text, "additionalInfo": self.additionalInfo.text, "admin": uid])
+                eventUid?.setValue(["eventName": self.eventName.text, "category": category!, "eventDate": self.eventDate.text, "eventLocation": self.eventLocation.text, "numberOfPeople": self.numberPeople.text, "additionalInfo": self.additionalInfo.text, "admin": uid])
         
                 //Save created events for the user
                 createdEventsID.append(eventKey)
@@ -281,7 +281,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.database.child("users").child(uid!).child("eventsAdmin").setValue(createdEventsID)
                 //self.database.child("users").child(uid!).child("signUpEvents").setValue(createdEventsID)
                 self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
-            self.database.child("events").child(category!).child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
+            self.database.child("events").child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
         
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EventScreen")
                 self.present(vc, animated: true, completion: nil)
