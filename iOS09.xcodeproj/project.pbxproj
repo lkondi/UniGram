@@ -101,7 +101,7 @@
 		A0840E1E8E30B9680F976F4B /* Pods-iOS09Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09Tests/Pods-iOS09Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D0E114A47D12043624DE1900 /* Pods-iOS09.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09/Pods-iOS09.release.xcconfig"; sourceTree = "<group>"; };
 		E40A185F1FDC153000438C39 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
-		E43484C71FE0532100666906 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleTableViewCell.swift; path = /Users/lkondylidou/Desktop/UniGram/iOS09/ScheduleTableViewCell.swift; sourceTree = "<absolute>"; };
+		E43484C71FE0532100666906 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		E4590DAC1FEA72EE0093A1E8 /* politics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = politics.jpg; sourceTree = "<group>"; };
 		E473879D1FC60208006C744E /* study.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = study.jpg; sourceTree = "<group>"; };
 		E473879E1FC60209006C744E /* dating.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dating.jpg; sourceTree = "<group>"; };
