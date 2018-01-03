@@ -83,13 +83,6 @@ class ScheduleTableViewController: UITableViewController {
   
     private func loadEvents(completion: @escaping([Event]?) -> Void)  {
         
-       /* database.child(uid!).observeSingleEvent ( of: .value, with: { snapshot in
-            let value = snapshot.value as? NSDictionary
-            let array = value?["signedUpEvents"] as? NSArray ?? []
-            self.eventIds = array
-            print(array)
-        })*/
-        
         //So bekommst du die Info über die Events für die man sich angemeldet hat
         var signedEvents = [Event]()
         //var event = [String]()
@@ -110,8 +103,23 @@ class ScheduleTableViewController: UITableViewController {
                         let eventName = value?["eventName"] as? String ?? ""
                         self.name = eventName
                         print(eventName)
+                        
                         //Get picture
-                        //jetzt wird andere Mehode benutzt weil man die Fotos lokal speichert
+                        let eventImage = value?["image"] as? String ?? ""
+                        print(eventImage)
+                        if (eventImage == "") {
+                            self.image = UIImage(named: "LogoFoto")
+                        } else {
+                            let url = URL(string: eventImage)
+                            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                                if error != nil {
+                                    print (error!)
+                                    return
+                                }
+                                DispatchQueue.main.async {
+                                    self.image = UIImage(named: "LogoFoto")
+                                }
+                            }).resume()}
                         
                         
                         let uff = Event(eventName: self.name, eventImage: self.image, eventKey: child.value as! String)
