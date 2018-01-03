@@ -92,20 +92,20 @@ class ScheduleTableViewController: UITableViewController {
         
         //So bekommst du die Info über die Events für die man sich angemeldet hat
         var signedEvents = [Event]()
-        var event = [Event]()
+        //var event = [String]()
         
         database.child(uid!).observeSingleEvent(of: .value, with: { snapshot in
             let value = snapshot.value as? NSDictionary
             let signedUp = value?["signUpEvents"] as? NSArray ?? []
-            self.events = signedUp as! [Event]
+            self.eventIds = signedUp
         })
         
         database.child("events").observeSingleEvent(of: .value, with: { snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot] {
                 // Get eventKey
-                for i in 0..<event.count {
-                    print(event[i])
-                    /*if event[i] == child.value {
+                for i in 0..<self.eventIds.count {
+                    print(self.eventIds[i])
+                    if self.eventIds[i] as! _OptionalNilComparisonType == child.value {
                         let value = child.value as? NSDictionary
                         let eventName = value?["eventName"] as? String ?? ""
                         self.name = eventName
@@ -118,7 +118,7 @@ class ScheduleTableViewController: UITableViewController {
                         signedEvents.append(uff)
                         completion(signedEvents)
                         self.tableView.reloadData()
-                    }*/
+                    }
                 }
             }
         })
