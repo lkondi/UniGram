@@ -83,7 +83,7 @@ extension CategoryViewController: UITableViewDataSource {
             os_log("Adding a new event.", log: OSLog.default, type: .debug)
             
         case "ScheduleView":
-            os_log("Adding a new event.", log: OSLog.default, type: .debug)
+            os_log("Scheduled events.", log: OSLog.default, type: .debug)
             
         case "EventList":
             

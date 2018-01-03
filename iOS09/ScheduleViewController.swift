@@ -21,7 +21,7 @@ class ScheduleTableViewController: UITableViewController {
     var category: String?
     var name: String = ""
     var image: UIImage?
-    var eventIds: NSArray = []
+    var eventIds = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,7 @@ class ScheduleTableViewController: UITableViewController {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "ScheduleTableViewCell"
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EventTableViewCell  else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ScheduleTableViewCell  else {
             fatalError("The dequeued cell is not an instance of ScheduleTableViewCell.")
         }
         
@@ -66,7 +66,7 @@ class ScheduleTableViewController: UITableViewController {
         
         cell.eventName.text = event.eventName
         cell.eventImage.image = event.eventImage
-        
+    
         return cell
     }
     
@@ -82,15 +82,16 @@ class ScheduleTableViewController: UITableViewController {
     
   
     private func loadEvents(completion: @escaping([Event]?) -> Void)  {
-        
-        //So bekommst du die Info über die Events für die man sich angemeldet hat
+
         var signedEvents = [Event]()
-        //var event = [String]()
         
-        database.child(uid!).observeSingleEvent(of: .value, with: { snapshot in
+        database.child("users").child(uid!).observeSingleEvent(of: .value, with: { snapshot in
             let value = snapshot.value as? NSDictionary
             let signedUp = value?["signUpEvents"] as? NSArray ?? []
-            self.eventIds = signedUp
+            self.eventIds = signedUp as! [String]
+            for i in 0..<self.eventIds.count {
+                print(self.eventIds[i])}
+            print("eli")
         })
         
         database.child("events").observeSingleEvent(of: .value, with: { snapshot in
@@ -98,7 +99,7 @@ class ScheduleTableViewController: UITableViewController {
                 // Get eventKey
                 for i in 0..<self.eventIds.count {
                     print(self.eventIds[i])
-                    if self.eventIds[i] as! _OptionalNilComparisonType == child.value {
+                    if self.eventIds[i] == child.key {
                         let value = child.value as? NSDictionary
                         let eventName = value?["eventName"] as? String ?? ""
                         self.name = eventName
@@ -122,7 +123,7 @@ class ScheduleTableViewController: UITableViewController {
                             }).resume()}
                         
                         
-                        let uff = Event(eventName: self.name, eventImage: self.image, eventKey: child.value as! String)
+                        let uff = Event(eventName: self.name, eventImage: self.image, eventKey: child.key)
                         signedEvents.append(uff)
                         completion(signedEvents)
                         self.tableView.reloadData()
