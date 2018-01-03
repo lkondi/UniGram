@@ -53,7 +53,6 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         numberPeople.delegate = self
         additionalInfo.delegate = self
         
-        print(print("load create cat is \(category)"))
         if let event = event {
             navigationItem.title = event.eventName
             eventName.text = event.eventName
@@ -83,7 +82,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         
         let uid = Auth.auth().currentUser?.uid
         database.child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get Events Array
+            //Get Events Array
             let value = snapshot.value as? NSDictionary
             let array1 = value?["eventsAdmin"] as? NSArray ?? []
             for i in 0 ..< array1.count {
@@ -159,7 +158,6 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         dismiss(animated: true, completion: nil)
     }
     
-    // This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
@@ -171,7 +169,6 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                     fatalError("Unexpected destination: \(segue.destination)")
                 }
                 eventDetailViewController.category = self.category
-                print("back prepare cat is \(category)")
             
             default:
                 // Configure the destination view controller only when the save button is pressed.
@@ -185,10 +182,8 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 if (eventKey == "") {
                     eventUid = self.database.child("events").childByAutoId()
                     eventKey = (eventUid?.key)!
-                    print(eventKey)
                 }
-                print(eventKey)
-                print("prepare cat is \(category)")
+
                 event = Event(eventName: name, eventImage: photo, eventKey: eventKey)
             }
         }
@@ -279,7 +274,6 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 signedUpUsersID.append(uid!)
                 signUpEventsID.append(eventKey)
                 self.database.child("users").child(uid!).child("eventsAdmin").setValue(createdEventsID)
-                //self.database.child("users").child(uid!).child("signUpEvents").setValue(createdEventsID)
                 self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
                 self.database.child("events").child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
         

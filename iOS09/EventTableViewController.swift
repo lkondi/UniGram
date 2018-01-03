@@ -77,35 +77,6 @@ class EventTableViewController: UITableViewController {
         return true
     }
     
-    
-  /*
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            events.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
-*/
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    
     //MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -120,7 +91,6 @@ class EventTableViewController: UITableViewController {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             eventDetailViewController.category = self.category
-            print("add detail cat is \(category)")
             
         case "BackToHomeScreen":
             os_log("Back.", log: OSLog.default, type: .debug)
@@ -141,7 +111,6 @@ class EventTableViewController: UITableViewController {
             let selectedEvent = events[indexPath.row]
             eventDetailViewController.event = selectedEvent
             eventDetailViewController.category = self.category
-            print("show detail cat is \(category)")
             
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
@@ -167,12 +136,11 @@ class EventTableViewController: UITableViewController {
     }
     
     private func loadEvents(completion: @escaping([Event]?) -> Void)  {
-        print("eli2")
         var arrayEvents = [Event]()
         
         database.child("events").observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children.allObjects as! [DataSnapshot] {
-                // Get Name
+                //Get Name
                 let value = child.value as? NSDictionary
                 let eventName = value?["eventName"] as? String ?? ""
                 self.name = eventName
@@ -193,18 +161,14 @@ class EventTableViewController: UITableViewController {
                         self.image = UIImage(named: "LogoFoto")
                     }
                 }).resume()}
-                let uff = Event(eventName: self.name, eventImage: self.image, eventKey: child.key)
-                arrayEvents.append(uff)
-                //print("name of events is\(String(describing: self.uff?.eventName))")
+                let event = Event(eventName: self.name, eventImage: self.image, eventKey: child.key)
+                arrayEvents.append(event)
                 completion(arrayEvents)
                 self.tableView.reloadData()
             }
         }) { (error) in
                 print(error.localizedDescription)
         }
-        print("array.count is\(arrayEvents.count)")
-        print("eli5")
-        //return arrayEvents
     }
 }
 

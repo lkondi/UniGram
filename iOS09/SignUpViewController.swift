@@ -14,16 +14,15 @@ import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
     
-    //var ref: DatabaseReference!
-    let ref = Database.database().reference(fromURL: "https://ios09-2d460.firebaseio.com/")
+    let ref = Database.database().reference()
     
     //Outlets
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
-    //Sign Up Action for email
     
+    //Sign Up Action for email
     @IBAction func createAccountAction(_ sender: Any) {
         if emailTextField.text == "" {
             let alertController = UIAlertController(title: "Error", message: "Please enter your email and password", preferredStyle: .alert)
@@ -54,7 +53,6 @@ class SignUpViewController: UIViewController {
                     let values = ["username": self.userName.text, "email": self.emailTextField.text, "password": self.passwordTextField.text]
                     userReference.updateChildValues(values)
         
-                   //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeScreen")
                     self.present(vc!, animated: true, completion: nil)
                     

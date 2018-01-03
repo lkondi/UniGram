@@ -19,7 +19,6 @@ class ForgotPasswordViewController: UIViewController {
     
     
     // Reset Password Action
-    
     @IBAction func submitAction(_ sender: Any) {
         
         if self.emailTextField.text == "" {

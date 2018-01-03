@@ -16,7 +16,7 @@ class Event  {
     var eventName: String
     var eventImage: UIImage?
     var eventKey: String
-    //var key: String
+
     
     //MARK: Initialization
     
@@ -25,7 +25,6 @@ class Event  {
         self.eventName = eventName
         self.eventImage = eventImage
         self.eventKey = eventKey
-        //self.key = key
     }
     
 }

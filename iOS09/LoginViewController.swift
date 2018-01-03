@@ -22,12 +22,9 @@ class LoginViewController: UIViewController {
     //Login Action
     //@IBAction func loginAction(_ sender: AnyObject) {
     @IBAction func loginAction(_ sender: Any) {
-        
-        
         if self.emailTextField.text == "" || self.passwordTextField.text == "" {
             
             //Alert to tell the user that there was an error because they didn't fill anything in the textfields because they didn't fill anything in
-            
             let alertController = UIAlertController(title: "Error", message: "Please enter an email and password.", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
