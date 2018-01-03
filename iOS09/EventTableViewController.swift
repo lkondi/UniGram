@@ -170,7 +170,7 @@ class EventTableViewController: UITableViewController {
         print("eli2")
         var arrayEvents = [Event]()
         
-        database.child("events").child(category!).observeSingleEvent(of: .value, with: { (snapshot) in
+        database.child("events").observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children.allObjects as! [DataSnapshot] {
                 // Get Name
                 let value = child.value as? NSDictionary

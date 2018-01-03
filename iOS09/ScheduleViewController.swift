@@ -92,18 +92,20 @@ class ScheduleTableViewController: UITableViewController {
         
         //So bekommst du die Info über die Events für die man sich angemeldet hat
         var signedEvents = [Event]()
-        var event = [Events]()
+        var event = [Event]()
         
-        database.child(uid!).observingSingleEvent(of: .value, with: { snapshot in
+        database.child(uid!).observeSingleEvent(of: .value, with: { snapshot in
+            let value = snapshot.value as? NSDictionary
             let signedUp = value?["signUpEvents"] as? NSArray ?? []
-            events = signedUp
+            self.events = signedUp as! [Event]
         })
         
-        databse.child("events").observingSingleEvent(of: .value, with: { snapshot in
+        database.child("events").observeSingleEvent(of: .value, with: { snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot] {
                 // Get eventKey
                 for i in 0..<event.count {
-                    if event[i] == child.value {
+                    print(event[i])
+                    /*if event[i] == child.value {
                         let value = child.value as? NSDictionary
                         let eventName = value?["eventName"] as? String ?? ""
                         self.name = eventName
@@ -112,11 +114,11 @@ class ScheduleTableViewController: UITableViewController {
                         //jetzt wird andere Mehode benutzt weil man die Fotos lokal speichert
                         
                         
-                        let uff = Event(eventName: self.name, eventImage: self.image, eventKey: child.value)
+                        let uff = Event(eventName: self.name, eventImage: self.image, eventKey: child.value as! String)
                         signedEvents.append(uff)
                         completion(signedEvents)
                         self.tableView.reloadData()
-                    }
+                    }*/
                 }
             }
         })

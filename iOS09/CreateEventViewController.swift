@@ -272,7 +272,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.present(alertController, animated: true, completion: nil)
             }
             else {
-                eventUid?.setValue(["eventName": self.eventName.text, "category": category!, "eventDate": self.eventDate.text, "eventLocation": self.eventLocation.text, "numberOfPeople": self.numberPeople.text, "additionalInfo": self.additionalInfo.text, "admin": uid])
+                eventUid?.setValue(["eventName": self.eventName.text, "category": category, "eventDate": self.eventDate.text, "eventLocation": self.eventLocation.text, "numberOfPeople": self.numberPeople.text, "additionalInfo": self.additionalInfo.text, "admin": uid])
         
                 //Save created events for the user
                 createdEventsID.append(eventKey)
@@ -281,7 +281,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.database.child("users").child(uid!).child("eventsAdmin").setValue(createdEventsID)
                 //self.database.child("users").child(uid!).child("signUpEvents").setValue(createdEventsID)
                 self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
-            self.database.child("events").child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
+                self.database.child("events").child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
         
                 let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EventScreen")
                 self.present(vc, animated: true, completion: nil)
