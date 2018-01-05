@@ -142,29 +142,33 @@ class EventTableViewController: UITableViewController {
             for child in snapshot.children.allObjects as! [DataSnapshot] {
                 //Get Name
                 let value = child.value as? NSDictionary
-                let eventName = value?["eventName"] as? String ?? ""
-                self.name = eventName
-                print(eventName)
-                //Get picture
-                let eventImage = value?["image"] as? String ?? ""
-                print(eventImage)
-                if (eventImage == "") {
-                    self.image = UIImage(named: "LogoFoto")
-                } else {
-                let url = URL(string: eventImage)
-                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                    if error != nil {
-                        print (error!)
-                        return
-                    }
-                    DispatchQueue.main.async {
+                let cat = value?["category"] as? String ?? ""
+                if cat == self.category {
+                    let eventName = value?["eventName"] as? String ?? ""
+                    self.name = eventName
+                    print(eventName)
+                    //Get picture
+                    let eventImage = value?["image"] as? String ?? ""
+                    print(eventImage)
+                    if (eventImage == "") {
                         self.image = UIImage(named: "LogoFoto")
-                    }
-                }).resume()}
-                let event = Event(eventName: self.name, eventImage: self.image, eventKey: child.key)
-                arrayEvents.append(event)
-                completion(arrayEvents)
-                self.tableView.reloadData()
+                    } else {
+                        let url = URL(string: eventImage)
+                        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                            if error != nil {
+                                print (error!)
+                                return
+                            }
+                            DispatchQueue.main.async {
+                                self.image = UIImage(named: "LogoFoto")
+                            }
+                        }).resume()}
+                    let event = Event(eventName: self.name, eventImage: self.image, eventKey: child.key)
+                    arrayEvents.append(event)
+                    completion(arrayEvents)
+                    self.tableView.reloadData()
+                    
+                }
             }
         }) { (error) in
                 print(error.localizedDescription)
