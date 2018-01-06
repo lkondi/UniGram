@@ -230,7 +230,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.database.child("events").child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
                 }
             } else {
-            if eventName.text == "" || eventLocation.text == "" || additionalInfo.text == "" || numberPeople.text == "" || eventDate.text == "" {
+            if eventName.text! == "" || eventLocation.text! == "" || additionalInfo.text! == "" || numberPeople.text! == "" || eventDate.text == "" || Int(numberPeople.text!) == nil {
                 let alertController = UIAlertController(title: "Error", message: "Please fill in the text fields",  preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
