@@ -259,6 +259,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             }
         
             if eventName.text == "" || eventLocation.text == "" || additionalInfo.text == "" || numberPeople.text == "" || eventDate.text == "" {
+                print("eli")
                 let alertController = UIAlertController(title: "Error", message: "Please fill in the text fields",  preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
