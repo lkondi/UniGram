@@ -89,25 +89,19 @@ class ScheduleTableViewController: UITableViewController {
             let value = snapshot.value as? NSDictionary
             let signedUp = value?["signUpEvents"] as? NSArray ?? []
             self.eventIds = signedUp as! [String]
-            for i in 0..<self.eventIds.count {
-                print(self.eventIds[i])}
-            print("eli")
         })
         
         database.child("events").observeSingleEvent(of: .value, with: { snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot] {
                 // Get eventKey
                 for i in 0..<self.eventIds.count {
-                    print(self.eventIds[i])
                     if self.eventIds[i] == child.key {
                         let value = child.value as? NSDictionary
                         let eventName = value?["eventName"] as? String ?? ""
                         self.name = eventName
-                        print(eventName)
                         
                         //Get picture
                         let eventImage = value?["image"] as? String ?? ""
-                        print(eventImage)
                         if (eventImage == "") {
                             self.image = UIImage(named: "LogoFoto")
                         } else {

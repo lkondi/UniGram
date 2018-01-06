@@ -146,10 +146,9 @@ class EventTableViewController: UITableViewController {
                 if cat == self.category {
                     let eventName = value?["eventName"] as? String ?? ""
                     self.name = eventName
-                    print(eventName)
+                   
                     //Get picture
                     let eventImage = value?["image"] as? String ?? ""
-                    print(eventImage)
                     if (eventImage == "") {
                         self.image = UIImage(named: "LogoFoto")
                     } else {
