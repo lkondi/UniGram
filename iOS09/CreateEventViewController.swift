@@ -90,8 +90,6 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.createdEventsID.append(uff)
                 if (self.eventKey != "") {if (uff == self.eventKey) {
                     self.isCreator = true
-                    print("is creator is in load true")
-                    print(self.isCreator)
                 }
               }
             }
@@ -208,20 +206,16 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     //Save Event / Edit or Sign up if not Creator
     @IBAction func saveEvent(_ sender: Any) {
         let uid = Auth.auth().currentUser?.uid
-        print("is creator is in saveevent :")
-        print(isCreator)
+        
         if isCreator == true {
             self.database.child("events").child(eventKey).updateChildValues(["eventName": self.eventName.text ?? "", "category": category!, "eventDate": self.eventDate.text ?? "", "eventLocation": self.eventLocation.text ?? "", "numberOfPeople": self.numberPeople.text ?? "", "additionalInfo": self.additionalInfo.text ?? ""])
-            }
-        else if exist && !isCreator {
+            } else if exist && !isCreator {
             for i in 0 ..< signedUpUsersID.count {
                 let uff = signedUpUsersID[i]
                 if (uid! == uff) {
                     self.isSignedUp = true
-                    print("he is signed up already")
-                    }
+                }
             }
-
             if signedUp == people! + 1 || isSignedUp {
                 saveButton.isEnabled = false
                 let alertController = UIAlertController(title: "Number of people reached!", message: "No more people can sign up for this event!",  preferredStyle: .alert)
@@ -237,37 +231,37 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.database.child("events").child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
                 }
             } else {
-            let imageName = NSUUID().uuidString
-            let storedImage = self.storage.child("categories_images").child(imageName)
-        
-            if let uploadData = UIImagePNGRepresentation(self.eventImage.image!) {
-                storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
-                    if error != nil {
-                        print(error!)
-                        return
-                    }
-                    storedImage.downloadURL(completion: {(url, error) in
-                        if error != nil {
-                            print(error!)
-                            return
-                        }
-                        if let urlText = url?.absoluteString {
-                            self.eventUid?.child("image").setValue(urlText)
-                        }
-                    })
-                })
-            }
-        
             if eventName.text == "" || eventLocation.text == "" || additionalInfo.text == "" || numberPeople.text == "" || eventDate.text == "" {
-                print("eli")
                 let alertController = UIAlertController(title: "Error", message: "Please fill in the text fields",  preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)
             
                 self.present(alertController, animated: true, completion: nil)
+                
             }
             else {
+                let imageName = NSUUID().uuidString
+                let storedImage = self.storage.child("categories_images").child(imageName)
+                
+                if let uploadData = UIImagePNGRepresentation(self.eventImage.image!) {
+                    storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
+                        if error != nil {
+                            print(error!)
+                            return
+                        }
+                        storedImage.downloadURL(completion: {(url, error) in
+                            if error != nil {
+                                print(error!)
+                                return
+                            }
+                            if let urlText = url?.absoluteString {
+                                self.eventUid?.child("image").setValue(urlText)
+                            }
+                        })
+                    })
+                }
+                
                 eventUid?.setValue(["eventName": self.eventName.text, "category": category, "eventDate": self.eventDate.text, "eventLocation": self.eventLocation.text, "numberOfPeople": self.numberPeople.text, "additionalInfo": self.additionalInfo.text, "admin": uid])
         
                 //Save created events for the user
