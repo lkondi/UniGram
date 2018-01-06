@@ -60,7 +60,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             
             eventKey = event.eventKey
             database.child("events").child(eventKey).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get Events Info
+                //Get Events Info
                 let value = snapshot.value as? NSDictionary
                 let date = value?["eventDate"] as? String ?? ""
                 self.eventDate.text = date
@@ -123,7 +123,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             })
             
             database.child("events").child(eventKey).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get Events Array
+                //Get Events Array
                 let value = snapshot.value as? NSDictionary
                 let array1 = value?["signedUpUsers"] as? NSArray ?? []
                 for i in 0 ..< array1.count {
@@ -169,7 +169,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 eventDetailViewController.category = self.category
             
             default:
-                // Configure the destination view controller only when the save button is pressed.
+                //Configure the destination view controller only when the save button is pressed.
                 guard let button = sender as? UIButton, button == saveButton else {
                     os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
                     return
@@ -191,7 +191,6 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func chooseImage(_ sender: UITapGestureRecognizer) {
         
         let imagePickerController = UIImagePickerController()
-        //imagePickerController.allowsEditing = true
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)

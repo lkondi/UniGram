@@ -70,7 +70,6 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //nameTextField.delegate = self
         photoImageView.layer.cornerRadius = photoImageView.frame.size.width/2
         photoImageView.clipsToBounds = true
 
@@ -85,7 +84,6 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //appearance()
     }
     
     //TextFields Actions
@@ -112,7 +110,6 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
     @IBAction func tapChangeImage(_ sender: UITapGestureRecognizer) {
         
         let imagePickerController = UIImagePickerController()
-        //imagePickerController.allowsEditing = true
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
