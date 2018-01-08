@@ -176,13 +176,15 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 }
         
                 let name = eventName.text ?? ""
+                let date = eventDate.text ?? ""
+                let location = eventLocation.text ?? ""
                 let photo = eventImage.image
                 if (eventKey == "") {
                     eventUid = self.database.child("events").childByAutoId()
                     eventKey = (eventUid?.key)!
                 }
 
-                event = Event(eventName: name, eventImage: photo, eventKey: eventKey)
+                event = Event(eventName: name, eventImage: photo, eventKey: eventKey, eventDate: date, eventLocation: location)
             }
         }
     
@@ -239,6 +241,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.present(alertController, animated: true, completion: nil)
                 
             }
+                
             else {
                 let imageName = NSUUID().uuidString
                 let storedImage = self.storage.child("categories_images").child(imageName)

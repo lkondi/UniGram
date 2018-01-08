@@ -20,6 +20,8 @@ class ScheduleTableViewController: UITableViewController {
     var events = [Event]()
     var category: String?
     var name: String = ""
+    var date: String = ""
+    var location: String = ""
     var image: UIImage?
     var eventIds = [String]()
     
@@ -66,6 +68,8 @@ class ScheduleTableViewController: UITableViewController {
         
         cell.eventName.text = event.eventName
         cell.eventImage.image = event.eventImage
+        cell.eventLocation.text = event.eventLocation
+        cell.eventDate.text = event.eventDate
     
         return cell
     }
@@ -97,8 +101,15 @@ class ScheduleTableViewController: UITableViewController {
                 for i in 0..<self.eventIds.count {
                     if self.eventIds[i] == child.key {
                         let value = child.value as? NSDictionary
+                        //get name
                         let eventName = value?["eventName"] as? String ?? ""
                         self.name = eventName
+                        //get date
+                        let eventDate = value?["eventDate"] as? String ?? ""
+                        self.date = eventDate
+                        //get location
+                        let eventLocation = value?["eventLocation"] as? String ?? ""
+                        self.location = eventLocation
                         
                         //Get picture
                         let eventImage = value?["image"] as? String ?? ""
@@ -117,7 +128,7 @@ class ScheduleTableViewController: UITableViewController {
                             }).resume()}
                         
                         
-                        let uff = Event(eventName: self.name, eventImage: self.image, eventKey: child.key)
+                        let uff = Event(eventName: self.name, eventImage: self.image, eventKey: child.key, eventDate: self.date, eventLocation: self.location)
                         signedEvents.append(uff)
                         completion(signedEvents)
                         self.tableView.reloadData()

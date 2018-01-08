@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CEFC6AF2003B56500085DC0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEFC6AE2003B56500085DC0 /* ThemeManager.swift */; };
 		21D13619172AD2717320FB6D /* Pods_iOS09.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B2EE46A5FE5AC6F68EED12 /* Pods_iOS09.framework */; };
 		407823CA19981B0D768247C9 /* Pods_iOS09Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE11292289FF5ACB13C8CE4C /* Pods_iOS09Tests.framework */; };
 		64134D3135DC7BC9D49116A3 /* Pods_iOS09UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB8EC723E8504DDA43D0E7D /* Pods_iOS09UITests.framework */; };
@@ -37,13 +38,10 @@
 		E40A18601FDC153000438C39 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40A185F1FDC153000438C39 /* ScheduleViewController.swift */; };
 		E4590DAD1FEA72EF0093A1E8 /* politics.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4590DAC1FEA72EE0093A1E8 /* politics.jpg */; };
 		E47387A31FC6020A006C744E /* study.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E473879D1FC60208006C744E /* study.jpg */; };
-		E47387A41FC6020A006C744E /* dating.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E473879E1FC60209006C744E /* dating.jpg */; };
 		E47387A51FC6020A006C744E /* dance.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E473879F1FC60209006C744E /* dance.jpg */; };
 		E47387A61FC6020A006C744E /* hobbies.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E47387A01FC60209006C744E /* hobbies.jpg */; };
 		E47387A71FC6020A006C744E /* sport.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E47387A11FC60209006C744E /* sport.jpg */; };
 		E47387A81FC6020A006C744E /* erstis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E47387A21FC6020A006C744E /* erstis.jpg */; };
-		E47387AC1FC61ECC006C744E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47387AB1FC61ECC006C744E /* ChatViewController.swift */; };
-		E47387B01FC62355006C744E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47387AF1FC62355006C744E /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		1001E92D9387B14EA9BEF342 /* Pods-iOS09UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09UITests/Pods-iOS09UITests.release.xcconfig"; sourceTree = "<group>"; };
+		1CEFC6AE2003B56500085DC0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		4D53724309C2253FED0B4DD3 /* Pods-iOS09Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09Tests/Pods-iOS09Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		606A5FE2154B33A1DF384993 /* Pods-iOS09.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09/Pods-iOS09.debug.xcconfig"; sourceTree = "<group>"; };
 		7EB8EC723E8504DDA43D0E7D /* Pods_iOS09UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS09UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,14 +103,10 @@
 		E40A185F1FDC153000438C39 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		E4590DAC1FEA72EE0093A1E8 /* politics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = politics.jpg; sourceTree = "<group>"; };
 		E473879D1FC60208006C744E /* study.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = study.jpg; sourceTree = "<group>"; };
-		E473879E1FC60209006C744E /* dating.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dating.jpg; sourceTree = "<group>"; };
 		E473879F1FC60209006C744E /* dance.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dance.jpg; sourceTree = "<group>"; };
 		E47387A01FC60209006C744E /* hobbies.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hobbies.jpg; sourceTree = "<group>"; };
 		E47387A11FC60209006C744E /* sport.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sport.jpg; sourceTree = "<group>"; };
 		E47387A21FC6020A006C744E /* erstis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = erstis.jpg; sourceTree = "<group>"; };
-		E47387AB1FC61ECC006C744E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		E47387AF1FC62355006C744E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		E47387B21FC62B7F006C744E /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		EE11292289FF5ACB13C8CE4C /* Pods_iOS09Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS09Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA43ABBC854BDF2A8887E17 /* Pods-iOS09UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09UITests/Pods-iOS09UITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,7 +142,6 @@
 		84F7F5091FB7D7E000178737 = {
 			isa = PBXGroup;
 			children = (
-				E47387B21FC62B7F006C744E /* Bridging-Header.h */,
 				84F7F5141FB7D7E000178737 /* iOS09 */,
 				84F7F52C1FB7D7E000178737 /* iOS09Tests */,
 				84F7F5371FB7D7E000178737 /* iOS09UITests */,
@@ -172,16 +166,15 @@
 			children = (
 				E4590DAC1FEA72EE0093A1E8 /* politics.jpg */,
 				E473879F1FC60209006C744E /* dance.jpg */,
-				E473879E1FC60209006C744E /* dating.jpg */,
 				E47387A21FC6020A006C744E /* erstis.jpg */,
 				E47387A01FC60209006C744E /* hobbies.jpg */,
 				E47387A11FC60209006C744E /* sport.jpg */,
 				E473879D1FC60208006C744E /* study.jpg */,
 				84A62CC51FBB2B9800784C2F /* GoogleService-Info.plist */,
 				84F7F5151FB7D7E000178737 /* AppDelegate.swift */,
-				E47387AF1FC62355006C744E /* Constants.swift */,
 				845A0ED61FCE6DDF0049288B /* EventTableViewCell.swift */,
 				84F7F5191FB7D7E000178737 /* Main.storyboard */,
+				1CEFC6AE2003B56500085DC0 /* ThemeManager.swift */,
 				E40A185F1FDC153000438C39 /* ScheduleViewController.swift */,
 				845A0ED21FCE667D0049288B /* Event.swift */,
 				DE9979C51FFD22150037B979 /* ScheduleTableViewCell.swift */,
@@ -189,7 +182,6 @@
 				847F2CC51FCE4A38001FD92D /* CreateEventViewController.swift */,
 				847F2CC31FCE3B08001FD92D /* ProfileViewController.swift */,
 				84F7F54E1FB7DD1F00178737 /* ChangeProfileViewController.swift */,
-				E47387AB1FC61ECC006C744E /* ChatViewController.swift */,
 				84D12FB91FC5E29900FE3887 /* CategoryItem.swift */,
 				84D12FBB1FC5E2B300FE3887 /* CategoryItemsManager.swift */,
 				84D12FBD1FC5E2F000FE3887 /* CategoryItemTableViewCell.swift */,
@@ -366,7 +358,6 @@
 			files = (
 				84F7F5231FB7D7E000178737 /* LaunchScreen.storyboard in Resources */,
 				E47387A81FC6020A006C744E /* erstis.jpg in Resources */,
-				E47387A41FC6020A006C744E /* dating.jpg in Resources */,
 				E47387A71FC6020A006C744E /* sport.jpg in Resources */,
 				E47387A31FC6020A006C744E /* study.jpg in Resources */,
 				E47387A51FC6020A006C744E /* dance.jpg in Resources */,
@@ -438,8 +429,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-iOS09/Pods-iOS09-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -447,8 +436,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -574,11 +561,10 @@
 				845A0ED51FCE682D0049288B /* EventTableViewController.swift in Sources */,
 				E40A18601FDC153000438C39 /* ScheduleViewController.swift in Sources */,
 				84F7F54F1FB7DD1F00178737 /* ChangeProfileViewController.swift in Sources */,
-				E47387B01FC62355006C744E /* Constants.swift in Sources */,
 				84D12FBC1FC5E2B300FE3887 /* CategoryItemsManager.swift in Sources */,
+				1CEFC6AF2003B56500085DC0 /* ThemeManager.swift in Sources */,
 				84F7F5471FB7DA2400178737 /* SignUpViewController.swift in Sources */,
 				84D12FBE1FC5E2F000FE3887 /* CategoryItemTableViewCell.swift in Sources */,
-				E47387AC1FC61ECC006C744E /* ChatViewController.swift in Sources */,
 				84F7F51E1FB7D7E000178737 /* iOS09.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -753,6 +739,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lmu.iOS09;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -768,6 +755,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lmu.iOS09;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

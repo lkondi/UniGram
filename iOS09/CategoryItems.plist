@@ -38,11 +38,5 @@
 		<key>image</key>
 		<string>politics.jpg</string>
 	</dict>
-	<dict>
-		<key>name</key>
-		<string>CHAT</string>
-		<key>image</key>
-		<string>dating.jpg</string>
-	</dict>
 </array>
 </plist>

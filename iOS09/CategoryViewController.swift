@@ -70,16 +70,13 @@ extension CategoryViewController: UITableViewDataSource {
                 fatalError("The selected cell is not being displayed by the table")
             }
             
-            if indexPath.row == 4 {
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChatView")
-                self.present(vc!, animated: true, completion: nil)
-            } else {
-                guard let eventDetailViewController = segue.destination as? EventTableViewController else {
-                    fatalError("Unexpected destination: \(segue.destination)")
-                }
-                let selectedEvent = categoryItems[indexPath.row].name
-                eventDetailViewController.category = selectedEvent
+            guard let eventDetailViewController = segue.destination as? EventTableViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+                
             }
+            let selectedEvent = categoryItems[indexPath.row].name
+                eventDetailViewController.category = selectedEvent
+            
             
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")

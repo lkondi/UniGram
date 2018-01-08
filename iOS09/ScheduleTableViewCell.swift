@@ -2,8 +2,8 @@
 //  ScheduleTableViewCell.swift
 //  iOS09
 //
-//  Created by Elena Terzieva on 03.01.18.
-//  Copyright © 2018 admin. All rights reserved.
+//  Created by Lydia Kondylidou on 09.12.17.
+//  Copyright © 2017 admin. All rights reserved.
 //
 
 import Foundation
@@ -13,6 +13,8 @@ class ScheduleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var eventName: UILabel!
+    @IBOutlet weak var eventDate: UILabel!
+    @IBOutlet weak var eventLocation: UILabel!
     
     
     override func awakeFromNib() {

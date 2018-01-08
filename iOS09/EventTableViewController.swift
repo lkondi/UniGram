@@ -20,6 +20,8 @@ class EventTableViewController: UITableViewController {
     var arrayIDs = [String]()
     var category: String?
     var name: String = ""
+    var date: String = ""
+    var location: String = ""
     var image: UIImage?
     
     override func viewDidLoad() {
@@ -138,13 +140,18 @@ class EventTableViewController: UITableViewController {
         
         database.child("events").observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children.allObjects as! [DataSnapshot] {
-                //Get Name
                 let value = child.value as? NSDictionary
                 let cat = value?["category"] as? String ?? ""
                 if cat == self.category {
+                    //Get Name
                     let eventName = value?["eventName"] as? String ?? ""
                     self.name = eventName
-                   
+                    //Get Date
+                    let eventDate = value?["eventDate"] as? String ?? ""
+                    self.date = eventDate
+                    //Get Location
+                    let eventLocation = value?["eventLocation"] as? String ?? ""
+                    self.location = eventLocation
                     //Get picture
                     let eventImage = value?["image"] as? String ?? ""
                     if (eventImage == "") {
@@ -160,7 +167,7 @@ class EventTableViewController: UITableViewController {
                                 self.image = UIImage(named: "LogoFoto")
                             }
                         }).resume()}
-                    let event = Event(eventName: self.name, eventImage: self.image, eventKey: child.key)
+                    let event = Event(eventName: self.name, eventImage: self.image, eventKey: child.key, eventDate: self.date, eventLocation: self.location)
                     arrayEvents.append(event)
                     completion(arrayEvents)
                     self.tableView.reloadData()

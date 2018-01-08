@@ -16,15 +16,19 @@ class Event  {
     var eventName: String
     var eventImage: UIImage?
     var eventKey: String
+    var eventDate: String?
+    var eventLocation: String?
 
     
     //MARK: Initialization
     
-    init(eventName: String, eventImage: UIImage?, eventKey: String) {
+    init(eventName: String, eventImage: UIImage?, eventKey: String, eventDate: String?, eventLocation: String?) {
         // Initialize stored properties.
         self.eventName = eventName
         self.eventImage = eventImage
         self.eventKey = eventKey
+        self.eventDate = eventDate
+        self.eventLocation = eventLocation
     }
     
 }
