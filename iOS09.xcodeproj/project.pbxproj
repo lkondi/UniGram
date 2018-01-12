@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1CEFC6AF2003B56500085DC0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEFC6AE2003B56500085DC0 /* ThemeManager.swift */; };
+		1C2B33482008E93E0007BF56 /* FriendSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B33472008E93E0007BF56 /* FriendSystem.swift */; };
+		1C2B334A2008F16E0007BF56 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B33492008F16E0007BF56 /* Error.swift */; };
+		1C2B334C2008F1920007BF56 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B334B2008F1920007BF56 /* UserListViewController.swift */; };
+		1C2B334E2008F39D0007BF56 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B334D2008F39D0007BF56 /* UserCell.swift */; };
+		1C2B33502008F4BD0007BF56 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B334F2008F4BD0007BF56 /* FriendViewController.swift */; };
+		1C2B33522008F57C0007BF56 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2B33512008F57C0007BF56 /* UserCell.xib */; };
+		1C2B33542008F6260007BF56 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B33532008F6260007BF56 /* RequestViewController.swift */; };
 		21D13619172AD2717320FB6D /* Pods_iOS09.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B2EE46A5FE5AC6F68EED12 /* Pods_iOS09.framework */; };
 		407823CA19981B0D768247C9 /* Pods_iOS09Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE11292289FF5ACB13C8CE4C /* Pods_iOS09Tests.framework */; };
 		64134D3135DC7BC9D49116A3 /* Pods_iOS09UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB8EC723E8504DDA43D0E7D /* Pods_iOS09UITests.framework */; };
@@ -17,7 +23,7 @@
 		847F2CC41FCE3B08001FD92D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F2CC31FCE3B08001FD92D /* ProfileViewController.swift */; };
 		847F2CC61FCE4A38001FD92D /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F2CC51FCE4A38001FD92D /* CreateEventViewController.swift */; };
 		84A62CC61FBB2B9800784C2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84A62CC51FBB2B9800784C2F /* GoogleService-Info.plist */; };
-		84A62D0D1FBCB46200784C2F /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A62D0C1FBCB46200784C2F /* Users.swift */; };
+		84A62D0D1FBCB46200784C2F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A62D0C1FBCB46200784C2F /* User.swift */; };
 		84D12FBA1FC5E29900FE3887 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D12FB91FC5E29900FE3887 /* CategoryItem.swift */; };
 		84D12FBC1FC5E2B300FE3887 /* CategoryItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D12FBB1FC5E2B300FE3887 /* CategoryItemsManager.swift */; };
 		84D12FBE1FC5E2F000FE3887 /* CategoryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D12FBD1FC5E2F000FE3887 /* CategoryItemTableViewCell.swift */; };
@@ -63,7 +69,13 @@
 
 /* Begin PBXFileReference section */
 		1001E92D9387B14EA9BEF342 /* Pods-iOS09UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09UITests/Pods-iOS09UITests.release.xcconfig"; sourceTree = "<group>"; };
-		1CEFC6AE2003B56500085DC0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		1C2B33472008E93E0007BF56 /* FriendSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSystem.swift; sourceTree = "<group>"; };
+		1C2B33492008F16E0007BF56 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		1C2B334B2008F1920007BF56 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		1C2B334D2008F39D0007BF56 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		1C2B334F2008F4BD0007BF56 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		1C2B33512008F57C0007BF56 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		1C2B33532008F6260007BF56 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		4D53724309C2253FED0B4DD3 /* Pods-iOS09Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09Tests/Pods-iOS09Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		606A5FE2154B33A1DF384993 /* Pods-iOS09.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09/Pods-iOS09.debug.xcconfig"; sourceTree = "<group>"; };
 		7EB8EC723E8504DDA43D0E7D /* Pods_iOS09UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS09UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +86,7 @@
 		847F2CC31FCE3B08001FD92D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		847F2CC51FCE4A38001FD92D /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		84A62CC51FBB2B9800784C2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		84A62D0C1FBCB46200784C2F /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		84A62D0C1FBCB46200784C2F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84D12FB91FC5E29900FE3887 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		84D12FBB1FC5E2B300FE3887 /* CategoryItemsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemsManager.swift; sourceTree = "<group>"; };
 		84D12FBD1FC5E2F000FE3887 /* CategoryItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -172,9 +184,15 @@
 				E473879D1FC60208006C744E /* study.jpg */,
 				84A62CC51FBB2B9800784C2F /* GoogleService-Info.plist */,
 				84F7F5151FB7D7E000178737 /* AppDelegate.swift */,
+				1C2B33472008E93E0007BF56 /* FriendSystem.swift */,
 				845A0ED61FCE6DDF0049288B /* EventTableViewCell.swift */,
 				84F7F5191FB7D7E000178737 /* Main.storyboard */,
-				1CEFC6AE2003B56500085DC0 /* ThemeManager.swift */,
+				1C2B33512008F57C0007BF56 /* UserCell.xib */,
+				1C2B33532008F6260007BF56 /* RequestViewController.swift */,
+				1C2B334D2008F39D0007BF56 /* UserCell.swift */,
+				1C2B33492008F16E0007BF56 /* Error.swift */,
+				1C2B334B2008F1920007BF56 /* UserListViewController.swift */,
+				1C2B334F2008F4BD0007BF56 /* FriendViewController.swift */,
 				DE9979C51FFD22150037B979 /* ScheduleTableViewCell.swift */,
 				E40A185F1FDC153000438C39 /* ScheduleViewController.swift */,
 				845A0ED21FCE667D0049288B /* Event.swift */,
@@ -194,7 +212,7 @@
 				84F7F5241FB7D7E000178737 /* Info.plist */,
 				84D12FC11FC5E3C300FE3887 /* CategoryItems.plist */,
 				84F7F51C1FB7D7E000178737 /* iOS09.xcdatamodeld */,
-				84A62D0C1FBCB46200784C2F /* Users.swift */,
+				84A62D0C1FBCB46200784C2F /* User.swift */,
 			);
 			path = iOS09;
 			sourceTree = "<group>";
@@ -364,6 +382,7 @@
 				84A62CC61FBB2B9800784C2F /* GoogleService-Info.plist in Resources */,
 				84F7F5201FB7D7E000178737 /* Assets.xcassets in Resources */,
 				84F7F51B1FB7D7E000178737 /* Main.storyboard in Resources */,
+				1C2B33522008F57C0007BF56 /* UserCell.xib in Resources */,
 				E47387A61FC6020A006C744E /* hobbies.jpg in Resources */,
 				E4590DAD1FEA72EF0093A1E8 /* politics.jpg in Resources */,
 				84D12FC21FC5E3C300FE3887 /* CategoryItems.plist in Resources */,
@@ -548,23 +567,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				845A0ED71FCE6DDF0049288B /* EventTableViewCell.swift in Sources */,
-				84A62D0D1FBCB46200784C2F /* Users.swift in Sources */,
+				84A62D0D1FBCB46200784C2F /* User.swift in Sources */,
 				84F7F54B1FB7DA5A00178737 /* LoginViewController.swift in Sources */,
 				847F2CC61FCE4A38001FD92D /* CreateEventViewController.swift in Sources */,
+				1C2B33502008F4BD0007BF56 /* FriendViewController.swift in Sources */,
+				1C2B33482008E93E0007BF56 /* FriendSystem.swift in Sources */,
 				84F7F5491FB7DA4600178737 /* ForgotPasswordViewController.swift in Sources */,
 				84F7F5161FB7D7E000178737 /* AppDelegate.swift in Sources */,
 				847F2CC41FCE3B08001FD92D /* ProfileViewController.swift in Sources */,
+				1C2B334A2008F16E0007BF56 /* Error.swift in Sources */,
 				DE9979C61FFD22150037B979 /* ScheduleTableViewCell.swift in Sources */,
 				84D12FC01FC5E31000FE3887 /* CategoryViewController.swift in Sources */,
 				84D12FBA1FC5E29900FE3887 /* CategoryItem.swift in Sources */,
 				845A0ED31FCE667D0049288B /* Event.swift in Sources */,
+				1C2B33542008F6260007BF56 /* RequestViewController.swift in Sources */,
 				845A0ED51FCE682D0049288B /* EventTableViewController.swift in Sources */,
+				1C2B334C2008F1920007BF56 /* UserListViewController.swift in Sources */,
 				E40A18601FDC153000438C39 /* ScheduleViewController.swift in Sources */,
 				84F7F54F1FB7DD1F00178737 /* ChangeProfileViewController.swift in Sources */,
 				84D12FBC1FC5E2B300FE3887 /* CategoryItemsManager.swift in Sources */,
-				1CEFC6AF2003B56500085DC0 /* ThemeManager.swift in Sources */,
 				84F7F5471FB7DA2400178737 /* SignUpViewController.swift in Sources */,
 				84D12FBE1FC5E2F000FE3887 /* CategoryItemTableViewCell.swift in Sources */,
+				1C2B334E2008F39D0007BF56 /* UserCell.swift in Sources */,
 				84F7F51E1FB7D7E000178737 /* iOS09.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
