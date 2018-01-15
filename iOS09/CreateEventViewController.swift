@@ -235,6 +235,27 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         let uid = Auth.auth().currentUser?.uid
         
         if isCreator == true {
+            let imageName = NSUUID().uuidString
+            let storedImage = self.storage.child("images").child(imageName)
+            
+            if let uploadData = UIImagePNGRepresentation(myImage!) {
+                storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
+                    if error != nil {
+                        print(error!)
+                        return
+                    }
+                    storedImage.downloadURL(completion: {(url, error) in
+                        if error != nil {
+                            print(error!)
+                            return
+                        }
+                        if let urlText = url?.absoluteString {
+                            self.database.child("events").child(self.eventKey).child("image").setValue(urlText)
+                        }
+                    })
+                })
+            }
+            
             self.database.child("events").child(eventKey).updateChildValues(["eventName": self.eventName.text ?? "", "category": category!, "eventDate": self.eventDate.text ?? "", "eventLocation": self.eventLocation.text ?? "", "numberOfPeople": self.numberPeople.text ?? "", "additionalInfo": self.additionalInfo.text ?? ""])
             } else if exist && !isCreator {
             for i in 0 ..< signedUpUsersID.count {
