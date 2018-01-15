@@ -42,6 +42,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var additionalInfo: UITextField!
     @IBOutlet weak var eventImage: UIImageView!
     
+    var myImage: UIImage?
   
     
     override func viewDidLoad() {
@@ -77,7 +78,29 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 
                 let signedUp = value?["signedUpUsers"] as? NSArray ?? []
                 self.signedUp = signedUp.count
-            })
+                
+                //Get picture
+                let value_picture = value?["image"] as? String ?? ""
+                if (value_picture != "") {
+                    let url = URL(string: value_picture)
+                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                        if error != nil {
+                            print (error!)
+                            return
+                        }
+                        self.myImage = UIImage(data: data!)
+                        DispatchQueue.main.async {
+                            self.eventImage.image = self.myImage
+                        }
+                    }).resume()
+                } else {
+                    print("error show event image")
+                    self.eventImage.image = UIImage(named: "LogoFoto")
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+
         }
         
         let uid = Auth.auth().currentUser?.uid
@@ -152,10 +175,28 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
             
         }
+        myImage = selectedImage
         eventImage.image = selectedImage
         dismiss(animated: true, completion: nil)
     }
     
+    //Choose image for the event
+    
+    @IBAction func chooseImage(_ sender: UITapGestureRecognizer) {
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    //Cancel Create Event
+    @IBAction func cancelCreateEvent(_ sender: UIBarButtonItem) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //Prepare for segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
@@ -188,21 +229,6 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             }
         }
     
-    //Choose image for the event
-    
-    @IBAction func chooseImage(_ sender: UITapGestureRecognizer) {
-        
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    //Cancel Create Event
-    @IBAction func cancelCreateEvent(_ sender: UIBarButtonItem) {
-        
-        dismiss(animated: true, completion: nil)
-    }
     
     //Save Event / Edit or Sign up if not Creator
     @IBAction func saveEvent(_ sender: Any) {
@@ -244,9 +270,9 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 
             else {
                 let imageName = NSUUID().uuidString
-                let storedImage = self.storage.child("categories_images").child(imageName)
+                let storedImage = self.storage.child("images").child(imageName)
                 
-                if let uploadData = UIImagePNGRepresentation(self.eventImage.image!) {
+                if let uploadData = UIImagePNGRepresentation(myImage!) {
                     storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
                         if error != nil {
                             print(error!)

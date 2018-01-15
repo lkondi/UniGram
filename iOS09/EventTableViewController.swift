@@ -137,7 +137,7 @@ class EventTableViewController: UITableViewController {
     
     private func loadEvents(completion: @escaping([Event]?) -> Void)  {
         var arrayEvents = [Event]()
-        
+  
         database.child("events").observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children.allObjects as! [DataSnapshot] {
                 let value = child.value as? NSDictionary
@@ -153,20 +153,25 @@ class EventTableViewController: UITableViewController {
                     let eventLocation = value?["eventLocation"] as? String ?? ""
                     self.location = eventLocation
                     //Get picture
-                    let eventImage = value?["image"] as? String ?? ""
-                    if (eventImage == "") {
-                        self.image = UIImage(named: "LogoFoto")
-                    } else {
-                        let url = URL(string: eventImage)
+                    let value_picture = value?["image"] as? String ?? ""
+                    if (value_picture != "") {
+                        print(self.name)
+                        print("eli")
+                        let url = URL(string: value_picture)
                         URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
                             if error != nil {
                                 print (error!)
                                 return
                             }
                             DispatchQueue.main.async {
-                                self.image = UIImage(named: "LogoFoto")
+                                self.image = UIImage(data:data!)
                             }
-                        }).resume()}
+                        }).resume()
+                    } else {
+                        print(self.name)
+                        print("error show event image")
+                        self.image = UIImage(named: "LogoFoto")
+                    }
                     let event = Event(eventName: self.name, eventImage: self.image, eventKey: child.key, eventDate: self.date, eventLocation: self.location)
                     arrayEvents.append(event)
                     completion(arrayEvents)
