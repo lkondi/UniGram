@@ -53,7 +53,7 @@ class SignUpViewController: UIViewController {
                     let values = ["username": self.userName.text, "email": self.emailTextField.text, "password": self.passwordTextField.text]
                     userReference.updateChildValues(values)
         
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "HomeScreen")
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabBarViewController")
                     self.present(vc!, animated: true, completion: nil)
                     
                 } else {

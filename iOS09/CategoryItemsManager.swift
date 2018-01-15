@@ -2,8 +2,8 @@
 //  CategoryItemsManager.swift
 //  iOS09
 //
-//  Created by admin on 22.11.17.
-//  Copyright © 2017 admin. All rights reserved.
+//  Created by Lydia Kondylidou on 22.11.17.
+//  Copyright © 2017 Lydia Kondylidou. All rights reserved.
 //
 
 import Foundation

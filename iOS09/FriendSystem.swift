@@ -3,7 +3,7 @@
 //  iOS09
 //
 //  Created by Lydia Kondylidou on 12.01.18.
-//  Copyright © 2018 admin. All rights reserved.
+//  Copyright © 2018 Lydia Kondylidou. All rights reserved.
 //
 
 import Foundation
@@ -71,7 +71,7 @@ class FriendSystem {
     /**
      Creates a new user account with the specified email and password
      - parameter completion: What to do when the block has finished running. The success variable
-     indicates whether or not the signup was a success
+     indicates whether or not the signup was a success*/
  
     func createAccount(_ email: String, password: String, name: String, completion: @escaping (_ success: Bool) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
@@ -88,13 +88,13 @@ class FriendSystem {
             }
             
         })
-    } */
+    }
     
     /**
      Logs in an account with the specified email and password
      
      - parameter completion: What to do when the block has finished running. The success variable
-     indicates whether or not the login was a success
+     indicates whether or not the login was a success*/
  
     func loginAccount(_ email: String, password: String, completion: @escaping (_ success: Bool) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
@@ -109,12 +109,12 @@ class FriendSystem {
             }
             
         })
-    }*/
+    }
     
-    /** Logs out an account
+    /** Logs out an account*/
     func logoutAccount() {
         try! Auth.auth().signOut()
-    }*/
+    }
     
     
     // MARK: - Request System Functions
