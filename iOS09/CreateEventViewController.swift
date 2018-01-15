@@ -19,6 +19,10 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     let storage = Storage.storage().reference()
     let database = Database.database().reference()
     
+    let fileManager = FileManager.default
+    let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let imagePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path
+    
     var event: Event?
     var eventKey: String = ""
     var createdEventsID = [String]()
@@ -256,6 +260,27 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 })
             }
             
+            //Save image locally
+            do {
+                let files = try fileManager.contentsOfDirectory(atPath: "\(imagePath)")
+                
+                for file in files {
+                    let name = eventKey
+                    if "\(imagePath)/\(file)" == imageURL.appendingPathComponent("\(name).png").path {
+                        try fileManager.removeItem(atPath: imageURL.appendingPathComponent("\(name).png").path)
+                    }
+                }
+            } catch {
+                print("unable to add image from document directory")
+            }
+            
+            if let image = myImage {
+                if let data = UIImagePNGRepresentation(image) {
+                    let filename = imageURL.appendingPathComponent("\(eventKey).png")
+                    try? data.write(to: filename)
+                }
+            }
+            
             self.database.child("events").child(eventKey).updateChildValues(["eventName": self.eventName.text ?? "", "category": category!, "eventDate": self.eventDate.text ?? "", "eventLocation": self.eventLocation.text ?? "", "numberOfPeople": self.numberPeople.text ?? "", "additionalInfo": self.additionalInfo.text ?? ""])
             } else if exist && !isCreator {
             for i in 0 ..< signedUpUsersID.count {
@@ -309,6 +334,14 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                             }
                         })
                     })
+                }
+                
+                //Save image locally
+                if let image = myImage {
+                    if let data = UIImagePNGRepresentation(image) {
+                        let filename = imageURL.appendingPathComponent("\(eventKey).png")
+                        try? data.write(to: filename)
+                    }
                 }
                 
                 eventUid?.setValue(["eventName": self.eventName.text, "category": category, "eventDate": self.eventDate.text, "eventLocation": self.eventLocation.text, "numberOfPeople": self.numberPeople.text, "additionalInfo": self.additionalInfo.text, "admin": uid])

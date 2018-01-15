@@ -16,6 +16,11 @@ class EventTableViewController: UITableViewController {
     let database = Database.database().reference()
     let storage = Storage.storage().reference()
     
+    
+    let fileManager = FileManager.default
+    let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    //let imagePath = imageURL.path
+    
     var events = [Event]()
     var arrayIDs = [String]()
     var category: String?
@@ -137,6 +142,7 @@ class EventTableViewController: UITableViewController {
     
     private func loadEvents(completion: @escaping([Event]?) -> Void)  {
         var arrayEvents = [Event]()
+        let imagePath = imageURL.path
   
         database.child("events").observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children.allObjects as! [DataSnapshot] {
@@ -152,8 +158,7 @@ class EventTableViewController: UITableViewController {
                     //Get Location
                     let eventLocation = value?["eventLocation"] as? String ?? ""
                     self.location = eventLocation
-                    //Get picture
-                    let value_picture = value?["image"] as? String ?? ""
+                    /*let value_picture = value?["image"] as? String ?? ""
                     if (value_picture != "") {
                         print(self.name)
                         print("eli")
@@ -171,7 +176,21 @@ class EventTableViewController: UITableViewController {
                         print(self.name)
                         print("error show event image")
                         self.image = UIImage(named: "LogoFoto")
+                    } */
+                    //Get picture
+                    do {
+                        let files = try self.fileManager.contentsOfDirectory(atPath: "\(imagePath)")
+                        
+                        for file in files {
+                            let name = child.key
+                            if "\(imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(name).png").path {
+                                self.image = UIImage(contentsOfFile: self.imageURL.appendingPathComponent("\(name).png").path)
+                            }
+                        }
+                    } catch {
+                        print("unable to add image from document directory")
                     }
+                    
                     let event = Event(eventName: self.name, eventImage: self.image, eventKey: child.key, eventDate: self.date, eventLocation: self.location)
                     arrayEvents.append(event)
                     completion(arrayEvents)
