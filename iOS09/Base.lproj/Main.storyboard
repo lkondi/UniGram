@@ -313,7 +313,7 @@
         <!--Events-->
         <scene sceneID="I8S-iO-4la">
             <objects>
-                <tableViewController id="COy-ta-7HX" customClass="EventTableViewController" customModule="iOS09" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EventScreen" id="COy-ta-7HX" customClass="EventTableViewController" customModule="iOS09" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Npy-a4-Tbu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1154,7 +1154,7 @@
         <!--Home-->
         <scene sceneID="yc4-lq-Bcf">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C3t-lM-WtK" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TabBar" automaticallyAdjustsScrollViewInsets="NO" id="C3t-lM-WtK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="Home" selectedImage="Home" id="qYD-ja-rfu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LGW-7n-epU">
