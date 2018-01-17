@@ -137,10 +137,7 @@ class EventTableViewController: UITableViewController {
         }
         else {
             // Add a new event.
-            print(events.count)
-            
             let newIndexPath = IndexPath(row: events.count, section: 0)
-            print(newIndexPath)
             events.append(event)
             tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
@@ -176,7 +173,6 @@ class EventTableViewController: UITableViewController {
                         }
                     } catch {
                         print("unable to add image from document directory")
-                        self.image = UIImage(named: "LogoFoto")
                     }
                     
                     let event = Event(eventName: self.name, eventImage: self.image, eventKey: child.key, eventDate: self.date, eventLocation: self.location)
