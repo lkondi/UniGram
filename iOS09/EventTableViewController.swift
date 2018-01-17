@@ -28,6 +28,7 @@ class EventTableViewController: UITableViewController {
     var date: String = ""
     var location: String = ""
     var image: UIImage?
+    var selectIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,8 @@ class EventTableViewController: UITableViewController {
         if let category = category {
             navigationItem.title = category
         }
+        
+        self.tableView.reloadData()
         
         loadEvents(){ arrayEvents in
             if let savedEvents = arrayEvents {
@@ -118,6 +121,7 @@ class EventTableViewController: UITableViewController {
             let selectedEvent = events[indexPath.row]
             eventDetailViewController.event = selectedEvent
             eventDetailViewController.category = self.category
+            self.selectIndexPath = indexPath
             
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
@@ -126,14 +130,21 @@ class EventTableViewController: UITableViewController {
     
     
     func getDataFromEventDetail (event: Event) {
-        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+        print(selectIndexPath)
+        if let selectedIndexPath = self.selectIndexPath {
             // Update an existing event.
+            print(selectedIndexPath)
+            print(event.eventName)
             events[selectedIndexPath.row] = event
             tableView.reloadRows(at: [selectedIndexPath], with: .none)
         }
         else {
             // Add a new event.
+            print("eli")
+            
             let newIndexPath = IndexPath(row: events.count, section: 0)
+            print(newIndexPath)
+            print(event.eventName)
             events.append(event)
             tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
@@ -183,7 +194,6 @@ class EventTableViewController: UITableViewController {
                         for file in files {
                             let name = child.key
                             if "\(imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(name).png").path {
-                                print("hey")
                                 self.image = UIImage(contentsOfFile: self.imageURL.appendingPathComponent("\(name).png").path)
                             }
                         }
