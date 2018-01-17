@@ -282,6 +282,8 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 signedUpUsersID.append(uid!)
                 self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
                 self.database.child("events").child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
+                
+                self.navigationController?.popViewController(animated: true)
                 }
             } else {
             //Check if the fields are empty or not
@@ -350,8 +352,20 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func deleteEvent(_ sender: Any) {
+        var array = [String]()
+        
         createdEventsID = createdEventsID.filter {$0 != eventKey}
         signUpEventsID = signUpEventsID.filter {$0 != eventKey}
+        
+        for i in 0..<signedUpUsersID.count {
+            database.child("users").child(signedUpUsersID[i]).observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                array = value?["signUpEvents"] as? Array ?? []
+            })
+            
+            array = array.filter {$0 != eventKey}
+            self.database.child("users").child(uid!).child("signUpEvents").setValue(array)
+        }
         
         self.database.child("users").child(uid!).child("eventsAdmin").setValue(createdEventsID)
         self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
