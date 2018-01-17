@@ -198,49 +198,16 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         dismiss(animated: true, completion: nil)
     }
     
-    //Prepare for segues
-   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        super.prepare(for: segue, sender: sender)
-        
-        switch(segue.identifier ?? "") {
-            
-            case "BackToEventList":
-                guard let eventDetailViewController = segue.destination as? EventTableViewController else {
-                    fatalError("Unexpected destination: \(segue.destination)")
-                }
-                eventDetailViewController.category = self.category
-            
-            default:
-                //Configure the destination view controller only when the save button is pressed.
-                guard let button = sender as? UIButton, button == saveButton else {
-                    os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-                    return
-                }
-        
-                let name = eventName.text ?? ""
-                let date = eventDate.text ?? ""
-                let location = eventLocation.text ?? ""
-                let photo = eventImage.image
-                if (eventKey == "") {
-                    eventUid = self.database.child("events").childByAutoId()
-                    eventKey = (eventUid?.key)!
-                }
-
-                event = Event(eventName: name, eventImage: photo, eventKey: eventKey, eventDate: date, eventLocation: location)
-            }
-        }*/
-    
-    
     //Save Event / Edit or Sign up if not Creator
     @IBAction func saveEvent(_ sender: Any) {
         let uid = Auth.auth().currentUser?.uid
         
         if isCreator == true {
-            let imageName = NSUUID().uuidString
-            let storedImage = self.storage.child("images").child(imageName)
-            
+            //Save new image
             if let image = myImage {
+                let imageName = NSUUID().uuidString
+                let storedImage = self.storage.child("images").child(imageName)
+                
                 if let uploadData = UIImagePNGRepresentation(image) {
                     storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
                         if error != nil {
@@ -279,15 +246,14 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 }
             }
             
+            //Update the database
             self.database.child("events").child(eventKey).updateChildValues(["eventName": self.eventName.text ?? "", "category": category!, "eventDate": self.eventDate.text ?? "", "eventLocation": self.eventLocation.text ?? "", "numberOfPeople": self.numberPeople.text ?? "", "additionalInfo": self.additionalInfo.text ?? ""])
             
             //Show the updated event
             self.event = Event(eventName: self.eventName.text!, eventImage: myImage, eventKey: self.eventKey, eventDate: self.eventDate.text, eventLocation: self.eventLocation.text)
             
             if let delegateVC = self.mainEventTableVC {
-                print("eli")
-                print(event!.eventName)
-                print(event!.eventDate)
+
                 delegateVC.getDataFromEventDetail(event: event!)
             }
             self.navigationController?.popViewController(animated: true)
@@ -299,8 +265,11 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                     self.isSignedUp = true
                 }
             }
+            
+            //Check if you can still sign up for an event
             if signedUp == people! + 1 || isSignedUp {
                 saveButton.isEnabled = false
+                
                 let alertController = UIAlertController(title: "Number of people reached!", message: "No more people can sign up for this event!",  preferredStyle: .alert)
             
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -314,6 +283,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.database.child("events").child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
                 }
             } else {
+            //Check if the fields are empty or not
             if eventName.text! == "" || eventLocation.text! == "" || additionalInfo.text! == "" || numberPeople.text! == "" || eventDate.text == "" || Int(numberPeople.text!) == nil {
                 let alertController = UIAlertController(title: "Error", message: "Please fill in the text fields",  preferredStyle: .alert)
                 
@@ -323,15 +293,15 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.present(alertController, animated: true, completion: nil)
                 
             }
-                
             else {
+                //Save the new event
                 eventUid = self.database.child("events").childByAutoId()
                 eventKey = (eventUid?.key)!
                 
-                let imageName = NSUUID().uuidString
-                let storedImage = self.storage.child("images").child(imageName)
-                
                 if let image = myImage {
+                    let imageName = NSUUID().uuidString
+                    let storedImage = self.storage.child("images").child(imageName)
+                    
                     if let uploadData = UIImagePNGRepresentation(image) {
                         storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
                             if error != nil {

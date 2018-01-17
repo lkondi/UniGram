@@ -37,8 +37,6 @@ class EventTableViewController: UITableViewController {
             navigationItem.title = category
         }
         
-        self.tableView.reloadData()
-        
         loadEvents(){ arrayEvents in
             if let savedEvents = arrayEvents {
                 self.events = savedEvents
@@ -101,6 +99,7 @@ class EventTableViewController: UITableViewController {
             }
             eventDetailViewController.category = self.category
             eventDetailViewController.mainEventTableVC = self
+            self.selectIndexPath = nil
             
         case "BackToHomeScreen":
             os_log("Back.", log: OSLog.default, type: .debug)
@@ -122,6 +121,7 @@ class EventTableViewController: UITableViewController {
             eventDetailViewController.event = selectedEvent
             eventDetailViewController.category = self.category
             self.selectIndexPath = indexPath
+            eventDetailViewController.mainEventTableVC = self
             
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
@@ -130,44 +130,21 @@ class EventTableViewController: UITableViewController {
     
     
     func getDataFromEventDetail (event: Event) {
-        print(selectIndexPath)
         if let selectedIndexPath = self.selectIndexPath {
-            // Update an existing event.
-            print(selectedIndexPath)
-            print(event.eventName)
+            // Update an existing event
             events[selectedIndexPath.row] = event
             tableView.reloadRows(at: [selectedIndexPath], with: .none)
         }
         else {
             // Add a new event.
-            print("eli")
+            print(events.count)
             
             let newIndexPath = IndexPath(row: events.count, section: 0)
             print(newIndexPath)
-            print(event.eventName)
             events.append(event)
             tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
     }
-    
-    
-   /* @IBAction func unwindToEventList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? CreateEventViewController, let event = sourceViewController.event {
-            
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing event.
-                events[selectedIndexPath.row] = event
-                tableView.reloadRows(at: [selectedIndexPath], with: .none)
-            }
-            else if let sourceViewController = sender.source as? CreateEventViewController, let event = sourceViewController.event {
-                // Add a new event.
-                let newIndexPath = IndexPath(row: events.count, section: 0)
-                
-                events.append(event)
-                tableView.insertRows(at: [newIndexPath], with: .automatic)
-            }
-        }
-    }*/
     
     private func loadEvents(completion: @escaping([Event]?) -> Void)  {
         var arrayEvents = [Event]()
@@ -199,6 +176,7 @@ class EventTableViewController: UITableViewController {
                         }
                     } catch {
                         print("unable to add image from document directory")
+                        self.image = UIImage(named: "LogoFoto")
                     }
                     
                     let event = Event(eventName: self.name, eventImage: self.image, eventKey: child.key, eventDate: self.date, eventLocation: self.location)
