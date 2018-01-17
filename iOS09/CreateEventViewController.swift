@@ -284,6 +284,15 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             }
             
             self.database.child("events").child(eventKey).updateChildValues(["eventName": self.eventName.text ?? "", "category": category!, "eventDate": self.eventDate.text ?? "", "eventLocation": self.eventLocation.text ?? "", "numberOfPeople": self.numberPeople.text ?? "", "additionalInfo": self.additionalInfo.text ?? ""])
+            
+            //Show the updated event
+            event = Event(eventName: self.eventName.text!, eventImage: myImage, eventKey: self.eventKey, eventDate: self.eventDate.text, eventLocation: self.eventLocation.text)
+            
+            if let delegateVC = self.mainEventTableVC {
+                delegateVC.getDataFromEventDetail(event: event!)
+            }
+            self.navigationController?.popViewController(animated: true)
+            
             } else if exist && !isCreator {
             for i in 0 ..< signedUpUsersID.count {
                 let uff = signedUpUsersID[i]
