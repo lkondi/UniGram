@@ -158,25 +158,6 @@ class EventTableViewController: UITableViewController {
                     //Get Location
                     let eventLocation = value?["eventLocation"] as? String ?? ""
                     self.location = eventLocation
-                    /*let value_picture = value?["image"] as? String ?? ""
-                    if (value_picture != "") {
-                        print(self.name)
-                        print("eli")
-                        let url = URL(string: value_picture)
-                        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                            if error != nil {
-                                print (error!)
-                                return
-                            }
-                            DispatchQueue.main.async {
-                                self.image = UIImage(data:data!)
-                            }
-                        }).resume()
-                    } else {
-                        print(self.name)
-                        print("error show event image")
-                        self.image = UIImage(named: "LogoFoto")
-                    } */
                     //Get picture
                     do {
                         let files = try self.fileManager.contentsOfDirectory(atPath: "\(imagePath)")
