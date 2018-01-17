@@ -41,7 +41,7 @@
 		84F7F54B1FB7DA5A00178737 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F7F54A1FB7DA5A00178737 /* LoginViewController.swift */; };
 		84F7F54F1FB7DD1F00178737 /* ChangeProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F7F54E1FB7DD1F00178737 /* ChangeProfileViewController.swift */; };
 		DE9979C61FFD22150037B979 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9979C51FFD22150037B979 /* ScheduleTableViewCell.swift */; };
-		E40A18601FDC153000438C39 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40A185F1FDC153000438C39 /* ScheduleViewController.swift */; };
+		E40A18601FDC153000438C39 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40A185F1FDC153000438C39 /* ScheduleTableViewController.swift */; };
 		E4590DAD1FEA72EF0093A1E8 /* politics.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4590DAC1FEA72EE0093A1E8 /* politics.jpg */; };
 		E47387A31FC6020A006C744E /* study.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E473879D1FC60208006C744E /* study.jpg */; };
 		E47387A51FC6020A006C744E /* dance.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E473879F1FC60209006C744E /* dance.jpg */; };
@@ -112,7 +112,7 @@
 		A0840E1E8E30B9680F976F4B /* Pods-iOS09Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09Tests/Pods-iOS09Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D0E114A47D12043624DE1900 /* Pods-iOS09.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09/Pods-iOS09.release.xcconfig"; sourceTree = "<group>"; };
 		DE9979C51FFD22150037B979 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
-		E40A185F1FDC153000438C39 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		E40A185F1FDC153000438C39 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		E4590DAC1FEA72EE0093A1E8 /* politics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = politics.jpg; sourceTree = "<group>"; };
 		E473879D1FC60208006C744E /* study.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = study.jpg; sourceTree = "<group>"; };
 		E473879F1FC60209006C744E /* dance.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dance.jpg; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 				1C2B334B2008F1920007BF56 /* UserListViewController.swift */,
 				1C2B334F2008F4BD0007BF56 /* FriendViewController.swift */,
 				DE9979C51FFD22150037B979 /* ScheduleTableViewCell.swift */,
-				E40A185F1FDC153000438C39 /* ScheduleViewController.swift */,
+				E40A185F1FDC153000438C39 /* ScheduleTableViewController.swift */,
 				845A0ED21FCE667D0049288B /* Event.swift */,
 				845A0ED41FCE682D0049288B /* EventTableViewController.swift */,
 				847F2CC51FCE4A38001FD92D /* CreateEventViewController.swift */,
@@ -583,7 +583,7 @@
 				1C2B33542008F6260007BF56 /* RequestViewController.swift in Sources */,
 				845A0ED51FCE682D0049288B /* EventTableViewController.swift in Sources */,
 				1C2B334C2008F1920007BF56 /* UserListViewController.swift in Sources */,
-				E40A18601FDC153000438C39 /* ScheduleViewController.swift in Sources */,
+				E40A18601FDC153000438C39 /* ScheduleTableViewController.swift in Sources */,
 				84F7F54F1FB7DD1F00178737 /* ChangeProfileViewController.swift in Sources */,
 				84D12FBC1FC5E2B300FE3887 /* CategoryItemsManager.swift in Sources */,
 				84F7F5471FB7DA2400178737 /* SignUpViewController.swift in Sources */,

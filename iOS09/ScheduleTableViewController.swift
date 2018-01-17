@@ -17,6 +17,10 @@ class ScheduleTableViewController: UITableViewController {
     let storage = Storage.storage().reference()
     let uid = Auth.auth().currentUser?.uid
     
+    //Filemanager
+    let fileManager = FileManager.default
+    let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    
     var events = [Event]()
     var category: String?
     var name: String = ""
@@ -28,15 +32,14 @@ class ScheduleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        print("View Did Load - view: \(self.view)")
    
-    loadEvents(){ signedEvents in
+        loadEvents(){ signedEvents in
             if let savedEvents = signedEvents {
                 self.events = savedEvents
+                self.tableView.reloadData()
             }
-            
         }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,6 +54,7 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("events: \(events.count)")
         return events.count
     }
     
@@ -88,6 +92,7 @@ class ScheduleTableViewController: UITableViewController {
     private func loadEvents(completion: @escaping([Event]?) -> Void)  {
 
         var signedEvents = [Event]()
+        let imagePath = imageURL.path
         
         database.child("users").child(uid!).observeSingleEvent(of: .value, with: { snapshot in
             let value = snapshot.value as? NSDictionary
@@ -111,8 +116,7 @@ class ScheduleTableViewController: UITableViewController {
                         let eventLocation = value?["eventLocation"] as? String ?? ""
                         self.location = eventLocation
                         
-                        //Get picture
-                        let eventImage = value?["image"] as? String ?? ""
+                      /* let eventImage = value?["image"] as? String ?? ""
                         if (eventImage == "") {
                             self.image = UIImage(named: "LogoFoto")
                         } else {
@@ -126,12 +130,25 @@ class ScheduleTableViewController: UITableViewController {
                                     self.image = UIImage(named: "LogoFoto")
                                 }
                             }).resume()}
+                        */
                         
+                        //Get picture
+                        do {
+                            let files = try self.fileManager.contentsOfDirectory(atPath: "\(imagePath)")
+                            
+                            for file in files {
+                                let name = child.key
+                                if "\(imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(name).png").path {
+                                    self.image = UIImage(contentsOfFile: self.imageURL.appendingPathComponent("\(name).png").path)
+                                }
+                            }
+                        } catch {
+                            print("unable to add image from document directory")
+                        }
                         
                         let uff = Event(eventName: self.name, eventImage: self.image, eventKey: child.key, eventDate: self.date, eventLocation: self.location)
                         signedEvents.append(uff)
                         completion(signedEvents)
-                        self.tableView.reloadData()
                     }
                 }
             }
