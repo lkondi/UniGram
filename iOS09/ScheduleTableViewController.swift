@@ -146,8 +146,8 @@ class ScheduleTableViewController: UITableViewController {
                             print("unable to add image from document directory")
                         }
                         
-                        let uff = Event(eventName: self.name, eventImage: self.image, eventKey: child.key, eventDate: self.date, eventLocation: self.location)
-                        signedEvents.append(uff)
+                        let param = Event(eventName: self.name, eventImage: self.image, eventKey: child.key, eventDate: self.date, eventLocation: self.location)
+                        signedEvents.append(param)
                         completion(signedEvents)
                     }
                 }
