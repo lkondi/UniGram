@@ -40,7 +40,14 @@ class EventTableViewController: UITableViewController {
         loadEvents(){ arrayEvents in
             if let savedEvents = arrayEvents {
                 self.events = savedEvents
-                
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadEvents(){ arrayEvents in
+            if let savedEvents = arrayEvents {
+                self.events = savedEvents
             }
         }
     }

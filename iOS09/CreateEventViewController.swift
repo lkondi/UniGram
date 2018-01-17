@@ -18,6 +18,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     
     let storage = Storage.storage().reference()
     let database = Database.database().reference()
+    let uid = Auth.auth().currentUser?.uid
     
     let fileManager = FileManager.default
     let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -40,6 +41,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     
      //Outlets
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var eventDate: UITextField!
     @IBOutlet weak var eventName: UITextField!
     @IBOutlet weak var eventLocation: UITextField!
@@ -134,8 +136,9 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                     let value = child.key
                     if (value == self.eventKey) {
                         self.exist = true
-                        if self.exist && self.isCreator == false {
+                        if self.exist && !self.isCreator {
                             self.saveButton.setTitle("Sign Up", for: .normal)
+                            self.deleteButton.isHidden = true
                             self.eventName.isEnabled = false
                             self.eventDate.isEnabled = false
                             self.eventLocation.isEnabled = false
@@ -200,9 +203,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     
     //Save Event / Edit or Sign up if not Creator
     @IBAction func saveEvent(_ sender: Any) {
-        let uid = Auth.auth().currentUser?.uid
-        
-        if isCreator == true {
+        if isCreator {
             //Save new image
             if let image = myImage {
                 let imageName = NSUUID().uuidString
@@ -347,4 +348,16 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             }
         }
     }
+    
+    @IBAction func deleteEvent(_ sender: Any) {
+        createdEventsID = createdEventsID.filter {$0 != eventKey}
+        signUpEventsID = signUpEventsID.filter {$0 != eventKey}
+        
+        self.database.child("users").child(uid!).child("eventsAdmin").setValue(createdEventsID)
+        self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
+        self.database.child("events").child(eventKey).removeValue()
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
