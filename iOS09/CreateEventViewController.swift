@@ -271,7 +271,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             if signedUp == people! + 1 || isSignedUp {
                 saveButton.isEnabled = false
                 
-                let alertController = UIAlertController(title: "Number of people reached!", message: "No more people can sign up for this event!",  preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Error!", message: "You cannot sign up for this event!",  preferredStyle: .alert)
             
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)
