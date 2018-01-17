@@ -184,9 +184,35 @@ class EventTableViewController: UITableViewController {
                             let name = child.key
                             if "\(imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(name).png").path {
                                 self.image = UIImage(contentsOfFile: self.imageURL.appendingPathComponent("\(name).png").path)
+                            } else {
+                                self.image = UIImage(named: "LogoFoto")
                             }
                         }
-                    } catch {
+                    } catch {if let uploadData = UIImagePNGRepresentation(myImage!) {
+                        storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
+                            if error != nil {
+                                print(error!)
+                                return
+                            }
+                            storedImage.downloadURL(completion: {(url, error) in
+                                if error != nil {
+                                    print(error!)
+                                    return
+                                }
+                                if let urlText = url?.absoluteString {
+                                    self.eventUid?.child("image").setValue(urlText)
+                                }
+                            })
+                        })
+                        }
+                        
+                        //Save image locally
+                        if let image = myImage {
+                            if let data = UIImagePNGRepresentation(image) {
+                                let filename = imageURL.appendingPathComponent("\(eventKey).png")
+                                try? data.write(to: filename)
+                            }
+                        }
                         print("unable to add image from document directory")
                     }
                     
