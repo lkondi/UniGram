@@ -113,9 +113,9 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             let value = snapshot.value as? NSDictionary
             let array1 = value?["eventsAdmin"] as? NSArray ?? []
             for i in 0 ..< array1.count {
-                let uff = array1[i] as! String
-                self.createdEventsID.append(uff)
-                if (self.eventKey != "") {if (uff == self.eventKey) {
+                let eventAdmin = array1[i] as! String
+                self.createdEventsID.append(eventAdmin)
+                if (self.eventKey != "") {if (eventAdmin == self.eventKey) {
                     self.isCreator = true
                 }
               }
@@ -123,8 +123,8 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             
             let array2 = value?["signUpEvents"] as? NSArray ?? []
             for i in 0 ..< array2.count {
-                let uff = array2[i] as! String
-                self.signUpEventsID.append(uff)
+                let signUpEvent = array2[i] as! String
+                self.signUpEventsID.append(signUpEvent)
                 }
             }) { (error) in
             print(error.localizedDescription)
@@ -155,8 +155,8 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 let value = snapshot.value as? NSDictionary
                 let array1 = value?["signedUpUsers"] as? NSArray ?? []
                 for i in 0 ..< array1.count {
-                    let uff = array1[i] as! String
-                    self.signedUpUsersID.append(uff)
+                    let user = array1[i] as! String
+                    self.signedUpUsersID.append(user)
                 }
             }) { (error) in
                 print(error.localizedDescription)
@@ -226,25 +226,25 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                         })
                     })
                 }
-            }
-            
-            //Save image locally
-            do {
-                let files = try fileManager.contentsOfDirectory(atPath: "\(imagePath)")
                 
-                for file in files {
-                    let name = eventKey
-                    if "\(imagePath)/\(file)" == imageURL.appendingPathComponent("\(name).png").path {
-                        try fileManager.removeItem(atPath: imageURL.appendingPathComponent("\(name).png").path)
+                //Save image locally
+                do {
+                    let files = try fileManager.contentsOfDirectory(atPath: "\(imagePath)")
+                    
+                    for file in files {
+                        let name = eventKey
+                        if "\(imagePath)/\(file)" == imageURL.appendingPathComponent("\(name).png").path {
+                            try fileManager.removeItem(atPath: imageURL.appendingPathComponent("\(name).png").path)
+                        }
                     }
+                } catch {
+                    print("unable to add image from document directory")
                 }
-            } catch {
-                print("unable to add image from document directory")
-            }
-            
-            if let data = UIImagePNGRepresentation(myImage!) {
-                let filename = imageURL.appendingPathComponent("\(eventKey).png")
-                try? data.write(to: filename)
+                
+                if let data = UIImagePNGRepresentation(myImage!) {
+                    let filename = imageURL.appendingPathComponent("\(eventKey).png")
+                    try? data.write(to: filename)
+                }
             }
             
             //Update the database
@@ -322,12 +322,11 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                             })
                         })
                     }
-                }
-                
-                //Save image locally
-                if let data = UIImagePNGRepresentation(myImage!) {
-                    let filename = imageURL.appendingPathComponent("\(eventKey).png")
-                    try? data.write(to: filename)
+                    //Save image locally
+                    if let data = UIImagePNGRepresentation(myImage!) {
+                        let filename = imageURL.appendingPathComponent("\(eventKey).png")
+                        try? data.write(to: filename)
+                    }
                 }
                 
                 eventUid?.setValue(["eventName": self.eventName.text, "category": category, "eventDate": self.eventDate.text, "eventLocation": self.eventLocation.text, "numberOfPeople": self.numberPeople.text, "additionalInfo": self.additionalInfo.text, "admin": uid])
@@ -356,17 +355,20 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         
         createdEventsID = createdEventsID.filter {$0 != eventKey}
         signUpEventsID = signUpEventsID.filter {$0 != eventKey}
-        
+
         for i in 0..<signedUpUsersID.count {
             database.child("users").child(signedUpUsersID[i]).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
-                array = value?["signUpEvents"] as? Array ?? []
+                let arrayEvents = value?["signUpEvents"] as? Array ?? []
+                for i in 0 ..< arrayEvents.count {
+                    array.append(arrayEvents[i] as! String)
+                }
+                array = array.filter {$0 != self.eventKey}
+                self.database.child("users").child(self.signedUpUsersID[i]).child("signUpEvents").setValue(array)
+                array.removeAll()
             })
-            
-            array = array.filter {$0 != eventKey}
-            self.database.child("users").child(uid!).child("signUpEvents").setValue(array)
         }
-        
+    
         self.database.child("users").child(uid!).child("eventsAdmin").setValue(createdEventsID)
         self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
         self.database.child("events").child(eventKey).removeValue()
