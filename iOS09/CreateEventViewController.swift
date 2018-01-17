@@ -35,6 +35,8 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     var people: Int?
     var signedUp: Int = 0
     var category: String?
+    var mainEventTableVC: EventTableViewController?
+    
     
     
      //Outlets
@@ -201,7 +203,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     //Prepare for segues
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
         
@@ -231,7 +233,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
 
                 event = Event(eventName: name, eventImage: photo, eventKey: eventKey, eventDate: date, eventLocation: location)
             }
-        }
+        }*/
     
     
     //Save Event / Edit or Sign up if not Creator
@@ -315,6 +317,9 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             }
                 
             else {
+                eventUid = self.database.child("events").childByAutoId()
+                eventKey = (eventUid?.key)!
+                
                 let imageName = NSUUID().uuidString
                 let storedImage = self.storage.child("images").child(imageName)
                 
@@ -354,8 +359,14 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
                 self.database.child("events").child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
         
-                let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EventScreen")
-                self.present(vc, animated: true, completion: nil)
+                //let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EventScreen")
+                //self.present(vc, animated: true, completion: nil)
+                event = Event(eventName: self.eventName.text!, eventImage: myImage, eventKey: self.eventKey, eventDate: self.eventDate.text, eventLocation: self.eventLocation.text)
+                
+                if let delegateVC = self.mainEventTableVC {
+                    delegateVC.getDataFromEventDetail(event: event!)
+                }
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }

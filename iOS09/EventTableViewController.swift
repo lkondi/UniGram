@@ -39,6 +39,7 @@ class EventTableViewController: UITableViewController {
         loadEvents(){ arrayEvents in
             if let savedEvents = arrayEvents {
                 self.events = savedEvents
+                
             }
         }
     }
@@ -96,6 +97,7 @@ class EventTableViewController: UITableViewController {
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             eventDetailViewController.category = self.category
+            eventDetailViewController.mainEventTableVC = self
             
         case "BackToHomeScreen":
             os_log("Back.", log: OSLog.default, type: .debug)
@@ -122,7 +124,24 @@ class EventTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func unwindToEventList(sender: UIStoryboardSegue) {
+    
+    func getDataFromEventDetail (event: Event) {
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            // Update an existing event.
+            events[selectedIndexPath.row] = event
+            tableView.reloadRows(at: [selectedIndexPath], with: .none)
+        }
+        else {
+            // Add a new event.
+            let newIndexPath = IndexPath(row: events.count, section: 0)
+            
+            events.append(event)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
+    
+    
+   /* @IBAction func unwindToEventList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? CreateEventViewController, let event = sourceViewController.event {
             
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
@@ -138,7 +157,7 @@ class EventTableViewController: UITableViewController {
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
-    }
+    }*/
     
     private func loadEvents(completion: @escaping([Event]?) -> Void)  {
         var arrayEvents = [Event]()

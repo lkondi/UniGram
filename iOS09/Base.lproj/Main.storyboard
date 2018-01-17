@@ -455,7 +455,6 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveEvent:" destination="K74-j0-3AQ" eventType="touchUpInside" id="tDC-T2-Qh7"/>
-                                    <segue destination="kGh-Yk-Wxy" kind="unwind" unwindAction="unwindToEventListWithSender:" id="Ojv-90-dPd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -480,7 +479,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUR-SQ-Lgw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="kGh-Yk-Wxy" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="EXR-Or-mvk" userLabel="chooseImage">
                     <connections>
                         <action selector="chooseImage:" destination="K74-j0-3AQ" id="qPt-X7-Zz6"/>
