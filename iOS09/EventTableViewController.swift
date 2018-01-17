@@ -183,9 +183,8 @@ class EventTableViewController: UITableViewController {
                         for file in files {
                             let name = child.key
                             if "\(imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(name).png").path {
+                                print("hey")
                                 self.image = UIImage(contentsOfFile: self.imageURL.appendingPathComponent("\(name).png").path)
-                            } else {
-                                self.image = UIImage(named: "LogoFoto")
                             }
                         }
                     } catch {
