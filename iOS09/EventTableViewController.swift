@@ -173,9 +173,10 @@ class EventTableViewController: UITableViewController {
                         let files = try self.fileManager.contentsOfDirectory(atPath: "\(imagePath)")
                         
                         for file in files {
-                            let name = child.key
-                            if "\(imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(name).png").path {
-                                self.image = UIImage(contentsOfFile: self.imageURL.appendingPathComponent("\(name).png").path)
+                            let key = child.key
+                            if "\(imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(key).png").path {
+                                //print("image name is :\(self.name) and path is: \(imagePath)/\(file)")
+                                self.image = UIImage(contentsOfFile: self.imageURL.appendingPathComponent("\(key).png").path)
                             }
                         }
                     } catch {
