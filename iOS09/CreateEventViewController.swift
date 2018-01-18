@@ -369,6 +369,20 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 array.removeAll()
             })
         }
+        
+        //Delete pictures saved locally
+        do {
+            let files = try fileManager.contentsOfDirectory(atPath: "\(imagePath)")
+            
+            for file in files {
+                let name = eventKey
+                if "\(imagePath)/\(file)" == imageURL.appendingPathComponent("\(name).png").path {
+                    try fileManager.removeItem(atPath: imageURL.appendingPathComponent("\(name).png").path)
+                }
+            }
+        } catch {
+            print("unable to add image from document directory")
+        }
     
         self.database.child("users").child(uid!).child("eventsAdmin").setValue(createdEventsID)
         self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
