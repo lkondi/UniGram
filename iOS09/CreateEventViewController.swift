@@ -251,7 +251,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             self.database.child("events").child(eventKey).updateChildValues(["eventName": self.eventName.text ?? "", "category": category!, "eventDate": self.eventDate.text ?? "", "eventLocation": self.eventLocation.text ?? "", "numberOfPeople": self.numberPeople.text ?? "", "additionalInfo": self.additionalInfo.text ?? ""])
             
             //Show the updated event
-            self.event = Event(eventName: self.eventName.text!, eventImage: myImage, eventKey: self.eventKey, eventDate: self.eventDate.text, eventLocation: self.eventLocation.text)
+            self.event = Event(eventName: self.eventName.text!, eventImage: self.eventImage.image, eventKey: self.eventKey, eventDate: self.eventDate.text, eventLocation: self.eventLocation.text)
             
             if let delegateVC = self.mainEventTableVC {
 
@@ -339,7 +339,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
                 self.database.child("events").child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
                 
-                event = Event(eventName: self.eventName.text!, eventImage: myImage, eventKey: self.eventKey, eventDate: self.eventDate.text, eventLocation: self.eventLocation.text)
+                event = Event(eventName: self.eventName.text!, eventImage: self.eventImage.image, eventKey: self.eventKey, eventDate: self.eventDate.text, eventLocation: self.eventLocation.text)
                 
                 if let delegateVC = self.mainEventTableVC {
                     delegateVC.getDataFromEventDetail(event: event!)
