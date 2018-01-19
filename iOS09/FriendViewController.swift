@@ -16,6 +16,12 @@ class FriendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        //NavigationBar customization
+        let navigationTitleFont = UIFont(name: "AvenirNext-Regular", size: 18)!
+        self.navigationController?.navigationBar.tintColor = UIColor.white;
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: navigationTitleFont, NSAttributedStringKey.foregroundColor: UIColor.white]
+        
         FriendSystem.system.addFriendObserver {
             self.tableView.reloadData()
         }
@@ -42,7 +48,7 @@ extension FriendViewController: UITableViewDataSource {
         
         // Modify cell
         cell!.button.setTitle("Remove", for: UIControlState())
-        cell!.emailLabel.text = FriendSystem.system.friendList[indexPath.row].email
+        cell!.emailLabel.text = FriendSystem.system.friendList[indexPath.row].userName
         
         cell!.setFunction {
             let uid = FriendSystem.system.friendList[indexPath.row].uid

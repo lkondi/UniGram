@@ -51,6 +51,12 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        //NavigationBar customization
+        let navigationTitleFont = UIFont(name: "AvenirNext-Regular", size: 18)!
+        self.navigationController?.navigationBar.tintColor = UIColor.white;
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: navigationTitleFont, NSAttributedStringKey.foregroundColor: UIColor.white]
     
         eventName.delegate = self
         eventDate.delegate = self

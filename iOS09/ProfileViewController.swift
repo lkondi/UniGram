@@ -74,6 +74,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         imageView.layer.cornerRadius = imageView.frame.size.width/2
         imageView.clipsToBounds = true
+        
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        //NavigationBar customization
+        let navigationTitleFont = UIFont(name: "AvenirNext-Regular", size: 18)!
+        self.navigationController?.navigationBar.tintColor = UIColor.white;
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: navigationTitleFont, NSAttributedStringKey.foregroundColor: UIColor.white]
+        
         appearance()
         
     }

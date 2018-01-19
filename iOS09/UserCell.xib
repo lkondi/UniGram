@@ -10,8 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Book</string>
+        </array>
         <array key="AvenirNext.ttc">
-            <string>AvenirNext-Medium</string>
             <string>AvenirNext-Regular</string>
         </array>
     </customFonts>
@@ -25,21 +27,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="535" height="71.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GsY-BT-eGh">
-                        <rect key="frame" x="415" y="16" width="80" height="40"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GsY-BT-eGh" customClass="RoundedButton" customModule="iOS09" customModuleProvider="target">
+                        <rect key="frame" x="415" y="22" width="80" height="28"/>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="N6n-IN-1uz"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
-                        <state key="normal" title="Add">
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                        <state key="normal" title="Add" backgroundImage="button">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="buttonTapped:" destination="4fn-4T-5JP" eventType="touchUpInside" id="6Go-ok-zGy"/>
                         </connections>
@@ -65,4 +62,7 @@
             <point key="canvasLocation" x="315.5" y="383"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="button" width="60" height="20"/>
+    </resources>
 </document>
