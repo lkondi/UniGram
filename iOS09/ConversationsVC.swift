@@ -110,16 +110,6 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    /*func playSound()  {
-        var soundURL: NSURL?
-        var soundID:SystemSoundID = 0
-        let filePath = Bundle.main.path(forResource: "newMessage", ofType: "wav")
-        soundURL = NSURL(fileURLWithPath: filePath!)
-        AudioServicesCreateSystemSoundID(soundURL!, &soundID)
-        AudioServicesPlaySystemSound(soundID)
-    }*/
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segue" {
             let vc = segue.destination as! ChatVC
