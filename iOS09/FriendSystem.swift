@@ -64,61 +64,6 @@ class FriendSystem {
         })
     }
     
-    
-    
-    // MARK: - Account Related
-    
-    /**
-     Creates a new user account with the specified email and password
-     - parameter completion: What to do when the block has finished running. The success variable
-     indicates whether or not the signup was a success*/
- 
-    func createAccount(_ email: String, password: String, name: String, completion: @escaping (_ success: Bool) -> Void) {
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-            
-            if (error == nil) {
-                // Success
-                var userInfo = [String: AnyObject]()
-                userInfo = ["email": email as AnyObject, "name": name as AnyObject]
-                self.CURRENT_USER_REF.setValue(userInfo)
-                completion(true)
-            } else {
-                // Failure
-                completion(false)
-            }
-            
-        })
-    }
-    
-    /**
-     Logs in an account with the specified email and password
-     
-     - parameter completion: What to do when the block has finished running. The success variable
-     indicates whether or not the login was a success*/
- 
-    func loginAccount(_ email: String, password: String, completion: @escaping (_ success: Bool) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-            
-            if (error == nil) {
-                // Success
-                completion(true)
-            } else {
-                // Failure
-                completion(false)
-                print(error!)
-            }
-            
-        })
-    }
-    
-    /** Logs out an account*/
-    func logoutAccount() {
-        try! Auth.auth().signOut()
-    }
-    
-    
-    // MARK: - Request System Functions
-    
     /** Sends a friend request to the user with the specified id */
     func sendRequestToUser(_ userID: String) {
         USER_REF.child(userID).child("requests").child(CURRENT_USER_ID).setValue(true)
