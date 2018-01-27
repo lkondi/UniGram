@@ -14,7 +14,6 @@ class ScheduleTableViewController: UITableViewController {
         
     //MARK: Properties
     let database = Database.database().reference()
-    let storage = Storage.storage().reference()
     let uid = Auth.auth().currentUser?.uid
     
     //Filemanager

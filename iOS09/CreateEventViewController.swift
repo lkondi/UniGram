@@ -9,14 +9,10 @@
 import Foundation
 import UIKit
 import Firebase
-import FirebaseAuth
-import FirebaseDatabase
-import FirebaseStorage
 import os.log
 
 class CreateEventViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
-    let storage = Storage.storage().reference()
     let database = Database.database().reference()
     let uid = Auth.auth().currentUser?.uid
     

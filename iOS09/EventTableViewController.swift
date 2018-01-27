@@ -14,8 +14,6 @@ class EventTableViewController: UITableViewController {
     
     //MARK: Properties
     let database = Database.database().reference()
-    let storage = Storage.storage().reference()
-    
     
     let fileManager = FileManager.default
     let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
