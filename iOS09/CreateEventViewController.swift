@@ -37,7 +37,6 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     var signedUp: Int = 0
     var category: String?
     var mainEventTableVC: EventTableViewController?
-    var myImage: UIImage?
     
      //Outlets
     @IBOutlet weak var saveButton: UIButton!
@@ -165,8 +164,22 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
             
         }
-        myImage = selectedImage
+        self.eventImage.image = selectedImage
         eventImage.image = selectedImage
+        
+        do {
+            let files = try fileManager.contentsOfDirectory(atPath: "\(imagePath)")
+            
+            for file in files {
+                let name = eventKey
+                if "\(imagePath)/\(file)" == imageURL.appendingPathComponent("\(name).png").path {
+                    try fileManager.removeItem(atPath: imageURL.appendingPathComponent("\(name).png").path)
+                }
+            }
+        } catch {
+            print("unable to delete image from document directory")
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -190,46 +203,11 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func saveEvent(_ sender: Any) {
         if isCreator {
             //Save new image
-            if let image = myImage {
-                let imageName = NSUUID().uuidString
-                let storedImage = self.storage.child("images").child(imageName)
-                
-                if let uploadData = UIImagePNGRepresentation(image) {
-                    storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
-                        if error != nil {
-                            print(error!)
-                            return
-                        }
-                        storedImage.downloadURL(completion: {(url, error) in
-                            if error != nil {
-                                print(error!)
-                                return
-                            }
-                            if let urlText = url?.absoluteString {
-                                self.database.child("events").child(self.eventKey).child("image").setValue(urlText)
-                            }
-                        })
-                    })
+            if let image = eventImage.image {
+                if let data = UIImagePNGRepresentation(image) {
+                    let filename = imageURL.appendingPathComponent("\(eventKey).png")
+                    try? data.write(to: filename)
                 }
-            }
-            
-            //Save image locally
-            do {
-                let files = try fileManager.contentsOfDirectory(atPath: "\(imagePath)")
-                
-                for file in files {
-                    let name = eventKey
-                    if "\(imagePath)/\(file)" == imageURL.appendingPathComponent("\(name).png").path {
-                        try fileManager.removeItem(atPath: imageURL.appendingPathComponent("\(name).png").path)
-                    }
-                }
-            } catch {
-                print("unable to add image from document directory")
-            }
-            
-            if let data = UIImagePNGRepresentation(self.eventImage.image!) {
-                let filename = imageURL.appendingPathComponent("\(eventKey).png")
-                try? data.write(to: filename)
             }
             
             //Update the database
@@ -286,30 +264,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 eventUid = self.database.child("events").childByAutoId()
                 eventKey = (eventUid?.key)!
                 
-                if let image = myImage {
-                    let imageName = NSUUID().uuidString
-                    let storedImage = self.storage.child("images").child(imageName)
-                    
-                    if let uploadData = UIImagePNGRepresentation(image) {
-                        storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
-                            if error != nil {
-                                print(error!)
-                                return
-                            }
-                            storedImage.downloadURL(completion: {(url, error) in
-                                if error != nil {
-                                    print(error!)
-                                    return
-                                }
-                                if let urlText = url?.absoluteString {
-                                    self.eventUid?.child("image").setValue(urlText)
-                                }
-                            })
-                        })
-                    }
-                }
-                
-                //Save image locally
+                //Save image
                 if let data = UIImagePNGRepresentation(self.eventImage.image!) {
                     let filename = imageURL.appendingPathComponent("\(eventKey).png")
                     try? data.write(to: filename)
@@ -341,7 +296,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         
         createdEventsID = createdEventsID.filter {$0 != eventKey}
         signUpEventsID = signUpEventsID.filter {$0 != eventKey}
-
+        
         for i in 0..<signedUpUsersID.count {
             database.child("users").child(signedUpUsersID[i]).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
@@ -366,14 +321,13 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 }
             }
         } catch {
-            print("unable to add image from document directory")
+            print("unable to delete image from document directory")
         }
-    
+        
         self.database.child("users").child(uid!).child("eventsAdmin").setValue(createdEventsID)
         self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
         self.database.child("events").child(eventKey).removeValue()
         
         self.navigationController?.popViewController(animated: true)
     }
-    
 }

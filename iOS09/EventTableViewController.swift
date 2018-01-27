@@ -133,7 +133,6 @@ class EventTableViewController: UITableViewController {
             let selectedEvent = events[indexPath.row]
             eventDetailViewController.event = selectedEvent
             eventDetailViewController.category = self.category
-            eventDetailViewController.myImage = selectedEvent.eventImage
             self.selectIndexPath = indexPath
             eventDetailViewController.mainEventTableVC = self
             

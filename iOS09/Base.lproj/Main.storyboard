@@ -226,7 +226,7 @@
                                 <rect key="frame" x="33" y="270" width="29" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="gnj-PM-g8O">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Email" translatesAutoresizingMaskIntoConstraints="NO" id="gnj-PM-g8O">
                                 <rect key="frame" x="34" y="222" width="29" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -643,8 +643,8 @@
                                 <rect key="frame" x="54" y="364" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="tzK-0n-rHt">
-                                <rect key="frame" x="58" y="413" width="24" height="24"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Email" translatesAutoresizingMaskIntoConstraints="NO" id="tzK-0n-rHt">
+                                <rect key="frame" x="57" y="413" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Phone" translatesAutoresizingMaskIntoConstraints="NO" id="FYA-AU-xWS">
@@ -1894,6 +1894,7 @@
     </scenes>
     <resources>
         <image name="Add" width="42" height="42"/>
+        <image name="Email" width="24" height="24"/>
         <image name="Home" width="38" height="36"/>
         <image name="LogoFoto" width="300" height="300"/>
         <image name="People" width="42" height="42"/>
@@ -1906,7 +1907,6 @@
         <image name="chat" width="30" height="30"/>
         <image name="close" width="25" height="25"/>
         <image name="create_new" width="30" height="30"/>
-        <image name="email" width="24" height="24"/>
         <image name="empty" width="375" height="602"/>
         <image name="key" width="224" height="256"/>
         <image name="more" width="32" height="25"/>

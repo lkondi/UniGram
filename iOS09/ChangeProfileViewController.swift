@@ -16,6 +16,7 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
     
     let storage = Storage.storage().reference()
     let database = Database.database().reference()
+    let uid = Auth.auth().currentUser?.uid
     
     let fileManager = FileManager.default
     let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -28,8 +29,6 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    
-    var myImage: UIImage?
     
     func appearance() {
         
@@ -103,8 +102,21 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
             
         }
-        myImage = selectedImage
+        self.photoImageView.image = selectedImage
         photoImageView.image = selectedImage
+        
+        do {
+            let files = try fileManager.contentsOfDirectory(atPath: "\(imagePath)")
+            
+            for file in files {
+                if "\(imagePath)/\(file)" == imageURL.appendingPathComponent("\(uid!).png").path {
+                    try fileManager.removeItem(atPath: imageURL.appendingPathComponent("\(uid!).png").path)
+                }
+            }
+        } catch {
+            print("unable to delete image from document directory")
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -119,41 +131,6 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
     //Save Profile Picture Change
     
     @IBAction func saveChanges(_ sender: Any) {
-        
-        let uid = Auth.auth().currentUser?.uid
-        
-        let imageName = NSUUID().uuidString
-        let storedImage = self.storage.child("picture").child(imageName)
-        
-        if let uploadData = UIImagePNGRepresentation(myImage!) {
-            storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
-                if error != nil {
-                    print(error!)
-                    return
-                }
-                storedImage.downloadURL(completion: {(url, error) in
-                    if error != nil {
-                        print(error!)
-                        return
-                    }
-                    if let urlText = url?.absoluteString {
-                        self.database.child("users").child(uid!).child("picture").setValue(urlText)
-                    }
-                })
-            })
-        }
-        
-        do {
-            let files = try fileManager.contentsOfDirectory(atPath: "\(imagePath)")
-            
-            for file in files {
-                if "\(imagePath)/\(file)" == imageURL.appendingPathComponent("\(uid!).png").path {
-                    try fileManager.removeItem(atPath: imageURL.appendingPathComponent("\(uid!).png").path)
-                }
-            }
-        } catch {
-            print("unable to add image from document directory")
-        }
         
         if let data = UIImagePNGRepresentation(self.photoImageView.image!) {
             let filename = imageURL.appendingPathComponent("\(uid!).png")
