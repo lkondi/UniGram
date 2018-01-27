@@ -82,6 +82,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        appearance()
+    }
+    
     //Delete Action
     @IBAction func deleteAccountAction(_ sender: Any) {
         let alertController = UIAlertController(title: "Delete Account", message: "Are you sure?", preferredStyle: .alert)

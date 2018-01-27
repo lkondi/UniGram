@@ -187,8 +187,7 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
             
         }
         
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ProfileScreen")
-        present(vc, animated: true, completion: nil)
+       self.navigationController?.popViewController(animated: true)
         
     }
 }
