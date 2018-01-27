@@ -17,6 +17,10 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
     let storage = Storage.storage().reference()
     let database = Database.database().reference()
     
+    let fileManager = FileManager.default
+    let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let imagePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path
+    
     //Outlets
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var profileNameTextField: UITextField!
@@ -43,27 +47,19 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
             //Get Subject
             let phone = value?["phone"] as? String ?? ""
             self.phoneNumberTextField.text = phone
+        })
+        
+        //Get picture
+        do {
+            let files = try self.fileManager.contentsOfDirectory(atPath: "\(imagePath)")
             
-            //Get picture
-            let value_picture = value?["picture"] as? String ?? ""
-            if (value_picture != "") {
-                let url = URL(string: value_picture)
-                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                    if error != nil {
-                        print (error!)
-                        return
-                    }
-                    self.myImage = UIImage(data: data!)
-                    DispatchQueue.main.async {
-                        self.photoImageView.image = self.myImage
-                    }
-                }).resume()
-            } else {
-                print("error change profile")
-                self.photoImageView.image = UIImage(named: "Profile")
+            for file in files {
+                if "\(imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(uid!).png").path {
+                    self.photoImageView.image = UIImage(contentsOfFile: self.imageURL.appendingPathComponent("\(uid!).png").path)
+                }
             }
-        }) { (error) in
-            print(error.localizedDescription)
+        } catch {
+            print("unable to add image from document directory")
         }
     }
     
@@ -145,6 +141,23 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
                     }
                 })
             })
+        }
+        
+        do {
+            let files = try fileManager.contentsOfDirectory(atPath: "\(imagePath)")
+            
+            for file in files {
+                if "\(imagePath)/\(file)" == imageURL.appendingPathComponent("\(uid!).png").path {
+                    try fileManager.removeItem(atPath: imageURL.appendingPathComponent("\(uid!).png").path)
+                }
+            }
+        } catch {
+            print("unable to add image from document directory")
+        }
+        
+        if let data = UIImagePNGRepresentation(self.photoImageView.image!) {
+            let filename = imageURL.appendingPathComponent("\(uid!).png")
+            try? data.write(to: filename)
         }
         
         self.database.child("users").child(uid!).child("username").setValue(self.profileNameTextField.text)

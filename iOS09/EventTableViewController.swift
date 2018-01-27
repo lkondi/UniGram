@@ -133,6 +133,7 @@ class EventTableViewController: UITableViewController {
             let selectedEvent = events[indexPath.row]
             eventDetailViewController.event = selectedEvent
             eventDetailViewController.category = self.category
+            eventDetailViewController.myImage = selectedEvent.eventImage
             self.selectIndexPath = indexPath
             eventDetailViewController.mainEventTableVC = self
             
@@ -181,7 +182,6 @@ class EventTableViewController: UITableViewController {
                         for file in files {
                             let key = child.key
                             if "\(imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(key).png").path {
-                                //print("image name is :\(self.name) and path is: \(imagePath)/\(file)")
                                 self.image = UIImage(contentsOfFile: self.imageURL.appendingPathComponent("\(key).png").path)
                             }
                         }

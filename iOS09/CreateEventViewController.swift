@@ -88,28 +88,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 
                 let signedUp = value?["signedUpUsers"] as? NSArray ?? []
                 self.signedUp = signedUp.count
-                
-                //Get picture
-                let value_picture = value?["image"] as? String ?? ""
-                if (value_picture != "") {
-                    let url = URL(string: value_picture)
-                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                        if error != nil {
-                            print (error!)
-                            return
-                        }
-                        self.myImage = UIImage(data: data!)
-                        DispatchQueue.main.async {
-                            self.eventImage.image = self.myImage
-                        }
-                    }).resume()
-                } else {
-                    print("error show event image")
-                    self.eventImage.image = UIImage(named: "LogoFoto")
-                }
-            }) { (error) in
-                print(error.localizedDescription)
-            }
+            })
 
         }
         

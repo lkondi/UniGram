@@ -18,6 +18,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     let storage = Storage.storage().reference()
     let database = Database.database().reference()
     
+    let fileManager = FileManager.default
+    let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let imagePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path
+    
     //Outlets
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var emailAddress: UILabel!
@@ -46,26 +50,19 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             //Get Subject
             let phone = value?["phone"] as? String ?? ""
             self.phoneNumber.text = phone
+            })
+        
+        //Get picture
+        do {
+            let files = try self.fileManager.contentsOfDirectory(atPath: "\(imagePath)")
             
-            //Get picture
-            let value_picture = value?["picture"] as? String ?? ""
-            if (value_picture != "") {
-            let url = URL(string: value_picture)
-            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                if error != nil {
-                    print (error!)
-                    return
+            for file in files {
+                if "\(imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(uid!).png").path {
+                    self.imageView.image = UIImage(contentsOfFile: self.imageURL.appendingPathComponent("\(uid!).png").path)
                 }
-                DispatchQueue.main.async {
-                    self.imageView.image = UIImage(data: data!)
-                }
-            }).resume()
-            } else {
-                print("error profile")
-                self.imageView.image = UIImage(named: "Profile")
             }
-            }) { (error) in
-            print(error.localizedDescription)
+        } catch {
+            print("unable to add image from document directory")
         }
     }
     
