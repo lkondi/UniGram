@@ -42,6 +42,14 @@ class SignUpViewController: UIViewController {
             present(alertController, animated: true, completion: nil)
             
         }
+        if !isCampusEmail(testStr: emailTextField.text!) {
+            let alertController = UIAlertController(title: "Error", message: "Please provide a campus email address!", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }
         else {
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 
@@ -68,7 +76,11 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    func isCampusEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@campus.lmu.de"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
     
 }
-
-

@@ -13,8 +13,7 @@ import FirebaseAuth
 class FriendSystem {
     
     static let system = FriendSystem()
-    
-    // MARK: - Firebase references
+
     /** The base Firebase reference */
     let BASE_REF = Database.database().reference()
     /* The user Firebase reference */
@@ -42,8 +41,6 @@ class FriendSystem {
         return id
     }
     
-    
-    /** Gets the current User object for the specified user id */
     func getCurrentUser(_ completion: @escaping (User) -> Void) {
         CURRENT_USER_REF.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             let email = snapshot.childSnapshot(forPath: "email").value as! String
@@ -53,7 +50,7 @@ class FriendSystem {
             completion(User(uid: id, userName: username, email: email, password: password))
         })
     }
-    /** Gets the User object for the specified user id */
+    
     func getUser(_ userID: String, completion: @escaping (User) -> Void) {
         USER_REF.child(userID).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             let email = snapshot.childSnapshot(forPath: "email").value as! String
@@ -64,18 +61,15 @@ class FriendSystem {
         })
     }
     
-    /** Sends a friend request to the user with the specified id */
     func sendRequestToUser(_ userID: String) {
         USER_REF.child(userID).child("requests").child(CURRENT_USER_ID).setValue(true)
     }
     
-    /** Unfriends the user with the specified id */
     func removeFriend(_ userID: String) {
         CURRENT_USER_REF.child("friends").child(userID).removeValue()
         USER_REF.child(userID).child("friends").child(CURRENT_USER_ID).removeValue()
     }
     
-    /** Accepts a friend request from the user with the specified id */
     func acceptFriendRequest(_ userID: String) {
         CURRENT_USER_REF.child("requests").child(userID).removeValue()
         CURRENT_USER_REF.child("friends").child(userID).setValue(true)
@@ -84,12 +78,9 @@ class FriendSystem {
     }
     
     
-    
-    // MARK: - All users
-    /** The list of all users */
     var userList = [User]()
-    /** Adds a user observer. The completion function will run every time this list changes, allowing you
-     to update your UI. */
+    
+    /** User observer. */
     func addUserObserver(_ update: @escaping () -> Void) {
         FriendSystem.system.USER_REF.observe(DataEventType.value, with: { (snapshot) in
             self.userList.removeAll()
@@ -104,18 +95,14 @@ class FriendSystem {
             update()
         })
     }
-    /** Removes the user observer. This should be done when leaving the view that uses the observer. */
     func removeUserObserver() {
         USER_REF.removeAllObservers()
     }
     
     
-    
-    // MARK: - All friends
-    /** The list of all friends of the current user. */
     var friendList = [User]()
-    /** Adds a friend observer. The completion function will run every time this list changes, allowing you
-     to update your UI. */
+    
+    /** Friend observer. */
     func addFriendObserver(_ update: @escaping () -> Void) {
         CURRENT_USER_FRIENDS_REF.observe(DataEventType.value, with: { (snapshot) in
             self.friendList.removeAll()
@@ -126,24 +113,19 @@ class FriendSystem {
                     update()
                 })
             }
-            // If there are no children, run completion here instead
             if snapshot.childrenCount == 0 {
                 update()
             }
         })
     }
-    /** Removes the friend observer. This should be done when leaving the view that uses the observer. */
     func removeFriendObserver() {
         CURRENT_USER_FRIENDS_REF.removeAllObservers()
     }
     
     
-    
-    // MARK: - All requests
-    /** The list of all friend requests the current user has. */
     var requestList = [User]()
-    /** Adds a friend request observer. The completion function will run every time this list changes, allowing you
-     to update your UI. */
+    
+    /** Friend request observer. */
     func addRequestObserver(_ update: @escaping () -> Void) {
         CURRENT_USER_REQUESTS_REF.observe(DataEventType.value, with: { (snapshot) in
             self.requestList.removeAll()
@@ -154,19 +136,13 @@ class FriendSystem {
                     update()
                 })
             }
-            // If there are no children, run completion here instead
             if snapshot.childrenCount == 0 {
                 update()
             }
         })
     }
-    /** Removes the friend request observer. This should be done when leaving the view that uses the observer. */
     func removeRequestObserver() {
         CURRENT_USER_REQUESTS_REF.removeAllObservers()
     }
     
 }
-
-
-
-

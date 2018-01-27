@@ -23,4 +23,3 @@ class CategoryItemTableViewCell: UITableViewCell {
     }
     
 }
-

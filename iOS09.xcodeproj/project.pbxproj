@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1C2B33482008E93E0007BF56 /* FriendSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B33472008E93E0007BF56 /* FriendSystem.swift */; };
-		1C2B334A2008F16E0007BF56 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B33492008F16E0007BF56 /* Error.swift */; };
 		1C2B334C2008F1920007BF56 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B334B2008F1920007BF56 /* UserListViewController.swift */; };
 		1C2B334E2008F39D0007BF56 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B334D2008F39D0007BF56 /* UserCell.swift */; };
 		1C2B33502008F4BD0007BF56 /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2B334F2008F4BD0007BF56 /* FriendViewController.swift */; };
@@ -77,7 +76,6 @@
 /* Begin PBXFileReference section */
 		1001E92D9387B14EA9BEF342 /* Pods-iOS09UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS09UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS09UITests/Pods-iOS09UITests.release.xcconfig"; sourceTree = "<group>"; };
 		1C2B33472008E93E0007BF56 /* FriendSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSystem.swift; sourceTree = "<group>"; };
-		1C2B33492008F16E0007BF56 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		1C2B334B2008F1920007BF56 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		1C2B334D2008F39D0007BF56 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		1C2B334F2008F4BD0007BF56 /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 				1C2B33512008F57C0007BF56 /* UserCell.xib */,
 				1C2B33532008F6260007BF56 /* RequestViewController.swift */,
 				1C2B334D2008F39D0007BF56 /* UserCell.swift */,
-				1C2B33492008F16E0007BF56 /* Error.swift */,
 				1C2B334B2008F1920007BF56 /* UserListViewController.swift */,
 				1C2B334F2008F4BD0007BF56 /* FriendViewController.swift */,
 				DE9979C51FFD22150037B979 /* ScheduleTableViewCell.swift */,
@@ -599,7 +596,6 @@
 				1CCA0AC0201217130085A6CC /* Message.swift in Sources */,
 				84F7F5161FB7D7E000178737 /* AppDelegate.swift in Sources */,
 				847F2CC41FCE3B08001FD92D /* ProfileViewController.swift in Sources */,
-				1C2B334A2008F16E0007BF56 /* Error.swift in Sources */,
 				1CCA0AC6201217CB0085A6CC /* NavVC.swift in Sources */,
 				DE9979C61FFD22150037B979 /* ScheduleTableViewCell.swift in Sources */,
 				1CCA0AC2201217490085A6CC /* Conversation.swift in Sources */,
