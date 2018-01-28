@@ -121,23 +121,6 @@ class ScheduleTableViewController: UITableViewController {
                         //get location
                         let eventLocation = value?["eventLocation"] as? String ?? ""
                         self.location = eventLocation
-                        
-                      /* let eventImage = value?["image"] as? String ?? ""
-                        if (eventImage == "") {
-                            self.image = UIImage(named: "LogoFoto")
-                        } else {
-                            let url = URL(string: eventImage)
-                            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                                if error != nil {
-                                    print (error!)
-                                    return
-                                }
-                                DispatchQueue.main.async {
-                                    self.image = UIImage(named: "LogoFoto")
-                                }
-                            }).resume()}
-                        */
-                        
                         //Get picture
                         do {
                             let files = try self.fileManager.contentsOfDirectory(atPath: "\(imagePath)")
