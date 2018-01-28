@@ -99,6 +99,26 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                         self.myImage = UIImage(data: data!)
                         DispatchQueue.main.async {
                             self.eventImage.image = self.myImage
+                            
+                            //Delete if image exists
+                            do {
+                                let files = try self.fileManager.contentsOfDirectory(atPath: "\(self.imagePath)")
+                                
+                                for file in files {
+                                    let name = snapshot.key
+                                    if "\(self.imagePath)/\(file)" != self.imageURL.appendingPathComponent("\(name).png").path {
+                                        try self.fileManager.removeItem(atPath: self.imageURL.appendingPathComponent("\(name).png").path)
+                                    }
+                                }
+                            } catch {
+                                print("unable to delete image from document directory")
+                            }
+                        
+                            //Save new image locally
+                            if let data = UIImagePNGRepresentation(self.eventImage.image!) {
+                                let filename = self.imageURL.appendingPathComponent("\(snapshot.key).png")
+                                try? data.write(to: filename)
+                            }
                         }
                     }).resume()
                 } else {
