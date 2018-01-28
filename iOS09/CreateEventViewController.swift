@@ -66,7 +66,6 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         if let event = event {
             navigationItem.title = event.eventName
             eventName.text = event.eventName
-            eventImage.image = event.eventImage
             
             eventKey = event.eventKey
             database.child("events").child(eventKey).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -89,7 +88,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.signedUp = signedUp.count
                 
                 //Get picture
-                let value_picture = value?["picture"] as? String ?? ""
+                let value_picture = value?["image"] as? String ?? ""
                 if (value_picture != "") {
                     let url = URL(string: value_picture)
                     URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
@@ -103,7 +102,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                         }
                     }).resume()
                 } else {
-                    print("error change profile")}
+                    print("error change image")}
                 }) { (error) in
                     print(error.localizedDescription)
                 }
@@ -184,6 +183,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             
         }
         self.eventImage.image = selectedImage
+        myImage = selectedImage
         
         do {
             let files = try fileManager.contentsOfDirectory(atPath: "\(imagePath)")
@@ -221,7 +221,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func saveEvent(_ sender: Any) {
         if isCreator {
             //Save new image
-            if let image = self.eventImage.image {
+            if let image = myImage {
                 storage.child("images").child(eventKey).delete()
                 let storedImage = self.storage.child("images").child(eventKey)
                 
@@ -258,7 +258,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             self.event = Event(eventName: self.eventName.text!, eventImage: self.eventImage.image, eventKey: self.eventKey, eventDate: self.eventDate.text, eventLocation: self.eventLocation.text)
             
             if let delegateVC = self.mainEventTableVC {
-
+                
                 delegateVC.getDataFromEventDetail(event: event!)
             }
             self.navigationController?.popViewController(animated: true)
