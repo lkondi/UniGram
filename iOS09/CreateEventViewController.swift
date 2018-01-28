@@ -6,6 +6,7 @@
 //  Copyright © 2017 admin. All rights reserved.
 //
 
+
 import Foundation
 import UIKit
 import Firebase
@@ -38,7 +39,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     var category: String?
     var mainEventTableVC: EventTableViewController?
     
-     //Outlets
+    //Outlets
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var eventDate: UITextField!
@@ -47,7 +48,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var numberPeople: UITextField!
     @IBOutlet weak var additionalInfo: UITextField!
     @IBOutlet weak var eventImage: UIImageView!
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,7 +57,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         let navigationTitleFont = UIFont(name: "AvenirNext-Regular", size: 18)!
         self.navigationController?.navigationBar.tintColor = UIColor.white;
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: navigationTitleFont, NSAttributedStringKey.foregroundColor: UIColor.white]
-    
+        
         eventName.delegate = self
         eventDate.delegate = self
         eventLocation.delegate = self
@@ -106,27 +107,29 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                                 
                                 for file in files {
                                     let name = snapshot.key
-                                    if "\(self.imagePath)/\(file)" != self.imageURL.appendingPathComponent("\(name).png").path {
+                                    if "\(self.imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(name).png").path {
                                         try self.fileManager.removeItem(atPath: self.imageURL.appendingPathComponent("\(name).png").path)
                                     }
                                 }
                             } catch {
                                 print("unable to delete image from document directory")
                             }
-                        
+                            
                             //Save new image locally
-                            if let data = UIImagePNGRepresentation(self.eventImage.image!) {
-                                let filename = self.imageURL.appendingPathComponent("\(snapshot.key).png")
-                                try? data.write(to: filename)
+                            if let img = self.eventImage.image {
+                                if let data = UIImagePNGRepresentation(img) {
+                                    let filename = self.imageURL.appendingPathComponent("\(snapshot.key).png")
+                                    try? data.write(to: filename)
+                                }
                             }
                         }
                     }).resume()
                 } else {
                     print("error change image")}
-                }) { (error) in
-                    print(error.localizedDescription)
-                }
-
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
         }
         
         let uid = Auth.auth().currentUser?.uid
@@ -139,16 +142,16 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.createdEventsID.append(eventAdmin)
                 if (self.eventKey != "") {if (eventAdmin == self.eventKey) {
                     self.isCreator = true
+                    }
                 }
-              }
             }
             
             let array2 = value?["signUpEvents"] as? NSArray ?? []
             for i in 0 ..< array2.count {
                 let signUpEvent = array2[i] as! String
                 self.signUpEventsID.append(signUpEvent)
-                }
-            }) { (error) in
+            }
+        }) { (error) in
             print(error.localizedDescription)
         }
         
@@ -283,7 +286,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             }
             self.navigationController?.popViewController(animated: true)
             
-            } else if exist && !isCreator {
+        } else if exist && !isCreator {
             for i in 0 ..< signedUpUsersID.count {
                 let userCount = signedUpUsersID[i]
                 if (uid! == userCount) {
@@ -296,10 +299,10 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 saveButton.isEnabled = false
                 
                 let alertController = UIAlertController(title: "Error!", message: "You cannot sign up for this event!",  preferredStyle: .alert)
-            
+                
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)
-            
+                
                 self.present(alertController, animated: true, completion: nil)
             } else {
                 signUpEventsID.append(eventKey)
@@ -308,15 +311,15 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 self.database.child("events").child(eventKey).child("signedUpUsers").setValue(signedUpUsersID)
                 
                 self.navigationController?.popViewController(animated: true)
-                }
-            } else {
+            }
+        } else {
             //Check if the fields are empty or not
             if eventName.text! == "" || eventLocation.text! == "" || additionalInfo.text! == "" || numberPeople.text! == "" || eventDate.text == "" || Int(numberPeople.text!) == nil {
                 let alertController = UIAlertController(title: "Error", message: "Please fill in the text fields",  preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)
-            
+                
                 self.present(alertController, animated: true, completion: nil)
                 
             }
@@ -355,7 +358,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 }
                 
                 eventUid?.setValue(["eventName": self.eventName.text, "category": category, "eventDate": self.eventDate.text, "eventLocation": self.eventLocation.text, "numberOfPeople": self.numberPeople.text, "additionalInfo": self.additionalInfo.text, "admin": uid])
-        
+                
                 //Save created events for the user
                 createdEventsID.append(eventKey)
                 signedUpUsersID.append(uid!)
@@ -369,7 +372,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 if let delegateVC = self.mainEventTableVC {
                     delegateVC.getDataFromEventDetail(event: event!)
                 }
-               
+                
                 self.navigationController?.popViewController(animated: true)
             }
         }
@@ -416,3 +419,4 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         self.navigationController?.popViewController(animated: true)
     }
 }
+

@@ -9,6 +9,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
@@ -16,10 +17,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     let storage = Storage.storage().reference()
     let database = Database.database().reference()
-    
-    let fileManager = FileManager.default
-    let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    let imagePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path
     
     //Outlets
     @IBOutlet weak var profileName: UILabel!
@@ -49,19 +46,26 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             //Get Subject
             let phone = value?["phone"] as? String ?? ""
             self.phoneNumber.text = phone
-            })
-        
-        //Get picture
-        do {
-            let files = try self.fileManager.contentsOfDirectory(atPath: "\(imagePath)")
             
-            for file in files {
-                if "\(imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(uid!).png").path {
-                    self.imageView.image = UIImage(contentsOfFile: self.imageURL.appendingPathComponent("\(uid!).png").path)
+            //Get picture
+            let value_picture = value?["picture"] as? String ?? ""
+            if (value_picture != "") {
+            let url = URL(string: value_picture)
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print (error!)
+                    return
                 }
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: data!)
+                }
+            }).resume()
+            } else {
+                print("error profile")
+                self.imageView.image = UIImage(named: "Profile")
             }
-        } catch {
-            print("unable to add image from document directory")
+            }) { (error) in
+            print(error.localizedDescription)
         }
     }
     
@@ -79,10 +83,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
         appearance()
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        appearance()
     }
     
     //Delete Action

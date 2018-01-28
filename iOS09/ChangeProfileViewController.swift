@@ -8,18 +8,14 @@
 
 import UIKit
 import Firebase
-import FirebaseStorage
+import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 class ChangeProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
-    let database = Database.database().reference()
     let storage = Storage.storage().reference()
-    let uid = Auth.auth().currentUser?.uid
-    
-    let fileManager = FileManager.default
-    let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    let imagePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path
+    let database = Database.database().reference()
     
     //Outlets
     @IBOutlet weak var photoImageView: UIImageView!
@@ -28,6 +24,8 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    
+    var myImage: UIImage?
     
     func appearance() {
         
@@ -45,19 +43,27 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
             //Get Subject
             let phone = value?["phone"] as? String ?? ""
             self.phoneNumberTextField.text = phone
-        })
-        
-        //Get picture
-        do {
-            let files = try self.fileManager.contentsOfDirectory(atPath: "\(imagePath)")
             
-            for file in files {
-                if "\(imagePath)/\(file)" == self.imageURL.appendingPathComponent("\(uid!).png").path {
-                    self.photoImageView.image = UIImage(contentsOfFile: self.imageURL.appendingPathComponent("\(uid!).png").path)
-                }
+            //Get picture
+            let value_picture = value?["picture"] as? String ?? ""
+            if (value_picture != "") {
+                let url = URL(string: value_picture)
+                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                    if error != nil {
+                        print (error!)
+                        return
+                    }
+                    self.myImage = UIImage(data: data!)
+                    DispatchQueue.main.async {
+                        self.photoImageView.image = self.myImage
+                    }
+                }).resume()
+            } else {
+                print("error change profile")
+                self.photoImageView.image = UIImage(named: "Profile")
             }
-        } catch {
-            print("unable to add image from document directory")
+        }) { (error) in
+            print(error.localizedDescription)
         }
     }
     
@@ -101,21 +107,8 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
             
         }
-        self.photoImageView.image = selectedImage
+        myImage = selectedImage
         photoImageView.image = selectedImage
-        
-        do {
-            let files = try fileManager.contentsOfDirectory(atPath: "\(imagePath)")
-            
-            for file in files {
-                if "\(imagePath)/\(file)" == imageURL.appendingPathComponent("\(uid!).png").path {
-                    try fileManager.removeItem(atPath: imageURL.appendingPathComponent("\(uid!).png").path)
-                }
-            }
-        } catch {
-            print("unable to delete image from document directory")
-        }
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -131,33 +124,12 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
     
     @IBAction func saveChanges(_ sender: Any) {
         
-        if let image = self.photoImageView.image {
-            if let image = self.photoImageView.image {
+        let uid = Auth.auth().currentUser?.uid
+        
+        if let img = myImage {
+            if let uploadData = UIImagePNGRepresentation(img) {
+                storage.child("images").child(uid!).delete()
                 let storedImage = self.storage.child("images").child(uid!)
-                
-                
-                if let uploadData = UIImagePNGRepresentation(image) {
-                    storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
-                        if error != nil {
-                            print(error!)
-                            return
-                        }
-                        storedImage.downloadURL(completion: {(url, error) in
-                            if error != nil {
-                                print(error!)
-                                return
-                            }
-                            if let urlText = url?.absoluteString {
-                                self.database.child("events").child(self.uid!).child("image").setValue(urlText)
-                            }
-                        })
-                    })
-                }
-            }
-            let storedImage = self.storage.child("images").child(uid!)
-            
-            
-            if let uploadData = UIImagePNGRepresentation(image) {
                 storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
                     if error != nil {
                         print(error!)
@@ -169,16 +141,11 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
                             return
                         }
                         if let urlText = url?.absoluteString {
-                            self.database.child("users").child(self.uid!).child("image").setValue(urlText)
+                            self.database.child("users").child(uid!).child("picture").setValue(urlText)
                         }
                     })
                 })
             }
-        }
-        
-        if let data = UIImagePNGRepresentation(self.photoImageView.image!) {
-            let filename = imageURL.appendingPathComponent("\(uid!).png")
-            try? data.write(to: filename)
         }
         
         self.database.child("users").child(uid!).child("username").setValue(self.profileNameTextField.text)
@@ -208,7 +175,7 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
             
         }
         
-       self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
         
     }
 }

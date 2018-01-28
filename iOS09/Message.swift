@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 import Firebase
-import FirebaseDatabase
-import FirebaseStorage
 
 class Message {
     

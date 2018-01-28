@@ -158,7 +158,7 @@ class EventTableViewController: UITableViewController {
     private func loadEvents(completion: @escaping([Event]?) -> Void)  {
         var arrayEvents = [Event]()
         let imagePath = imageURL.path
-  
+        
         database.child("events").observeSingleEvent(of: .value, with: { (snapshot) in
             for child in snapshot.children.allObjects as! [DataSnapshot] {
                 let value = child.value as? NSDictionary
@@ -195,7 +195,7 @@ class EventTableViewController: UITableViewController {
                 }
             }
         }) { (error) in
-                print(error.localizedDescription)
+            print(error.localizedDescription)
         }
     }
 }
