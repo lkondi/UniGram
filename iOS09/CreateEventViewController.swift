@@ -9,11 +9,14 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseStorage
+import FirebaseDatabase
 import os.log
 
 class CreateEventViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     let database = Database.database().reference()
+    let storage = Storage.storage().reference()
     let uid = Auth.auth().currentUser?.uid
     
     let fileManager = FileManager.default
@@ -30,6 +33,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     var exist = false
     var isSignedUp = false
     var people: Int?
+    var myImage: UIImage?
     var signedUp: Int = 0
     var category: String?
     var mainEventTableVC: EventTableViewController?
@@ -83,7 +87,26 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 
                 let signedUp = value?["signedUpUsers"] as? NSArray ?? []
                 self.signedUp = signedUp.count
-            })
+                
+                //Get picture
+                let value_picture = value?["picture"] as? String ?? ""
+                if (value_picture != "") {
+                    let url = URL(string: value_picture)
+                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                        if error != nil {
+                            print (error!)
+                            return
+                        }
+                        self.myImage = UIImage(data: data!)
+                        DispatchQueue.main.async {
+                            self.eventImage.image = self.myImage
+                        }
+                    }).resume()
+                } else {
+                    print("error change profile")}
+                }) { (error) in
+                    print(error.localizedDescription)
+                }
 
         }
         
@@ -161,7 +184,6 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             
         }
         self.eventImage.image = selectedImage
-        eventImage.image = selectedImage
         
         do {
             let files = try fileManager.contentsOfDirectory(atPath: "\(imagePath)")
@@ -199,11 +221,34 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func saveEvent(_ sender: Any) {
         if isCreator {
             //Save new image
-            if let image = eventImage.image {
-                if let data = UIImagePNGRepresentation(image) {
-                    let filename = imageURL.appendingPathComponent("\(eventKey).png")
-                    try? data.write(to: filename)
+            if let image = self.eventImage.image {
+                storage.child("images").child(eventKey).delete()
+                let storedImage = self.storage.child("images").child(eventKey)
+                
+                
+                if let uploadData = UIImagePNGRepresentation(image) {
+                    storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
+                        if error != nil {
+                            print(error!)
+                            return
+                        }
+                        storedImage.downloadURL(completion: {(url, error) in
+                            if error != nil {
+                                print(error!)
+                                return
+                            }
+                            if let urlText = url?.absoluteString {
+                                self.database.child("events").child(self.eventKey).child("image").setValue(urlText)
+                            }
+                        })
+                    })
                 }
+            }
+            
+            //Save new image locally
+            if let data = UIImagePNGRepresentation(self.eventImage.image!) {
+                let filename = imageURL.appendingPathComponent("\(eventKey).png")
+                try? data.write(to: filename)
             }
             
             //Update the database
@@ -256,11 +301,34 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
                 
             }
             else {
-                //Save the new event
+                //Save the new event image
                 eventUid = self.database.child("events").childByAutoId()
                 eventKey = (eventUid?.key)!
                 
-                //Save image
+                if let image = myImage {
+                    let imageName = NSUUID().uuidString
+                    let storedImage = self.storage.child("images").child(imageName)
+                    
+                    if let uploadData = UIImagePNGRepresentation(image) {
+                        storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
+                            if error != nil {
+                                print(error!)
+                                return
+                            }
+                            storedImage.downloadURL(completion: {(url, error) in
+                                if error != nil {
+                                    print(error!)
+                                    return
+                                }
+                                if let urlText = url?.absoluteString {
+                                    self.eventUid?.child("image").setValue(urlText)
+                                }
+                            })
+                        })
+                    }
+                }
+                
+                //Save image locally
                 if let data = UIImagePNGRepresentation(self.eventImage.image!) {
                     let filename = imageURL.appendingPathComponent("\(eventKey).png")
                     try? data.write(to: filename)
@@ -320,6 +388,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
             print("unable to delete image from document directory")
         }
         
+        storage.child("images").child(eventKey).delete()
         self.database.child("users").child(uid!).child("eventsAdmin").setValue(createdEventsID)
         self.database.child("users").child(uid!).child("signUpEvents").setValue(signUpEventsID)
         self.database.child("events").child(eventKey).removeValue()

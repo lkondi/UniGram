@@ -8,10 +8,13 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
+import FirebaseDatabase
 
 class ChangeProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     let database = Database.database().reference()
+    let storage = Storage.storage().reference()
     let uid = Auth.auth().currentUser?.uid
     
     let fileManager = FileManager.default
@@ -127,6 +130,51 @@ class ChangeProfileViewController: UIViewController, UIImagePickerControllerDele
     //Save Profile Picture Change
     
     @IBAction func saveChanges(_ sender: Any) {
+        
+        if let image = self.photoImageView.image {
+            if let image = self.photoImageView.image {
+                let storedImage = self.storage.child("images").child(uid!)
+                
+                
+                if let uploadData = UIImagePNGRepresentation(image) {
+                    storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
+                        if error != nil {
+                            print(error!)
+                            return
+                        }
+                        storedImage.downloadURL(completion: {(url, error) in
+                            if error != nil {
+                                print(error!)
+                                return
+                            }
+                            if let urlText = url?.absoluteString {
+                                self.database.child("events").child(self.uid!).child("image").setValue(urlText)
+                            }
+                        })
+                    })
+                }
+            }
+            let storedImage = self.storage.child("images").child(uid!)
+            
+            
+            if let uploadData = UIImagePNGRepresentation(image) {
+                storedImage.putData(uploadData, metadata: nil, completion: {(metadata, error) in
+                    if error != nil {
+                        print(error!)
+                        return
+                    }
+                    storedImage.downloadURL(completion: {(url, error) in
+                        if error != nil {
+                            print(error!)
+                            return
+                        }
+                        if let urlText = url?.absoluteString {
+                            self.database.child("users").child(self.uid!).child("image").setValue(urlText)
+                        }
+                    })
+                })
+            }
+        }
         
         if let data = UIImagePNGRepresentation(self.photoImageView.image!) {
             let filename = imageURL.appendingPathComponent("\(uid!).png")

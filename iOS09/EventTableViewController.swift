@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 import os.log
 
 class EventTableViewController: UITableViewController {

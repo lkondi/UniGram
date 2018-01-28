@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>968616529529-1gpu60tjt4o2pnlndf9o0lq88biqq2fb.apps.googleusercontent.com</string>
+	<string>636060856725-c9bmhc8fj5njvg8eli01ohhg08o4ocir.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.968616529529-1gpu60tjt4o2pnlndf9o0lq88biqq2fb</string>
+	<string>com.googleusercontent.apps.636060856725-c9bmhc8fj5njvg8eli01ohhg08o4ocir</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBv0NNqD5dlYgVQhIsLLJjkdyuPZyZ8B78</string>
+	<string>AIzaSyB0isREBey5DcKGVuMiv60csc62gZ2cwao</string>
 	<key>GCM_SENDER_ID</key>
-	<string>968616529529</string>
+	<string>636060856725</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>lmu.iOS09</string>
+	<string>iosLMU</string>
 	<key>PROJECT_ID</key>
-	<string>ios09-2d460</string>
+	<string>ioslmu-5a164</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ios09-2d460.appspot.com</string>
+	<string>ioslmu-5a164.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:968616529529:ios:1566babf2e9be63e</string>
+	<string>1:636060856725:ios:2032fef24518e381</string>
 	<key>DATABASE_URL</key>
-	<string>https://ios09-2d460.firebaseio.com</string>
+	<string>https://ioslmu-5a164.firebaseio.com</string>
 </dict>
 </plist>
