@@ -6,6 +6,12 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>UniGram</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Photos will be used for sending to friends</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Location will be used for to share with friends</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location will be used for to share with friends</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
