@@ -54,7 +54,7 @@ extension UserListViewController: UITableViewDataSource {
         }
         
         // Modify cell
-        cell!.emailLabel.text = FriendSystem.system.userList[indexPath.row].email
+        cell!.emailLabel.text = FriendSystem.system.userList[indexPath.row].userName
         
         cell!.setFunction {
             let uid = FriendSystem.system.userList[indexPath.row].uid

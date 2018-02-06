@@ -52,7 +52,7 @@ extension RequestViewController: UITableViewDataSource {
         
         // Modify cell
         cell!.button.setTitle("Accept", for: UIControlState())
-        cell!.emailLabel.text = FriendSystem.system.requestList[indexPath.row].email
+        cell!.emailLabel.text = FriendSystem.system.requestList[indexPath.row].userName
         
         cell!.setFunction {
             let uid = FriendSystem.system.requestList[indexPath.row].uid
