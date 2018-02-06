@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate{
     
     let ref = Database.database().reference()
     
@@ -21,6 +21,12 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.userName.delegate = self
+    }
     
     //Sign Up Action for email
     @IBAction func createAccountAction(_ sender: Any) {
@@ -81,6 +87,18 @@ class SignUpViewController: UIViewController {
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        userName.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        confirmPassword.resignFirstResponder()
+        return(true)
     }
     
 }

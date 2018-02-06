@@ -12,12 +12,18 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate{
     
     //Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.emailTextField.delegate = self
+    }
     
     //Login Action
     //@IBAction func loginAction(_ sender: AnyObject) {
@@ -58,6 +64,15 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        return(true)
+    }
+    
 }
-
-
